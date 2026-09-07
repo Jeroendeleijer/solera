@@ -12,6 +12,7 @@ Year-round ownership service for Dutch owners of a Spanish house. One annual fee
   - `index.html` — homepage with the annual-cost ledger
   - `solera-verhuur.html` — owner rental listing page with live preview
   - `solera-diensten.html` — full list of tax, administration and legal services
+  - `solera-marktplaats.html` — renter-facing marketplace; every listing shows its licence number (listings are placeholder data)
 
 ## Brand at a glance
 
