@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solera — Verhuur uw huis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300..700;1,300..500&family=Petrona:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: oklch(0.966 0.014 78);
+    --clay: oklch(0.925 0.022 74);
+    --clay-deep: oklch(0.885 0.026 72);
+    --ink: oklch(0.26 0.021 45);
+    --muted: oklch(0.510 0.022 58);
+    --rule: oklch(0.872 0.020 72);
+    --accent: #B3623C;
+    --accent-ink: #98502C;
+    --grove: #6B7A3C;
+    --grove-ink: #5E6B34;
+    --serif: 'Petrona', Georgia, serif;
+    --sans: 'Karla', system-ui, sans-serif;
+    --gutter: clamp(20px, 5vw, 72px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+  body{font-family:var(--sans);font-size:17px;line-height:27px}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  h1,h2,h3{font-family:var(--serif);font-weight:400}
+  .eyebrow{font-size:11px;line-height:16px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .wrap{padding-inline:var(--gutter);max-width:1280px;margin-inline:auto}
+  .btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--sans);padding:15px 22px;border:1px solid var(--ink);color:var(--ink);background:transparent;border-radius:2px;cursor:pointer}
+  .btn.primary{background:var(--ink);color:var(--paper)}
+  .btn.primary:hover{background:oklch(0.32 0.021 45)}
+  .btn:hover{background:var(--clay)}
+  .btn.small{padding:10px 14px;font-size:14px}
+  .mark{display:inline-block;height:26px;vertical-align:middle}
+  .wordmark{font:500 24px/1 var(--serif);display:inline-flex;align-items:center;gap:9px}
+  .num{font-variant-numeric:tabular-nums}
+
+  header{border-bottom:1px solid var(--rule)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  nav ul{display:flex;gap:28px;list-style:none;font-size:16px}
+  nav ul a.current{border-bottom:2px solid var(--accent);padding-bottom:4px}
+  nav .lang{font-size:13px;color:var(--muted);margin-right:20px}
+
+  .page-head{padding-block:clamp(40px,6vw,72px) clamp(28px,4vw,44px);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:end;border-bottom:1px solid var(--rule)}
+  .page-head h1{font-size:clamp(38px,5vw,62px);line-height:.98;letter-spacing:-.03em;margin:16px 0 18px;max-width:14ch;text-wrap:balance}
+  .page-head p{max-width:52ch;font-size:18px;line-height:29px}
+  .steps{list-style:none;display:grid;gap:0;font-size:15px;color:var(--muted);border-left:1px solid var(--rule)}
+  .steps li{padding:9px 16px;display:flex;justify-content:space-between;gap:12px}
+  .steps li.done{color:var(--ink)}
+  .steps li.done::after{content:"✓";color:var(--grove)}
+  .steps li.now{color:var(--ink);border-left:2px solid var(--accent);margin-left:-1px}
+
+  .layout{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,72px);padding-block:clamp(36px,5vw,64px) clamp(64px,8vw,112px);align-items:start}
+  fieldset{border:0;padding:0;margin:0 0 56px}
+  legend{display:contents}
+  .sec-head{display:flex;align-items:baseline;gap:16px;padding-bottom:14px;border-bottom:1px solid var(--rule);margin-bottom:22px}
+  .sec-head .n{font-family:var(--serif);color:var(--accent-ink);font-size:15px}
+  .sec-head h2{font-size:28px;line-height:1.1;letter-spacing:-.015em}
+  .sec-head .hint{margin-left:auto;font-size:13px;color:var(--muted)}
+  .field{display:grid;gap:6px}
+  .field label,.field .lbl{font-size:14px;color:var(--muted)}
+  .field input,.field select,.field textarea{font:400 17px/1.3 var(--sans);padding:12px 13px;background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:2px;width:100%}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--ink);outline:none}
+  .field textarea{min-height:120px;resize:vertical;line-height:1.5}
+  .field .help{font-size:13px;line-height:18px;color:var(--muted)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .stack{display:grid;gap:18px}
+  .with-unit{position:relative}
+  .with-unit input{padding-right:52px}
+  .with-unit span{position:absolute;right:13px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--muted)}
+  .with-euro{position:relative}
+  .with-euro input{padding-left:30px}
+  .with-euro span{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:15px;color:var(--muted)}
+
+  .seg{position:relative;display:flex;border:1px solid var(--rule);border-radius:2px;overflow:hidden}
+  .seg label{flex:1;text-align:center;padding:11px 8px;font-size:15px;cursor:pointer;border-right:1px solid var(--rule)}
+  .seg label:last-child{border-right:0}
+  .seg input{position:absolute;opacity:0;pointer-events:none}
+  .seg input:checked+span{display:block;margin:-11px -8px;padding:11px 8px;background:var(--ink);color:var(--paper)}
+
+  .counter{display:flex;align-items:center;border:1px solid var(--rule);border-radius:2px}
+  .counter button{font:400 20px/1 var(--sans);width:42px;height:46px;background:transparent;border:0;cursor:pointer;color:var(--ink)}
+  .counter button:hover{background:var(--clay)}
+  .counter output{flex:1;text-align:center;font-size:17px}
+
+  .amen{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .amen label{display:flex;align-items:center;gap:10px;padding:11px 13px;border:1px solid var(--rule);border-radius:2px;font-size:15px;cursor:pointer;user-select:none}
+  .amen input{appearance:none;width:16px;height:16px;border:1px solid var(--muted);border-radius:2px;flex:none;display:grid;place-content:center}
+  .amen input:checked{background:var(--grove);border-color:var(--grove)}
+  .amen input:checked::before{content:"";width:8px;height:5px;border:2px solid var(--paper);border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
+  .amen label:has(input:checked){background:var(--clay)}
+
+  .drop{border:1px dashed var(--muted);border-radius:2px;padding:28px;text-align:center;color:var(--muted);font-size:15px;line-height:22px;background:var(--clay)}
+  .drop strong{display:block;color:var(--ink);font-weight:600;font-size:16px}
+  .thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+  .thumb{aspect-ratio:4/3;background:var(--clay-deep);border:1px solid var(--rule);position:relative;font-size:12px;color:var(--muted)}
+  .thumb span{position:absolute;left:8px;bottom:6px}
+  .thumb.cover::after{content:"Omslagfoto";position:absolute;top:8px;left:8px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:3px 7px}
+  .thumb.add{display:grid;place-content:center;background:transparent;border-style:dashed;cursor:pointer}
+
+  .rules{display:grid;gap:0;border-top:1px solid var(--rule)}
+  .rule-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:18px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:16px}
+  .rule-row .sub{font-size:13px;color:var(--muted)}
+  .switch{position:relative;width:44px;height:26px;background:var(--rule);border-radius:13px;cursor:pointer;flex:none}
+  .switch input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+  .switch i{position:absolute;top:3px;left:3px;width:20px;height:20px;background:var(--paper);border-radius:50%;transition:transform .15s}
+  .switch:has(input:checked){background:var(--grove)}
+  .switch:has(input:checked) i{transform:translateX(18px)}
+
+  .cal{border:1px solid var(--rule);border-radius:2px}
+  .cal-head{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid var(--rule);font-family:var(--serif);font-size:19px}
+  .cal-head button{background:transparent;border:0;font:inherit;cursor:pointer;color:var(--muted);padding:0 6px}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr)}
+  .cal-grid .dow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:center;padding:8px 0;border-bottom:1px solid var(--rule)}
+  .cal-grid button{aspect-ratio:1.2;border:0;background:transparent;font:400 15px var(--sans);color:var(--ink);cursor:pointer;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);position:relative}
+  .cal-grid button:nth-child(7n){border-right:0}
+  .cal-grid button.blank{cursor:default}
+  .cal-grid button.own{background:var(--clay);color:var(--muted);text-decoration:line-through}
+  .cal-grid button.booked{background:var(--grove);color:var(--paper)}
+  .cal-grid button:hover:not(.blank){outline:1px solid var(--ink);outline-offset:-1px}
+  .legend{display:flex;gap:18px;font-size:13px;color:var(--muted);margin-top:10px}
+  .legend span::before{content:"";display:inline-block;width:11px;height:11px;margin-right:6px;vertical-align:-1px;border:1px solid var(--rule)}
+  .legend .l-own::before{background:var(--clay)}
+  .legend .l-booked::before{background:var(--grove);border-color:var(--grove)}
+
+  .seasons{border-top:1px solid var(--rule)}
+  .season{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:18px;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule)}
+  .season .name{font-size:16px}
+  .season .name span{display:block;font-size:13px;color:var(--muted)}
+  .fees{border-top:1px solid var(--rule)}
+  .fee{display:grid;grid-template-columns:1fr 160px;gap:18px;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule);font-size:16px}
+  .fee .sub{display:block;font-size:13px;color:var(--muted)}
+
+  .licence{display:grid;gap:12px}
+  .licence .opt{display:flex;gap:14px;padding:16px;border:1px solid var(--rule);border-radius:2px;cursor:pointer;align-items:flex-start}
+  .licence .opt input{margin-top:6px;accent-color:var(--ink)}
+  .licence .opt strong{display:block;font-weight:600;font-size:16px}
+  .licence .opt span{font-size:14px;line-height:21px;color:var(--muted)}
+  .licence .opt:has(input:checked){border-color:var(--ink);background:var(--clay)}
+
+  .actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding-top:22px;border-top:2px solid var(--ink)}
+  .actions .note{font-size:13px;line-height:19px;color:var(--muted);flex-basis:100%}
+
+  /* preview */
+  aside{position:sticky;top:24px}
+  .preview{border:1px solid var(--rule);background:var(--paper)}
+  .preview .pv-photo{aspect-ratio:4/3;background:linear-gradient(180deg,var(--clay) 0%,var(--clay-deep) 100%);position:relative}
+  .preview .pv-photo::before{content:"";position:absolute;left:0;right:0;bottom:0;height:36%;background:oklch(0.83 0.03 70)}
+  .preview .pv-photo::after{content:"";position:absolute;left:34%;bottom:22%;width:30%;height:52%;border:11px solid var(--paper);border-bottom:0;border-radius:50% 50% 0 0/62% 62% 0 0;box-shadow:inset 0 -50px 0 -34px var(--accent);opacity:.9}
+  .preview .pv-photo .tag{position:absolute;top:12px;left:12px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--paper);padding:4px 8px;color:var(--ink)}
+  .preview .pv-body{padding:22px 24px 24px}
+  .preview .pv-loc{font-size:14px;color:var(--muted)}
+  .preview h3{font-size:26px;line-height:1.1;letter-spacing:-.015em;margin:6px 0 10px}
+  .preview .pv-meta{font-size:15px;color:var(--ink)}
+  .preview .pv-amen{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+  .preview .pv-amen span{font-size:13px;padding:5px 9px;background:var(--clay);border-radius:2px}
+  .preview .pv-price{display:flex;justify-content:space-between;align-items:baseline;margin-top:18px;padding-top:16px;border-top:1px solid var(--rule)}
+  .preview .pv-price .p{font-family:var(--serif);font-size:30px;letter-spacing:-.02em}
+  .preview .pv-price .p small{font:400 13px var(--sans);color:var(--muted)}
+  .preview .pv-price .lic{font-size:13px;color:var(--grove-ink);display:inline-flex;align-items:center;gap:6px}
+  .preview .pv-price .lic::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--grove)}
+  .preview .pv-price .lic.pending{color:var(--muted)}
+  .preview .pv-price .lic.pending::before{background:transparent;border:1px solid var(--muted)}
+  .pv-cap{font-size:13px;color:var(--muted);margin-top:12px;line-height:19px}
+  .year-box{margin-top:22px;padding:18px 20px;background:var(--clay);border-left:3px solid var(--accent)}
+  .year-box .eyebrow{color:var(--accent-ink)}
+  .year-box .big{font-family:var(--serif);font-size:32px;letter-spacing:-.02em;margin:6px 0 2px}
+  .year-box p{font-size:14px;line-height:20px;color:var(--muted)}
+
+  footer{border-top:1px solid var(--rule)}
+  footer .wrap{padding-block:36px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--muted)}
+  footer ul{display:flex;gap:22px;list-style:none}
+
+  @media (max-width:980px){
+    .layout,.page-head{grid-template-columns:1fr}
+    aside{position:static}
+    .steps{display:none}
+    nav ul{display:none}
+  }
+  @media (max-width:640px){
+    .grid2,.grid3,.grid4,.season,.fee,.amen{grid-template-columns:1fr}
+    .thumbs{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="wordmark" href="index.html" aria-label="Solera">
+        <svg class="mark" viewBox="0 0 60 40" aria-hidden="true"><path d="M8 40 V22 A22 22 0 0 1 52 22 V40" fill="none" stroke="currentColor" stroke-width="5"/><rect x="28" y="24" width="4" height="16" fill="#B3623C"/></svg>
+        Solera
+      </a>
+      <ul>
+        <li><a href="index.html#jaar">Wat het jaar kost</a></li>
+        <li><a href="solera-diensten.html">Alle diensten</a></li>
+        <li><a href="index.html#verplichtingen">Belasting</a></li>
+        <li><a href="index.html#verplichtingen">Verzekering</a></li>
+        <li><a class="current" href="#">Verhuur</a></li>
+        <li><a href="index.html#dossier">Beheer</a></li>
+      </ul>
+      <div>
+        <span class="lang">NL · EN</span>
+        <a class="btn" href="index.html#gesprek">Plan een gesprek</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="page-head">
+    <div>
+      <span class="eyebrow">Verhuur · voor eigenaren met Solera Anual</span>
+      <h1>Zet uw huis te huur. Wij zorgen dat het legaal blijft.</h1>
+      <p>Vul de woning één keer in. Wij controleren de verhuurvergunning, zetten de toeristenbelasting op de aangifte en houden de kalender bij. U bepaalt de prijs en wie er komt.</p>
+    </div>
+    <ol class="steps" aria-label="Voortgang">
+      <li class="done">Woning</li>
+      <li class="done">Adres</li>
+      <li class="now">Voorzieningen</li>
+      <li>Foto's</li>
+      <li>Huisregels</li>
+      <li>Beschikbaarheid</li>
+      <li>Prijzen</li>
+      <li>Vergunning</li>
+    </ol>
+  </div>
+
+  <div class="layout">
+  <form id="listing" onsubmit="return false">
+
+    <fieldset>
+      <div class="sec-head"><span class="n">1 van 8</span><h2>De woning</h2></div>
+      <div class="stack">
+        <div class="field">
+          <span class="lbl">Type</span>
+          <div class="seg" role="radiogroup">
+            <label><input type="radio" name="type" value="Appartement" checked><span>Appartement</span></label>
+            <label><input type="radio" name="type" value="Huis"><span>Huis</span></label>
+            <label><input type="radio" name="type" value="Villa"><span>Villa</span></label>
+            <label><input type="radio" name="type" value="Finca"><span>Finca</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="titel">Naam van de woning, zoals gasten die zien</label>
+          <input id="titel" data-pv="title" value="Appartement met zeezicht aan de Marina" maxlength="70">
+          <span class="help">Zeg wat het is en waar het staat. Geen "droomappartement".</span>
+        </div>
+        <div class="grid4">
+          <div class="field"><span class="lbl">Slaapkamers</span><div class="counter"><button type="button" data-dec="bed">−</button><output id="bed" data-pv="bed">2</output><button type="button" data-inc="bed">+</button></div></div>
+          <div class="field"><span class="lbl">Badkamers</span><div class="counter"><button type="button" data-dec="bath">−</button><output id="bath" data-pv="bath">1</output><button type="button" data-inc="bath">+</button></div></div>
+          <div class="field"><span class="lbl">Bedden</span><div class="counter"><button type="button" data-dec="beds">−</button><output id="beds">3</output><button type="button" data-inc="beds">+</button></div></div>
+          <div class="field"><span class="lbl">Max. gasten</span><div class="counter"><button type="button" data-dec="guests">−</button><output id="guests" data-pv="guests">4</output><button type="button" data-inc="guests">+</button></div></div>
+        </div>
+        <div class="grid3">
+          <div class="field with-unit"><label for="m2">Woonoppervlak</label><input id="m2" data-pv="m2" value="78" inputmode="numeric"><span>m²</span></div>
+          <div class="field with-unit"><label for="terras">Terras / tuin</label><input id="terras" value="14" inputmode="numeric"><span>m²</span></div>
+          <div class="field"><label for="verdieping">Verdieping</label><select id="verdieping"><option>Begane grond</option><option>1e</option><option selected>2e</option><option>3e of hoger</option><option>Meerdere verdiepingen</option></select></div>
+        </div>
+        <div class="field">
+          <label for="omschr">Omschrijving</label>
+          <textarea id="omschr">Licht appartement op de tweede verdieping, honderd meter van de jachthaven van Dénia. Twee slaapkamers, een terras op het zuiden en zicht op zee vanuit de woonkamer. Bakker en supermarkt om de hoek; het strand van Les Marines op tien minuten lopen.</textarea>
+          <span class="help">Schrijf zoals u het aan een vriend zou uitleggen. Wij vertalen naar Engels en Spaans.</span>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="sec-head"><span class="n">2 van 8</span><h2>Adres</h2><span class="hint">Gasten zien de straat pas na de boeking</span></div>
+      <div class="stack">
+        <div class="grid2">
+          <div class="field"><label for="straat">Straat en nummer</label><input id="straat" value="Calle Marqués de Campo 14, 2º B"></div>
+          <div class="field"><label for="urb">Urbanización / complex (optioneel)</label><input id="urb" placeholder="bijv. Residencial Las Marinas"></div>
+        </div>
+        <div class="grid3">
+          <div class="field"><label for="pc">Postcode</label><input id="pc" value="03700"></div>
+          <div class="field"><label for="plaats">Plaats</label><input id="plaats" data-pv="place" value="Dénia"></div>
+          <div class="field"><label for="prov">Provincie</label><select id="prov" data-pv="prov"><option selected>Alicante</option><option>Valencia</option><option>Castellón</option><option>Murcia</option><option>Málaga</option><option>Illes Balears</option></select></div>
+        </div>
+        <div class="field">
+          <label for="ref">Referencia catastral</label>
+          <input id="ref" placeholder="20 tekens, staat op uw IBI-aanslag">
+          <span class="help">Nodig voor de vergunning en de Modelo 210. Weet u het niet? Laat leeg — wij zoeken het op.</span>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="sec-head"><span class="n">3 van 8</span><h2>Voorzieningen</h2></div>
+      <div class="amen" id="amen">
+        <label><input type="checkbox" value="Wifi" checked>Wifi</label>
+        <label><input type="checkbox" value="Airco" checked>Airconditioning</label>
+        <label><input type="checkbox" value="Verwarming">Verwarming</label>
+        <label><input type="checkbox" value="Zwembad" checked>Zwembad (gedeeld)</label>
+        <label><input type="checkbox" value="Privézwembad">Privézwembad</label>
+        <label><input type="checkbox" value="Parkeren" checked>Parkeerplaats</label>
+        <label><input type="checkbox" value="Terras" checked>Terras of balkon</label>
+        <label><input type="checkbox" value="Zeezicht" checked>Zeezicht</label>
+        <label><input type="checkbox" value="Lift" checked>Lift</label>
+        <label><input type="checkbox" value="Wasmachine" checked>Wasmachine</label>
+        <label><input type="checkbox" value="Vaatwasser">Vaatwasser</label>
+        <label><input type="checkbox" value="Oven">Oven</label>
+        <label><input type="checkbox" value="Tv">Tv met streaming</label>
+        <label><input type="checkbox" value="Barbecue">Barbecue</label>
+        <label><input type="checkbox" value="Kluis">Kluisje</label>
+        <label><input type="checkbox" value="Huisdieren">Huisdieren welkom</label>
+        <label><input type="checkbox" value="Kinderbed">Kinderbed en -stoel</label>
+        <label><input type="checkbox" value="Toegankelijk">Rolstoeltoegankelijk</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="sec-head"><span class="n">4 van 8</span><h2>Foto's</h2><span class="hint">Minimaal 8 · liggend · geen tekst in beeld</span></div>
+      <div class="drop">
+        <strong>Sleep foto's hierheen of kies bestanden</strong>
+        JPG of HEIC, minimaal 1600 px breed. De eerste foto is de omslag; sleep om de volgorde te wijzigen.
+      </div>
+      <div class="thumbs">
+        <div class="thumb cover"><span>Woonkamer</span></div>
+        <div class="thumb"><span>Terras</span></div>
+        <div class="thumb"><span>Slaapkamer 1</span></div>
+        <div class="thumb"><span>Keuken</span></div>
+        <div class="thumb"><span>Badkamer</span></div>
+        <div class="thumb"><span>Zwembad</span></div>
+        <div class="thumb add">+ Foto toevoegen</div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="sec-head"><span class="n">5 van 8</span><h2>Huisregels</h2></div>
+      <div class="grid3" style="margin-bottom:18px">
+        <div class="field"><label for="cin">Inchecken vanaf</label><input id="cin" type="time" value="16:00"></div>
+        <div class="field"><label for="cout">Uitchecken vóór</label><input id="cout" type="time" value="10:00"></div>
+        <div class="field"><label for="sleutel">Sleuteloverdracht</label><select id="sleutel"><option>Sleutelkluis bij de deur</option><option selected>Persoonlijk door Solera</option><option>Door de eigenaar</option></select></div>
+      </div>
+      <div class="rules">
+        <div class="rule-row"><div>Roken binnen<span class="sub"> — buiten op het terras wel</span></div><label class="switch"><input type="checkbox"><i></i></label></div>
+        <div class="rule-row"><div>Feesten en evenementen</div><label class="switch"><input type="checkbox"><i></i></label></div>
+        <div class="rule-row"><div>Huisdieren<span class="sub"> — geldt ook voor de verzekering</span></div><label class="switch"><input type="checkbox"><i></i></label></div>
+        <div class="rule-row"><div>Kinderen welkom</div><label class="switch"><input type="checkbox" checked><i></i></label></div>
+        <div class="rule-row"><div>Stilte na 23:00<span class="sub"> — verplicht in de meeste comunidades</span></div><label class="switch"><input type="checkbox" checked><i></i></label></div>
+      </div>
+      <div class="field" style="margin-top:18px">
+        <label for="extra">Extra regels of aanwijzingen voor gasten</label>
+        <textarea id="extra" style="min-height:80px">Zonnescherm 's avonds inrollen bij wind. De comunidad staat geen handdoeken over de balustrade toe.</textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="sec-head"><span class="n">6 van 8</span><h2>Beschikbaarheid</h2><span class="hint">Klik een dag om hem voor uzelf te houden</span></div>
+      <div class="grid2" style="align-items:start">
+        <div>
+          <div class="cal">
+            <div class="cal-head"><button type="button" aria-label="Vorige maand">‹</button><span>juli 2027</span><button type="button" aria-label="Volgende maand">›</button></div>
+            <div class="cal-grid" id="cal"></div>
+          </div>
+          <div class="legend"><span class="l-own">Eigen gebruik</span><span class="l-booked">Geboekt</span></div>
+        </div>
+        <div class="stack">
+          <div class="field">
+            <label for="minstay">Minimaal verblijf</label>
+            <select id="minstay"><option>2 nachten</option><option>3 nachten</option><option selected>5 nachten</option><option>7 nachten</option><option>14 nachten</option></select>
+          </div>
+          <div class="field">
+            <label for="wissel">Wisseldag in het hoogseizoen</label>
+            <select id="wissel"><option>Elke dag</option><option selected>Zaterdag</option><option>Zondag</option></select>
+          </div>
+          <div class="field">
+            <label for="buffer">Dagen tussen twee boekingen</label>
+            <select id="buffer"><option>0</option><option selected>1 — voor schoonmaak</option><option>2</option></select>
+          </div>
+          <div class="field">
+            <label for="sync">Kalender synchroniseren</label>
+            <input id="sync" placeholder="Plak de iCal-link van Airbnb of Booking">
+            <span class="help">Boekingen van elders verschijnen dan hier, zodat u nooit dubbel verhuurt.</span>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="sec-head"><span class="n">7 van 8</span><h2>Prijzen</h2><span class="hint">Per nacht, in euro's, inclusief btw</span></div>
+      <div class="seasons">
+        <div class="season" style="border-bottom:0;padding-bottom:6px;color:var(--muted);font-size:13px"><span>Seizoen</span><span>Per nacht</span><span>Weekend-toeslag</span></div>
+        <div class="season"><div class="name">Laagseizoen<span>1 nov – 31 mrt</span></div><div class="field with-euro"><input data-pv="low" value="95" inputmode="numeric"><span>€</span></div><div class="field with-euro"><input value="0" inputmode="numeric"><span>€</span></div></div>
+        <div class="season"><div class="name">Middenseizoen<span>1 apr – 30 jun · 1 sep – 31 okt</span></div><div class="field with-euro"><input value="140" inputmode="numeric"><span>€</span></div><div class="field with-euro"><input value="15" inputmode="numeric"><span>€</span></div></div>
+        <div class="season"><div class="name">Hoogseizoen<span>1 jul – 31 aug · Pasen · Kerst</span></div><div class="field with-euro"><input data-pv="high" value="215" inputmode="numeric"><span>€</span></div><div class="field with-euro"><input value="25" inputmode="numeric"><span>€</span></div></div>
+      </div>
+      <div class="fees" style="margin-top:22px">
+        <div class="fee"><div>Schoonmaakkosten<span class="sub">Eenmalig per verblijf</span></div><div class="field with-euro"><input value="85" inputmode="numeric"><span>€</span></div></div>
+        <div class="fee"><div>Borg<span class="sub">Binnen 7 dagen na vertrek terug</span></div><div class="field with-euro"><input value="300" inputmode="numeric"><span>€</span></div></div>
+        <div class="fee"><div>Toeristenbelasting<span class="sub">Comunitat Valenciana — wij zetten dit op de aangifte</span></div><div style="font-size:15px;color:var(--muted);text-align:right">Automatisch</div></div>
+        <div class="fee"><div>Korting bij 7+ nachten</div><div class="field with-unit"><input value="10" inputmode="numeric"><span>%</span></div></div>
+        <div class="fee"><div>Korting bij 28+ nachten</div><div class="field with-unit"><input value="25" inputmode="numeric"><span>%</span></div></div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="sec-head"><span class="n">8 van 8</span><h2>Verhuurvergunning</h2></div>
+      <div class="licence">
+        <label class="opt"><input type="radio" name="lic" value="have" checked data-pv="lic"><div><strong>Ik heb een licencia turística</strong><span>Vul het nummer in; wij controleren de registratie bij de Generalitat en zetten het op elke advertentie, zoals de wet vereist.</span>
+          <div class="field" style="margin-top:12px;max-width:320px"><input id="licnr" value="VT-482116-A" placeholder="VT-000000-A"></div></div></label>
+        <label class="opt"><input type="radio" name="lic" value="need" data-pv="lic"><div><strong>Nog geen vergunning</strong><span>Wij vragen hem aan waar dat nog kan (in Dénia en Jávea meestal wel, in delen van Alicante-stad niet meer) en zeggen het eerlijk als het niet lukt. Tot die tijd blijft de woning offline.</span></div></label>
+        <label class="opt"><input type="radio" name="lic" value="unsure" data-pv="lic"><div><strong>Weet ik niet</strong><span>Wij zoeken het uit op basis van de referencia catastral. Meestal binnen drie werkdagen.</span></div></label>
+      </div>
+    </fieldset>
+
+    <div class="actions">
+      <button class="btn primary" type="submit">Plaats de woning</button>
+      <button class="btn" type="button">Bewaar als concept</button>
+      <p class="note">Plaatsen betekent: wij controleren de vergunning en de verzekering, en zetten de woning live zodra beide kloppen. U krijgt daar bericht van — in het Nederlands, met wat het kost.</p>
+    </div>
+  </form>
+
+  <aside>
+    <div class="preview" aria-label="Voorbeeld van de advertentie">
+      <div class="pv-photo"><span class="tag">Zo zien gasten het</span></div>
+      <div class="pv-body">
+        <div class="pv-loc"><span id="pv-place">Dénia</span>, <span id="pv-prov">Alicante</span></div>
+        <h3 id="pv-title">Appartement met zeezicht aan de Marina</h3>
+        <div class="pv-meta"><span id="pv-guests">4</span> gasten · <span id="pv-bed">2</span> slaapkamers · <span id="pv-bath">1</span> badkamer · <span id="pv-m2">78</span> m²</div>
+        <div class="pv-amen" id="pv-amen"></div>
+        <div class="pv-price">
+          <div class="p">€ <span id="pv-low">95</span>–<span id="pv-high">215</span> <small>per nacht</small></div>
+          <span class="lic" id="pv-lic">VT-482116-A</span>
+        </div>
+        <p class="pv-cap">Prijzen per seizoen; schoonmaak en toeristenbelasting worden apart getoond vóór het boeken.</p>
+      </div>
+    </div>
+    <div class="year-box">
+      <span class="eyebrow">Wat verhuur voor uw jaar betekent</span>
+      <div class="big num">+ € 0 / jaar</div>
+      <p>De verhuurmodule zit in Solera Anual. Wat verandert: Modelo 210 wordt per kwartaal ingediend, en uw polis krijgt de verhuurdekking — beide al in uw jaarbedrag opgenomen.</p>
+    </div>
+  </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="wordmark" style="font-size:20px">Solera</span>
+    <ul>
+      <li><a href="#">Solera Anual</a></li>
+      <li><a href="#">Prijzen</a></li>
+      <li><a href="#">Over ons</a></li>
+      <li><a href="#">Privacy</a></li>
+    </ul>
+    <span>Solera Eigenarenservice S.L. · Dénia, Alicante</span>
+  </div>
+</footer>
+
+<script>
+  // live preview
+  const pv = (k) => document.getElementById('pv-' + k);
+  document.querySelectorAll('[data-pv]').forEach(el => {
+    const key = el.dataset.pv;
+    const sync = () => {
+      if (key === 'lic') {
+        const v = document.querySelector('input[name=lic]:checked').value;
+        const out = pv('lic');
+        if (v === 'have') { out.textContent = document.getElementById('licnr').value || 'VT-…'; out.className = 'lic'; }
+        else if (v === 'need') { out.textContent = 'Vergunning in aanvraag'; out.className = 'lic pending'; }
+        else { out.textContent = 'Vergunning wordt gecontroleerd'; out.className = 'lic pending'; }
+        return;
+      }
+      pv(key).textContent = el.value !== undefined && el.tagName !== 'OUTPUT' ? el.value : el.textContent;
+    };
+    el.addEventListener('input', sync); el.addEventListener('change', sync); sync();
+  });
+  document.getElementById('licnr').addEventListener('input', () => document.querySelector('input[name=lic]:checked').dispatchEvent(new Event('change')));
+
+  // counters
+  document.querySelectorAll('[data-inc],[data-dec]').forEach(b => b.addEventListener('click', () => {
+    const id = b.dataset.inc || b.dataset.dec, o = document.getElementById(id);
+    o.textContent = Math.max(0, +o.textContent + (b.dataset.inc ? 1 : -1));
+    if (o.dataset.pv) pv(o.dataset.pv).textContent = o.textContent;
+    if (id === 'bath') pv('bath').nextSibling.textContent = o.textContent == 1 ? ' badkamer · ' : ' badkamers · ';
+  }));
+
+  // amenities → chips
+  const amen = document.getElementById('amen'), chips = document.getElementById('pv-amen');
+  const drawAmen = () => { chips.innerHTML = ''; amen.querySelectorAll('input:checked').forEach(i => { const s = document.createElement('span'); s.textContent = i.value; chips.appendChild(s); }); };
+  amen.addEventListener('change', drawAmen); drawAmen();
+
+  // calendar — juli 2027 starts on Thursday
+  const cal = document.getElementById('cal');
+  ['ma','di','wo','do','vr','za','zo'].forEach(d => { const s = document.createElement('div'); s.className = 'dow'; s.textContent = d; cal.appendChild(s); });
+  const own = new Set([10,11,12,13,14,15,16,17]), booked = new Set([24,25,26,27,28,29,30,31]);
+  for (let i = 0; i < 3; i++) { const b = document.createElement('button'); b.type = 'button'; b.className = 'blank'; b.tabIndex = -1; cal.appendChild(b); }
+  for (let d = 1; d <= 31; d++) {
+    const b = document.createElement('button'); b.type = 'button'; b.textContent = d;
+    if (own.has(d)) b.className = 'own'; if (booked.has(d)) { b.className = 'booked'; b.title = 'Geboekt — fam. Vermeulen'; }
+    b.addEventListener('click', () => { if (b.classList.contains('booked')) return; b.classList.toggle('own'); });
+    cal.appendChild(b);
+  }
+</script>
+</body>
+</html>

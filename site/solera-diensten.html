@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solera — Alle diensten: belasting, administratie en juridisch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300..700;1,300..500&family=Petrona:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: oklch(0.966 0.014 78);
+    --clay: oklch(0.925 0.022 74);
+    --clay-deep: oklch(0.885 0.026 72);
+    --ink: oklch(0.26 0.021 45);
+    --muted: oklch(0.510 0.022 58);
+    --rule: oklch(0.872 0.020 72);
+    --accent: #B3623C;
+    --accent-ink: #98502C;
+    --grove: #6B7A3C;
+    --grove-ink: #5E6B34;
+    --serif: 'Petrona', Georgia, serif;
+    --sans: 'Karla', system-ui, sans-serif;
+    --gutter: clamp(20px, 5vw, 72px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  body{font-family:var(--sans);font-size:17px;line-height:27px}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  h1,h2,h3{font-family:var(--serif);font-weight:400}
+  .eyebrow{font-size:11px;line-height:16px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .wrap{padding-inline:var(--gutter);max-width:1280px;margin-inline:auto}
+  .btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--sans);padding:15px 22px;border:1px solid var(--ink);color:var(--ink);background:transparent;border-radius:2px;cursor:pointer}
+  .btn.primary{background:var(--ink);color:var(--paper)}
+  .btn:hover{background:var(--clay)} .btn.primary:hover{background:oklch(0.32 0.021 45)}
+  .mark{display:inline-block;height:26px;vertical-align:middle}
+  .wordmark{font:500 24px/1 var(--serif);display:inline-flex;align-items:center;gap:9px}
+  .num{font-variant-numeric:tabular-nums}
+  em{font-family:var(--serif);font-style:italic;font-size:1.05em}
+
+  header{border-bottom:1px solid var(--rule)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  nav ul{display:flex;gap:28px;list-style:none;font-size:16px}
+  nav ul a.current{border-bottom:2px solid var(--accent);padding-bottom:4px}
+  nav .lang{font-size:13px;color:var(--muted);margin-right:20px}
+
+  .page-head{padding-block:clamp(40px,6vw,72px) clamp(32px,4vw,52px);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:end;border-bottom:1px solid var(--rule)}
+  .page-head h1{font-size:clamp(38px,5vw,62px);line-height:.98;letter-spacing:-.03em;margin:16px 0 18px;max-width:16ch;text-wrap:balance}
+  .page-head p{max-width:52ch;font-size:18px;line-height:29px}
+  .key{border-left:1px solid var(--rule);padding-left:22px;font-size:15px;line-height:23px;color:var(--muted)}
+  .key p{margin-bottom:10px}
+  .pill{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:2px;white-space:nowrap}
+  .pill.in{background:var(--grove);color:var(--paper)}
+  .pill.fixed{background:var(--clay-deep);color:var(--ink)}
+  .pill.quote{border:1px solid var(--rule);color:var(--muted)}
+
+  /* lifecycle strip */
+  .life{padding-block:clamp(32px,4vw,52px);border-bottom:1px solid var(--rule)}
+  .life ol{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-left:1px solid var(--rule)}
+  .life li{padding:6px 18px 4px;border-right:1px solid var(--rule)}
+  .life li a{display:block}
+  .life li strong{display:block;font:400 22px/1.15 var(--serif);letter-spacing:-.015em;margin-bottom:6px}
+  .life li span{font-size:14px;line-height:20px;color:var(--muted);display:block}
+  .life li a:hover strong{color:var(--accent-ink)}
+
+  /* groups */
+  .group{padding-block:clamp(56px,7vw,96px);border-bottom:1px solid var(--rule)}
+  .group-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);align-items:end;margin-bottom:34px}
+  .group-head h2{font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.02em;max-width:18ch;text-wrap:balance}
+  .group-head p{max-width:56ch}
+  table.svc{width:100%;border-collapse:collapse}
+  table.svc th{text-align:left;font-weight:400;font-size:13px;color:var(--muted);padding:0 0 10px;border-bottom:1px solid var(--rule)}
+  table.svc td{padding:18px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+  table.svc td.name{width:30%;padding-right:20px}
+  table.svc td.name strong{display:block;font-weight:600;font-size:17px}
+  table.svc td.name span{display:block;font-size:14px;line-height:20px;color:var(--muted);margin-top:2px}
+  table.svc td.desc{font-size:15px;line-height:23px;padding-right:24px;color:var(--ink)}
+  table.svc td.when{width:19%;font-size:14px;line-height:20px;color:var(--muted);padding-right:20px}
+  table.svc td.cost{width:16%;text-align:right;white-space:nowrap}
+  table.svc td.cost .p{font-family:var(--serif);font-size:22px;letter-spacing:-.01em;display:block}
+  table.svc td.cost .p small{font:400 12px var(--sans);color:var(--muted);display:block;margin-top:2px}
+  table.svc tr.anual td{background:linear-gradient(90deg,var(--clay) 0,var(--clay) 100%)}
+  table.svc tr.anual td:first-child{padding-left:14px}
+  table.svc tr.anual td.cost{padding-right:14px}
+  .caveat{font-size:14px;line-height:21px;color:var(--muted);max-width:70ch;margin-top:18px}
+
+  /* the rule */
+  .rulebox{background:var(--clay);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .rulebox .wrap{padding-block:clamp(48px,6vw,72px);display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,56px)}
+  .rulebox h3{font-size:24px;line-height:1.15;letter-spacing:-.015em;margin-bottom:10px}
+  .rulebox p{font-size:15px;line-height:23px;max-width:34ch}
+
+  .cta{padding-block:clamp(56px,7vw,96px);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:center}
+  .cta h2{font-size:clamp(30px,4vw,48px);line-height:1;letter-spacing:-.03em;max-width:16ch;text-wrap:balance}
+  .cta p{margin-top:16px;max-width:48ch}
+  .cta .actions{display:flex;gap:12px;flex-wrap:wrap;justify-self:end}
+
+  footer{border-top:1px solid var(--rule)}
+  footer .wrap{padding-block:36px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--muted)}
+  footer ul{display:flex;gap:22px;list-style:none}
+
+  @media (max-width:980px){
+    .page-head,.group-head,.cta{grid-template-columns:1fr}
+    .cta .actions{justify-self:start}
+    .life ol{grid-template-columns:1fr;border-left:0}
+    .life li{border-right:0;border-top:1px solid var(--rule);padding:14px 0}
+    .rulebox .wrap{grid-template-columns:1fr}
+    nav ul{display:none}
+    table.svc td.when{display:none}
+    table.svc td.name{width:40%}
+  }
+  @media (max-width:640px){
+    table.svc, table.svc tbody, table.svc tr, table.svc td{display:block;width:auto!important}
+    table.svc thead{display:none}
+    table.svc tr{padding:16px 0;border-bottom:1px solid var(--rule)}
+    table.svc td{padding:4px 0;border:0}
+    table.svc td.cost{text-align:left;margin-top:8px}
+    table.svc tr.anual td{background:transparent}
+    table.svc tr.anual{background:var(--clay);padding-inline:12px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="wordmark" href="index.html" aria-label="Solera">
+        <svg class="mark" viewBox="0 0 60 40" aria-hidden="true"><path d="M8 40 V22 A22 22 0 0 1 52 22 V40" fill="none" stroke="currentColor" stroke-width="5"/><rect x="28" y="24" width="4" height="16" fill="#B3623C"/></svg>
+        Solera
+      </a>
+      <ul>
+        <li><a href="index.html#jaar">Wat het jaar kost</a></li>
+        <li><a class="current" href="#">Alle diensten</a></li>
+        <li><a href="solera-verhuur.html">Verhuur</a></li>
+        <li><a href="index.html#dossier">Beheer</a></li>
+      </ul>
+      <div>
+        <span class="lang">NL · EN</span>
+        <a class="btn" href="index.html#gesprek">Plan een gesprek</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap page-head">
+    <div>
+      <span class="eyebrow">Alle diensten</span>
+      <h1>Alles wat een huis in Spanje van u vraagt. Met bedrag.</h1>
+      <p>Solera Anual dekt de vier jaarlijkse verplichtingen. Daaromheen zit een leven: kopen, erven, verbouwen, verkopen. Dit is de volledige lijst — wat het is, wanneer het speelt, en wat het kost.</p>
+    </div>
+    <div class="key">
+      <p><span class="pill in">Inbegrepen</span> &nbsp;Zit in Solera Anual — geen extra factuur.</p>
+      <p><span class="pill fixed">Vast bedrag</span> &nbsp;Eén prijs, vooraf, inclusief btw. Overheidsleges en notariskosten apart, altijd genoemd.</p>
+      <p><span class="pill quote">Offerte</span> &nbsp;Hangt af van de zaak. U krijgt een bedrag vóórdat wij beginnen, niet erna.</p>
+    </div>
+  </div>
+
+  <div class="wrap life">
+    <ol>
+      <li><a href="#kopen"><strong>Kopen</strong><span>NIE, aankoopcontrole, notaris, aangifte overdrachtsbelasting</span></a></li>
+      <li><a href="#bezitten"><strong>Bezitten</strong><span>Modelo 210, IBI, vermogensbelasting, comunidad, verzekering</span></a></li>
+      <li><a href="#verhuren"><strong>Verhuren</strong><span>Vergunning, kwartaalaangifte, verhuuradministratie, toeristenbelasting</span></a></li>
+      <li><a href="#verkopen"><strong>Verkopen</strong><span>3%-inhouding, plusvalía, energielabel, teruggave</span></a></li>
+      <li><a href="#nalaten"><strong>Nalaten</strong><span>Spaans testament, erfenis aanvaarden, erfbelasting, volmacht</span></a></li>
+    </ol>
+  </div>
+
+  <!-- BELASTING -->
+  <section class="wrap group" id="bezitten">
+    <div class="group-head">
+      <h2>Belasting en fiscaal</h2>
+      <p>Spanje heft bij niet-ingezetenen op bezit, op inkomsten, op vermogen en op elke overdracht. Nederland kijkt intussen in box 3 mee. Wij doen de Spaanse kant, en leveren uw Nederlandse adviseur precies het overzicht dat hij nodig heeft.</p>
+    </div>
+    <table class="svc">
+      <thead><tr><th>Dienst</th><th>Wat wij doen</th><th>Wanneer</th><th style="text-align:right">Kosten</th></tr></thead>
+      <tbody>
+        <tr class="anual">
+          <td class="name"><strong>Modelo 210 — eigen gebruik</strong><span>Inkomstenbelasting niet-ingezetenen over fictief inkomen</span></td>
+          <td class="desc">Berekening op basis van de kadastrale waarde, aangifte en betaling via domiciliación. Ook verschuldigd in een jaar zonder verhuur.</td>
+          <td class="when">Jaarlijks, vóór 31 december</td>
+          <td class="cost"><span class="pill in">Inbegrepen</span></td>
+        </tr>
+        <tr class="anual">
+          <td class="name"><strong>IBI en afvalheffing</strong><span>Gemeentelijke onroerendezaakbelasting (<em>basura</em>)</span></td>
+          <td class="desc">Aanslag gecontroleerd, betaling gedomicilieerd, kadastrale waarde bewaakt — een herwaardering merkt u zo op tijd, niet in de aanslag.</td>
+          <td class="when">Jaarlijks, per gemeente verschillend</td>
+          <td class="cost"><span class="pill in">Inbegrepen</span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Modelo 714 — vermogensbelasting</strong><span><em>Impuesto sobre el Patrimonio</em></span></td>
+          <td class="desc">Toets of uw Spaanse vermogen boven de regionale vrijstelling komt (Comunitat Valenciana: € 500.000), aangifte als dat zo is. Wij waarschuwen voordat een taxatie de grens overschrijdt.</td>
+          <td class="when">Jaarlijks, april–juni, alleen boven de drempel</td>
+          <td class="cost"><span class="p num">€ 240<small>per aangifte</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Fiscaal vertegenwoordiger</strong><span><em>Representante fiscal</em></span></td>
+          <td class="desc">Solera als uw officiële adres voor de Spaanse Belastingdienst. Verplicht in sommige situaties, verstandig in alle: brieven van de <em>Agencia Tributaria</em> komen bij ons, niet in een lege brievenbus in Spanje.</td>
+          <td class="when">Doorlopend</td>
+          <td class="cost"><span class="p num">€ 180<small>per jaar</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Overzicht voor uw Nederlandse aangifte</strong><span>Box 3 en voorkoming dubbele belasting</span></td>
+          <td class="desc">Eén pagina in januari: WOZ-equivalent, betaalde Spaanse belasting, hypotheekstand, huurinkomsten. Precies wat uw Nederlandse adviseur nodig heeft onder het belastingverdrag NL–ES.</td>
+          <td class="when">Jaarlijks, in januari</td>
+          <td class="cost"><span class="p num">€ 95<small>per jaar</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Bezwaar en correspondentie</strong><span>Reageren op een <em>requerimiento</em> of naheffing</span></td>
+          <td class="desc">Een brief van de Belastingdienst heeft een termijn van tien werkdagen. Wij lezen hem, leggen uit wat er staat, en dienen het antwoord of bezwaar in.</td>
+          <td class="when">Als het zich voordoet</td>
+          <td class="cost"><span class="p num">€ 160<small>per dossier, uurtarief daarna genoemd</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Fiscale check vooraf</strong><span>Eén uur, voor of na de aankoop</span></td>
+          <td class="desc">Op naam van wie? Privé of via een B.V.? Wat betekent het voor box 3, voor erfbelasting, voor een latere verkoop? Eén gesprek, één memo, in het Nederlands.</td>
+          <td class="when">Eenmalig</td>
+          <td class="cost"><span class="p num">€ 220<small>incl. memo</small></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- VERHUREN -->
+  <section class="wrap group" id="verhuren">
+    <div class="group-head">
+      <h2>Verhuur, administratie en boekhouding</h2>
+      <p>Zodra er huurinkomsten zijn, wordt de aangifte per kwartaal en wil de Belastingdienst de kosten onderbouwd zien. Wij houden de administratie zo dat elke euro terug te vinden is — voor Spanje, en voor uw eigen aangifte thuis.</p>
+    </div>
+    <table class="svc">
+      <thead><tr><th>Dienst</th><th>Wat wij doen</th><th>Wanneer</th><th style="text-align:right">Kosten</th></tr></thead>
+      <tbody>
+        <tr class="anual">
+          <td class="name"><strong>Licencia turística</strong><span>Verhuurvergunning en registratie</span></td>
+          <td class="desc">Controle van uw registratie bij de Generalitat, aanvraag waar het nog kan, jaarlijkse compliance-check. Wij zeggen het als het niet meer kan.</td>
+          <td class="when">Jaarlijks, per regio</td>
+          <td class="cost"><span class="pill in">Inbegrepen</span></td>
+        </tr>
+        <tr class="anual">
+          <td class="name"><strong>Modelo 210 — verhuur</strong><span>Kwartaalaangifte over huurinkomsten</span></td>
+          <td class="desc">Inkomsten en aftrekbare kosten per kwartaal (EU-ingezetenen mogen kosten aftrekken; wij zorgen dat u dat ook doet), aangifte en betaling.</td>
+          <td class="when">Per kwartaal, in de eerste 20 dagen van april, juli, oktober en januari</td>
+          <td class="cost"><span class="pill in">Inbegrepen</span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Verhuuradministratie</strong><span>Grootboek voor de woning</span></td>
+          <td class="desc">Alle inkomsten en kosten geboekt: huur, schoonmaak, comunidad, nutsvoorzieningen, onderhoud, afschrijving. Kwartaaloverzicht in uw dossier; jaaroverzicht in januari.</td>
+          <td class="when">Doorlopend</td>
+          <td class="cost"><span class="p num">€ 35<small>per maand</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Toeristenbelasting en gastenregistratie</strong><span><em>Registro de viajeros</em> (Guardia Civil / Policía)</span></td>
+          <td class="desc">Verplichte melding van elke gast binnen 24 uur en de regionale toeristenbelasting. Wij koppelen het aan uw boekingskalender, zodat het vanzelf gaat.</td>
+          <td class="when">Per boeking</td>
+          <td class="cost"><span class="p num">€ 4<small>per boeking</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Langetermijnhuurcontract</strong><span>Opstellen of beoordelen, <em>LAU</em> of <em>temporada</em></span></td>
+          <td class="desc">Een Spaans huurcontract naar de huidige huurwet, met borg gedeponeerd bij de regio zoals verplicht, en een Nederlandse toelichting per artikel.</td>
+          <td class="when">Bij een nieuwe huurder</td>
+          <td class="cost"><span class="p num">€ 290<small>per contract</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Spaanse bankrekening en betalingen</strong><span>Rekening openen, <em>domiciliaciones</em> instellen</span></td>
+          <td class="desc">Begeleiding bij het openen van een niet-ingezetenenrekening en het domiciliëren van IBI, comunidad, water en stroom. Daarna kijken wij mee op wat er afgeschreven wordt.</td>
+          <td class="when">Eenmalig, daarna doorlopend</td>
+          <td class="cost"><span class="p num">€ 140<small>eenmalig · controle inbegrepen in Anual</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Onderhoud en leveranciers</strong><span>Sleutelhouder, storingen, offertes</span></td>
+          <td class="desc">Eén nummer voor een lekkende boiler of een kapotte airco. Wij halen twee offertes op, in het Nederlands samengevat, en houden toezicht op het werk. Geen opslag op de factuur van de vakman.</td>
+          <td class="when">Als het zich voordoet</td>
+          <td class="cost"><span class="p num">€ 45<small>per uur, vooraf begroot</small></span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="caveat">Boekhouding voor een Spaanse S.L. of voor ondernemersactiviteit in Spanje doen wij niet — dat vraagt een <em>asesoría</em> met eigen vergunning. Wij verwijzen u door naar een kantoor waarmee wij samenwerken, en blijven uw aanspreekpunt.</p>
+  </section>
+
+  <!-- JURIDISCH -->
+  <section class="wrap group" id="kopen">
+    <div class="group-head">
+      <h2>Juridisch en notarieel</h2>
+      <p>De momenten waarop een Spaanse handtekening iets onomkeerbaars doet: kopen, verkopen, volmacht geven, erven. Ons juridisch werk wordt gedaan door een <em>abogado</em> ingeschreven bij het Colegio de Abogados de Alicante; Solera vertaalt, plant en bewaakt de termijnen.</p>
+    </div>
+    <table class="svc">
+      <thead><tr><th>Dienst</th><th>Wat wij doen</th><th>Wanneer</th><th style="text-align:right">Kosten</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="name"><strong>NIE-nummer</strong><span><em>Número de Identidad de Extranjero</em></span></td>
+          <td class="desc">Aanvraag via het consulaat in Den Haag of de politie in Spanje, inclusief afspraak, formulier EX-15 en betaling van de leges. Zonder NIE geen notaris, geen bank, geen contract.</td>
+          <td class="when">Vóór de aankoop · ca. 3 weken</td>
+          <td class="cost"><span class="p num">€ 120<small>per persoon, leges apart (€ 10)</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Aankoopcontrole</strong><span><em>Due diligence</em> vóór het tekenen</span></td>
+          <td class="desc"><em>Nota simple</em> uit het eigendomsregister, kadaster, hypotheken en beslagen, schulden aan de comunidad, bouwvergunningen, <em>cédula de habitabilidad</em>, energielabel. Eén rapport: koop, koop niet, of koop onder deze voorwaarden.</td>
+          <td class="when">Vóór het <em>contrato de arras</em></td>
+          <td class="cost"><span class="p num">€ 690<small>vast, ongeacht uitkomst</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Aankoopbegeleiding</strong><span><em>Arras</em>, notaris, registratie, belastingen</span></td>
+          <td class="desc">Reserverings- en aanbetalingscontract beoordeeld, <em>escritura</em> bij de notaris (wij zijn erbij of tekenen met volmacht), inschrijving in het <em>Registro de la Propiedad</em>, aangifte overdrachtsbelasting (ITP, 10% in Valencia) of btw + AJD bij nieuwbouw, overschrijving van water, stroom en IBI.</td>
+          <td class="when">Van bod tot sleutel · 6–10 weken</td>
+          <td class="cost"><span class="p num">1%<small>van de koopsom, min. € 1.900 · notaris en registro apart</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Notariële volmacht</strong><span><em>Poder notarial</em></span></td>
+          <td class="desc">Zodat u niet voor elke handtekening hoeft te vliegen. Wij stellen de volmacht op, beperkt tot wat nodig is, te tekenen bij een Spaanse notaris of via de Nederlandse notaris met apostille.</td>
+          <td class="when">Eenmalig</td>
+          <td class="cost"><span class="p num">€ 190<small>excl. notariskosten (ca. € 60–90)</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Comunidad-zaken</strong><span>Vergaderingen, geschillen, bijzondere bijdragen</span></td>
+          <td class="desc">Wij vertegenwoordigen u op de jaarvergadering met volmacht, stemmen volgens uw instructie en bewaken uw bezwaartermijn (drie maanden) bij een besluit waar u het niet mee eens bent.</td>
+          <td class="when">Jaarlijks · en als het zich voordoet</td>
+          <td class="cost"><span class="p num">€ 110<small>per vergadering · geschil op offerte</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Verbouwing en vergunningen</strong><span><em>Licencia de obra</em>, <em>declaración responsable</em></span></td>
+          <td class="desc">Welke vergunning uw verbouwing nodig heeft, de aanvraag bij de gemeente, en na afloop de aanpassing van de kadastrale gegevens — zodat de nieuwe vierkante meters ook op de <em>escritura</em> staan bij verkoop.</td>
+          <td class="when">Vóór het werk begint</td>
+          <td class="cost"><span class="pill quote">Offerte</span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Geschillen en incasso</strong><span>Huurder, aannemer, buren, verkoper</span></td>
+          <td class="desc">Eerst een brief, dan pas een procedure. U krijgt vooraf de kans op succes en de kosten van elke stap, in euro's, voordat u iets besluit.</td>
+          <td class="when">Als het zich voordoet</td>
+          <td class="cost"><span class="pill quote">Offerte</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- VERKOPEN -->
+  <section class="wrap group" id="verkopen">
+    <div class="group-head">
+      <h2>Verkopen</h2>
+      <p>Bij verkoop houdt de koper 3% van de prijs in voor de Spaanse Belastingdienst, en de gemeente heft over de waardestijging van de grond. Beide zijn te berekenen vóórdat u een prijs afspreekt — en het teveel ingehouden bedrag is terug te vragen.</p>
+    </div>
+    <table class="svc">
+      <thead><tr><th>Dienst</th><th>Wat wij doen</th><th>Wanneer</th><th style="text-align:right">Kosten</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="name"><strong>Verkoopberekening vooraf</strong><span>Wat houdt u netto over?</span></td>
+          <td class="desc">Vermogenswinstbelasting (19% voor EU-ingezetenen) op basis van aankoopprijs, kosten en investeringen, de 3%-inhouding, de <em>plusvalía municipal</em>, makelaarskosten. Eén pagina, vóór u de prijs bepaalt.</td>
+          <td class="when">Vóór het te koop zetten</td>
+          <td class="cost"><span class="p num">€ 180<small>eenmalig</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Verkoopbegeleiding</strong><span><em>Arras</em>, notaris, overdracht</span></td>
+          <td class="desc">Contract beoordeeld, energielabel en <em>cédula</em> geregeld, <em>escritura</em> bij de notaris, afrekening comunidad en nutsvoorzieningen, saldo op uw rekening. Wij verkopen niet — dat doet uw makelaar; wij zorgen dat wat u tekent klopt.</td>
+          <td class="when">Van bod tot notaris</td>
+          <td class="cost"><span class="p num">€ 1.400<small>vast · notaris apart</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Modelo 210 — verkoop en teruggave 3%</strong><span>Modelo 211 gecontroleerd, teruggave aangevraagd</span></td>
+          <td class="desc">Aangifte van de vermogenswinst binnen vier maanden na de notaris, verrekening met de 3% die de koper heeft afgedragen, en de teruggave van het verschil — die duurt zes tot twaalf maanden en wordt anders vaak vergeten.</td>
+          <td class="when">Binnen 4 maanden na verkoop</td>
+          <td class="cost"><span class="p num">€ 320<small>incl. bewaking van de teruggave</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Plusvalía municipal</strong><span>Gemeentelijke belasting op grondwaardestijging</span></td>
+          <td class="desc">Berekening volgens beide toegestane methodes (werkelijke winst of objectief), keuze van de laagste, aangifte binnen 30 dagen. Bij verlies: aantonen dat er niets verschuldigd is.</td>
+          <td class="when">Binnen 30 dagen na verkoop</td>
+          <td class="cost"><span class="p num">€ 150<small>per aangifte</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Energielabel</strong><span><em>Certificado de eficiencia energética</em></span></td>
+          <td class="desc">Verplicht bij verkoop en bij verhuur. Een erkende technicus bezoekt de woning; het certificaat wordt geregistreerd bij de regio. Tien jaar geldig.</td>
+          <td class="when">Vóór verkoop of verhuur</td>
+          <td class="cost"><span class="p num">€ 150<small>incl. registratie</small></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- NALATEN -->
+  <section class="wrap group" id="nalaten" style="border-bottom:0">
+    <div class="group-head">
+      <h2>Erven en nalaten</h2>
+      <p>Een Spaans huis valt bij overlijden onder Spaanse erfbelasting, ook voor Nederlanders, en de aanvaarding gaat via een Spaanse notaris. Met een Spaans testament en een rechtskeuze voor Nederlands recht wordt dat een kwestie van weken in plaats van een jaar.</p>
+    </div>
+    <table class="svc">
+      <thead><tr><th>Dienst</th><th>Wat wij doen</th><th>Wanneer</th><th style="text-align:right">Kosten</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="name"><strong>Spaans testament</strong><span>Beperkt tot het Spaanse vermogen, met rechtskeuze</span></td>
+          <td class="desc">Een testament bij een Spaanse notaris dat alleen uw Spaanse bezit regelt en uw Nederlandse testament niet doorkruist — met de rechtskeuze voor Nederlands erfrecht (EU-erfrechtverordening). Wij stellen op, u tekent in het Nederlands vertaald.</td>
+          <td class="when">Kort na de aankoop</td>
+          <td class="cost"><span class="p num">€ 260<small>per persoon · notaris ca. € 80 apart</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Nalatenschap afwikkelen</strong><span><em>Aceptación de herencia</em> en registratie</span></td>
+          <td class="desc">Overlijdensakte en testamentenregister, verklaring van erfrecht, aanvaardingsakte bij de notaris, aangifte erfbelasting (Modelo 650 — in Valencia met hoge vrijstellingen voor kinderen en partner), inschrijving op naam van de erfgenamen. Termijn: zes maanden.</td>
+          <td class="when">Binnen 6 maanden na overlijden</td>
+          <td class="cost"><span class="p num">€ 1.650<small>vast voor één woning · belasting en notaris apart</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Schenking bij leven</strong><span>Overdracht aan kinderen, Modelo 651</span></td>
+          <td class="desc">Vaak fiscaal gunstiger dan vererven, soms niet — in beide landen. Eerst de berekening, dan pas de notaris. Inclusief de Spaanse schenkbelasting en het effect op uw Nederlandse aangifte.</td>
+          <td class="when">Op uw moment</td>
+          <td class="cost"><span class="p num">€ 220<small>berekening · overdracht op offerte</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Levenstestament en zorgvolmacht</strong><span>Als u het zelf niet meer kunt regelen</span></td>
+          <td class="desc">Een Spaanse volmacht die standhoudt bij wilsonbekwaamheid, zodat uw partner of kinderen het huis kunnen beheren of verkopen zonder een Spaanse rechter.</td>
+          <td class="when">Eenmalig</td>
+          <td class="cost"><span class="p num">€ 240<small>excl. notaris</small></span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="caveat">Alle bedragen zijn inclusief 21% btw en gelden voor één woning op naam van maximaal twee personen. Overheidsleges, notaris- en registerkosten en de belasting zelf komen daar altijd bovenop — u krijgt ze vooraf genoemd, nooit achteraf ontdekt.</p>
+  </section>
+
+  <section class="rulebox">
+    <div class="wrap">
+      <div><h3>Het bedrag staat er vóór u belt.</h3><p>Trust across a border wordt gebouwd in euro's. Als iets op offerte is, krijgt u die offerte voordat wij een uur werken.</p></div>
+      <div><h3>Wij zeggen het als iets niet kan.</h3><p>Een vergunning die niet meer wordt afgegeven, een bezwaar zonder kans: dan hoort u dat, en betaalt u niet voor het proberen.</p></div>
+      <div><h3>Eén dossier, één nummer.</h3><p>Of het nu belasting, notaris of comunidad is: het landt in hetzelfde dossier, met dezelfde persoon aan de telefoon. In het Nederlands.</p></div>
+    </div>
+  </section>
+
+  <div class="wrap cta">
+    <div>
+      <h2>Niet zeker wat u nodig heeft?</h2>
+      <p>Vertel waar het huis staat en wat er speelt. In twintig minuten weet u welke drie regels van deze pagina op u van toepassing zijn, en wat ze samen kosten.</p>
+    </div>
+    <div class="actions">
+      <a class="btn primary" href="index.html#gesprek">Plan een gesprek</a>
+      <a class="btn" href="index.html#jaar">Bekijk Solera Anual</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="wordmark" style="font-size:20px">Solera</span>
+    <ul>
+      <li><a href="#">Solera Anual</a></li>
+      <li><a href="#">Alle diensten</a></li>
+      <li><a href="#">Over ons</a></li>
+      <li><a href="#">Privacy</a></li>
+    </ul>
+    <span>Solera Eigenarenservice S.L. · Dénia, Alicante</span>
+  </div>
+</footer>
+</body>
+</html>

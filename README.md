@@ -8,6 +8,11 @@ Year-round ownership service for Dutch owners of a Spanish house. One annual fee
 
 - `brand/solera-brand-v1.0.html` — brand identity v1.0 (September 2026): name, positioning, offer, mark & lockup, colour, typography, voice, applications. Self-contained bundle exported from Claude Design; open in a browser.
 
+- `site/` — website mockups (static HTML, open in a browser):
+  - `index.html` — homepage with the annual-cost ledger
+  - `solera-verhuur.html` — owner rental listing page with live preview
+  - `solera-diensten.html` — full list of tax, administration and legal services
+
 ## Brand at a glance
 
 - **Type:** Petrona (headlines, name) · Karla (body, UI)

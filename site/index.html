@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solera — Uw huis in Spanje, het hele jaar geregeld</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300..700;1,300..500&family=Petrona:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: oklch(0.966 0.014 78);
+    --clay: oklch(0.925 0.022 74);
+    --clay-deep: oklch(0.885 0.026 72);
+    --ink: oklch(0.26 0.021 45);
+    --muted: oklch(0.510 0.022 58);
+    --rule: oklch(0.872 0.020 72);
+    --accent: #B3623C;
+    --accent-ink: #98502C;
+    --grove: #6B7A3C;
+    --grove-ink: #5E6B34;
+    --serif: 'Petrona', Georgia, serif;
+    --sans: 'Karla', system-ui, sans-serif;
+    --measure: 68ch;
+    --gutter: clamp(20px, 5vw, 72px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+  body{font-family:var(--sans);font-size:18px;line-height:29px;font-weight:400}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  h1,h2,h3,.display{font-family:var(--serif);font-weight:400}
+  .eyebrow{font-size:11px;line-height:16px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .wrap{padding-inline:var(--gutter);max-width:1280px;margin-inline:auto}
+  .btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--sans);padding:15px 22px;border:1px solid var(--ink);color:var(--ink);background:transparent;border-radius:2px;cursor:pointer}
+  .btn.primary{background:var(--ink);color:var(--paper)}
+  .btn.primary:hover{background:oklch(0.32 0.021 45)}
+  .btn:hover{background:var(--clay)}
+  .mark{display:inline-block;height:26px;width:auto;vertical-align:middle}
+  .wordmark{font:500 24px/1 var(--serif);letter-spacing:-.01em;display:inline-flex;align-items:center;gap:9px}
+  .num{font-variant-numeric:tabular-nums}
+
+  /* nav */
+  header{border-bottom:1px solid var(--rule)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  nav ul{display:flex;gap:28px;list-style:none;font-size:16px}
+  nav ul a:hover{color:var(--accent-ink)}
+  nav .lang{font-size:13px;color:var(--muted);margin-right:20px}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,96px);padding-block:clamp(56px,9vw,120px) clamp(48px,7vw,96px);align-items:end}
+  .hero h1{font-size:clamp(46px,7vw,84px);line-height:.92;letter-spacing:-.035em;max-width:11ch;margin:22px 0 28px;text-wrap:balance}
+  .hero p.lead{font-size:20px;line-height:31px;max-width:48ch}
+  .hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+  .photo{aspect-ratio:4/3;background:linear-gradient(180deg,var(--clay) 0%,var(--clay-deep) 100%);border:1px solid var(--rule);position:relative;overflow:hidden}
+  .photo::before{content:"";position:absolute;left:0;right:0;bottom:0;height:38%;background:oklch(0.83 0.03 70)}
+  .photo::after{content:"";position:absolute;left:18%;bottom:20%;width:34%;height:52%;border:14px solid var(--paper);border-bottom:0;border-radius:50% 50% 0 0/62% 62% 0 0;box-shadow:inset 0 -60px 0 -40px var(--accent);opacity:.9}
+  .photo figcaption{position:absolute;left:16px;bottom:12px;font-size:12px;color:var(--muted);background:rgba(247,240,230,.85);padding:4px 8px}
+
+  /* year at a glance — the memorable thing */
+  .ledger{background:var(--clay);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .ledger .wrap{padding-block:clamp(48px,6vw,80px)}
+  .ledger-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+  .ledger h2{font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.02em;max-width:22ch;text-wrap:balance}
+  .ledger-note{font-size:15px;line-height:22px;color:var(--muted);max-width:36ch}
+  table.lines{width:100%;border-collapse:collapse;font-size:17px}
+  table.lines th{text-align:left;font-weight:400;padding:20px 0 20px 0;border-top:1px solid var(--rule);vertical-align:top}
+  table.lines td{border-top:1px solid var(--rule);padding:20px 0;vertical-align:top}
+  table.lines .what{width:34%}
+  table.lines .what strong{display:block;font-weight:600}
+  table.lines .what span{display:block;font-size:14px;line-height:20px;color:var(--muted);margin-top:2px}
+  table.lines .when{color:var(--muted);font-size:15px;width:38%;padding-inline:24px}
+  table.lines .cost{text-align:right;font-family:var(--serif);font-size:24px;white-space:nowrap}
+  table.lines tfoot td{border-top:2px solid var(--ink);padding-top:22px}
+  table.lines tfoot .label{font-weight:600}
+  table.lines tfoot .cost{font-size:40px;line-height:1;letter-spacing:-.02em}
+  table.lines tfoot .cost small{display:block;font:400 14px/18px var(--sans);color:var(--muted);margin-top:8px}
+  .ledger-foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;margin-top:26px}
+  .ledger-foot p{font-size:15px;line-height:22px;color:var(--muted);max-width:52ch}
+
+  /* four obligations */
+  section.plain .wrap{padding-block:clamp(64px,8vw,112px)}
+  .section-title{font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.02em;max-width:24ch;text-wrap:balance}
+  .intro{margin-top:18px;max-width:var(--measure);color:var(--ink)}
+  .modules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin-top:52px;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+  .module{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:32px 30px 30px}
+  .module .idx{font-family:var(--serif);font-size:15px;color:var(--accent-ink)}
+  .module h3{font-size:28px;line-height:1.15;letter-spacing:-.015em;margin:12px 0 10px}
+  .module q{display:block;font-family:var(--serif);font-style:italic;font-size:19px;line-height:27px;color:var(--ink);margin-bottom:14px;quotes:"“" "”"}
+  .module p{font-size:16px;line-height:25px;color:var(--ink);max-width:44ch}
+  .module .terms{margin-top:18px;font-size:13px;line-height:19px;color:var(--muted);padding-top:12px;border-top:1px solid var(--rule)}
+
+  /* dossier */
+  .dossier{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:center}
+  .card{background:var(--paper);border:1px solid var(--rule);padding:30px 30px 26px;max-width:420px;box-shadow:0 1px 0 var(--rule)}
+  .card .top{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
+  .card h3{font-size:34px;line-height:1.05;letter-spacing:-.02em;margin:22px 0 4px}
+  .card .sub{font-size:15px;color:var(--muted)}
+  .card ul{list-style:none;margin-top:26px;border-top:1px solid var(--rule)}
+  .card li{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule);font-size:16px}
+  .card li .state{font-size:13px;font-weight:600;color:var(--grove-ink);display:inline-flex;align-items:center;gap:7px}
+  .card li .state::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--grove)}
+  .card li .state.pending{color:var(--muted)}
+  .card li .state.pending::before{background:transparent;border:1px solid var(--muted)}
+  .card .foot{display:flex;justify-content:space-between;align-items:baseline;margin-top:22px}
+  .card .foot .total{font-family:var(--serif);font-size:30px;letter-spacing:-.02em}
+  .card .foot .total small{font:400 13px var(--sans);color:var(--muted)}
+  .dossier-copy h2{font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.02em;max-width:22ch;text-wrap:balance}
+  .dossier-copy p{margin-top:18px;max-width:52ch}
+  .dossier-copy .quarter{margin-top:28px;padding:18px 22px;border-left:3px solid var(--grove);background:var(--clay);font-family:var(--serif);font-size:21px;line-height:30px;max-width:40ch}
+
+  /* not */
+  .split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,6vw,96px)}
+  .split h2{font-size:clamp(28px,3.2vw,38px);line-height:1.12;letter-spacing:-.02em}
+  .split ul{list-style:none;margin-top:22px;max-width:44ch}
+  .split li{padding:14px 0 14px 22px;text-indent:-22px;border-top:1px solid var(--rule);font-size:17px;line-height:26px}
+  .split .no li{color:var(--muted)}
+  .split .no li::before{content:"—";color:var(--accent);margin-right:12px}
+  .split .yes li::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--grove);margin-right:12px;vertical-align:1px}
+
+  /* contact */
+  .contact{background:var(--ink);color:var(--paper)}
+  .contact .wrap{padding-block:clamp(64px,8vw,112px);display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,6vw,96px);align-items:start}
+  .contact h2{font-size:clamp(34px,4.5vw,56px);line-height:1;letter-spacing:-.03em;max-width:14ch;text-wrap:balance}
+  .contact p{margin-top:22px;max-width:44ch;color:oklch(0.86 0.014 78)}
+  .contact .person{margin-top:36px;display:flex;gap:16px;align-items:center;font-size:15px;line-height:22px;color:oklch(0.86 0.014 78)}
+  .contact .person .avatar{width:48px;height:48px;border-radius:50%;background:var(--accent);flex:none}
+  .contact .person strong{display:block;color:var(--paper);font-weight:600}
+  form{display:grid;gap:18px}
+  .field{display:grid;gap:6px}
+  .field label{font-size:14px;color:oklch(0.86 0.014 78)}
+  .field input,.field select{font:400 17px var(--sans);padding:13px 14px;background:transparent;color:var(--paper);border:1px solid oklch(0.45 0.02 45);border-radius:2px;width:100%}
+  .field input::placeholder{color:oklch(0.6 0.02 45)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .contact .btn.primary{background:var(--accent);color:var(--paper);border-color:var(--accent);justify-self:start;margin-top:6px}
+  .contact .btn.primary:hover{background:var(--accent-ink)}
+  .contact .small{font-size:13px;line-height:19px;color:oklch(0.7 0.014 78);margin-top:4px}
+
+  /* footer */
+  footer{border-top:1px solid var(--rule)}
+  footer .wrap{padding-block:36px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--muted)}
+  footer ul{display:flex;gap:22px;list-style:none}
+
+  @media (max-width:900px){
+    .hero,.dossier,.split,.contact .wrap{grid-template-columns:1fr}
+    .hero{align-items:start}
+    .hero h1{max-width:none}
+    .modules{grid-template-columns:1fr}
+    table.lines .when{display:none}
+    table.lines .what{width:auto}
+    nav ul{display:none}
+    .row2{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .btn{transition:background .15s ease}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="wordmark" href="#" aria-label="Solera">
+        <svg class="mark" viewBox="0 0 60 40" aria-hidden="true"><path d="M8 40 V22 A22 22 0 0 1 52 22 V40" fill="none" stroke="currentColor" stroke-width="5"/><rect x="28" y="24" width="4" height="16" fill="#B3623C"/></svg>
+        Solera
+      </a>
+      <ul>
+        <li><a href="#jaar">Wat het jaar kost</a></li>
+        <li><a href="solera-diensten.html">Alle diensten</a></li>
+        <li><a href="#verplichtingen">Belasting</a></li>
+        <li><a href="#verplichtingen">Verzekering</a></li>
+        <li><a href="solera-verhuur.html">Verhuur</a></li>
+        <li><a href="#dossier">Beheer</a></li>
+      </ul>
+      <div>
+        <span class="lang">NL · EN</span>
+        <a class="btn" href="#gesprek">Plan een gesprek</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <div>
+      <span class="eyebrow">Voor Nederlandse eigenaren van een huis in Spanje</span>
+      <h1>Uw huis in Spanje, het hele jaar geregeld.</h1>
+      <p class="lead">Belastingaangifte, verzekering, verhuurlicentie en alle post uit Spanje. Eén jaarbedrag, één aanspreekpunt, in het Nederlands.</p>
+      <div class="actions">
+        <a class="btn primary" href="#jaar">Bekijk Solera Anual</a>
+        <a class="btn" href="#jaar">Wat kost het jaar?</a>
+      </div>
+    </div>
+    <figure class="photo" aria-label="Foto: eigenaar op het eigen terras">
+      <figcaption>Eigenaar op het eigen terras, Dénia — 4:3</figcaption>
+    </figure>
+  </section>
+
+  <section class="ledger" id="jaar">
+    <div class="wrap">
+      <div class="ledger-head">
+        <h2>Wat kost uw huis in Spanje per jaar? Dit.</h2>
+        <p class="ledger-note">Voorbeeld: appartement in Dénia, twee slaapkamers, acht weken verhuurd. Uw eigen bedrag staat binnen een week in uw mailbox.</p>
+      </div>
+      <table class="lines">
+        <tbody>
+          <tr>
+            <th class="what"><strong>Modelo 210</strong><span>Aangifte niet-ingezetenen, IBI-bewaking, vermogensbelasting-check</span></th>
+            <td class="when">Jaarlijks vóór 31 december · per kwartaal bij verhuur</td>
+            <td class="cost num">€ 390</td>
+          </tr>
+          <tr>
+            <th class="what"><strong>Hogar &amp; verhuur</strong><span>Opstal- en inboedelpolis met verhuurdekking, via onze eigen correduría</span></th>
+            <td class="when">Afgesloten en elk jaar bij verlenging beoordeeld</td>
+            <td class="cost num">€ 640</td>
+          </tr>
+          <tr>
+            <th class="what"><strong>Comunidad &amp; trámites</strong><span>NIE, padrón, nutsbedrijven op uw naam, wij lezen de notulen</span></th>
+            <td class="when">Doorlopend · wij houden het postadres</td>
+            <td class="cost num">€ 860</td>
+          </tr>
+          <tr>
+            <th class="what"><strong>Licencia turística</strong><span>Registratie gecontroleerd, aangevraagd waar het nog kan</span></th>
+            <td class="when">Jaarlijkse compliance-check · Comunitat Valenciana</td>
+            <td class="cost num">€ 250</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td class="label" colspan="2">Solera Anual — één factuur, in januari</td>
+            <td class="cost num">€ 2.140<small>per jaar, incl. btw</small></td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="ledger-foot">
+        <p>Overheidsleges, premies en belasting zelf zijn hier niet bij inbegrepen; die vermelden wij apart, met bedrag, voordat wij iets voor u betalen.</p>
+        <a class="btn primary" href="#gesprek">Vraag uw eigen jaarbedrag aan</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="plain" id="verplichtingen">
+    <div class="wrap">
+      <h2 class="section-title">Spanje vraagt vier dingen van u, elk jaar. Twee daarvan met een deadline die niemand noemt.</h2>
+      <p class="intro">Hier eigenaar zijn is niet moeilijk, alleen onbekend. Wij zetten alle vier op één pagina, in het Nederlands, met wat elk onderdeel kost. Daarna doen wij ze, en sturen u in januari één dossier.</p>
+      <div class="modules">
+        <article class="module">
+          <span class="idx">1 van 4</span>
+          <h3>Modelo 210</h3>
+          <q>De belasting die niemand u heeft uitgelegd.</q>
+          <p>Ook in een jaar waarin het huis nooit verhuurd was, is er belasting over fictief inkomen verschuldigd. Wij dienen de aangifte in, bewaken de IBI en waarschuwen voor vermogensbelasting vóórdat een taxatie de grens overschrijdt.</p>
+          <div class="terms">Jaarlijks ingediend · per kwartaal bij verhuur · deadlinebewaking</div>
+        </article>
+        <article class="module">
+          <span class="idx">2 van 4</span>
+          <h3>Hogar &amp; verhuur</h3>
+          <q>Uw polis, uitgelegd in het Nederlands.</q>
+          <p>Opstal- en inboedeldekking via onze eigen correduría, met de aansprakelijkheidsuitbreiding die kortetermijnverhuur werkelijk vereist — en een polisblad dat u zonder vertaler kunt lezen.</p>
+          <div class="terms">Afgesloten · beoordeeld bij elke verlenging · schade hier afgehandeld</div>
+        </article>
+        <article class="module">
+          <span class="idx">3 van 4</span>
+          <h3>Comunidad &amp; trámites</h3>
+          <q>Post uit Spanje? Stuur het door en vergeet het.</q>
+          <p>NIE, padrón, nutsvoorzieningen op uw eigen naam, meterwissels — en iemand die de notulen van de comunidad daadwerkelijk leest, zodat een gevelheffing van € 4.000 in juli geen verrassing is.</p>
+          <div class="terms">Doorlopend · wij houden het postadres</div>
+        </article>
+        <article class="module">
+          <span class="idx">4 van 4</span>
+          <h3>Licencia turística</h3>
+          <q>Verhuurt u legaal? Wij weten het zeker.</q>
+          <p>Regionale vergunningen worden nergens sneller aangescherpt dan in Valencia en Alicante. Wij controleren uw registratie, vragen aan waar het nog kan, en zeggen het gewoon als het niet meer kan.</p>
+          <div class="terms">Jaarlijkse compliance-check · per regio</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="plain" id="dossier" style="background:var(--clay);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)">
+    <div class="wrap dossier">
+      <div class="card" aria-label="Voorbeeld jaardossier">
+        <div class="top"><span class="wordmark" style="font-size:18px">Solera</span><span>Dénia · Alicante</span></div>
+        <h3>Jaardossier 2027</h3>
+        <div class="sub">Calle Marqués de Campo 14, 2º B</div>
+        <ul>
+          <li>Modelo 210 <span class="state">Ingediend 12 dec</span></li>
+          <li>Hogar &amp; verhuur <span class="state">Verlengd tot 1 mrt 2028</span></li>
+          <li>Comunidad &amp; post <span class="state">Bijgewerkt 3 sep</span></li>
+          <li>Licencia turística <span class="state pending">Controle 15 okt</span></li>
+        </ul>
+        <div class="foot"><span>3 van 4 geregeld</span><span class="total num">€ 2.140 <small>/ jaar</small></span></div>
+      </div>
+      <div class="dossier-copy">
+        <h2>Eén dossier. Altijd in gewoon Nederlands.</h2>
+        <p>U ziet op elk moment wat gedaan is, wat wanneer moet, en wat het kost. Geen vijf inlogportalen, geen Spaanse brieven doorsturen. Per kwartaal een bericht — meestal dit:</p>
+        <p class="quarter">Dit kwartaal hoeft u niets te doen. Modelo 210 is op 12 december ingediend; de volgende termijn is 20 april 2027.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="plain">
+    <div class="wrap split">
+      <div class="yes">
+        <h2>Zo werken wij</h2>
+        <ul>
+          <li>Elk bedrag, elke heffing, elke belasting: genoemd vóórdat u ernaar vraagt.</li>
+          <li>Spaanse woorden voor Spaanse dingen — <em>escritura</em>, <em>gestor</em> — altijd met uitleg erbij.</li>
+          <li>Een huis is een beslissing voor tien jaar. Hier haast niemand u, en niets telt af.</li>
+          <li>Nederlands geschreven door een Nederlander, niet vertaald.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h2>Wat Solera niet is</h2>
+        <ul>
+          <li>Een gestor met een website.</li>
+          <li>Engels behang over Spaanse juridische taal.</li>
+          <li>Een makelaar. Geen aanbod, geen verkoopcommissie.</li>
+          <li>Vijf losse facturen van vijf losse partijen.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="gesprek">
+    <div class="wrap">
+      <div>
+        <h2>Plan een gesprek van twintig minuten.</h2>
+        <p>U vertelt waar het huis staat en hoe u het gebruikt. Wij vertellen welke vier verplichtingen daarbij horen en wat het jaar kost — in euro's, als jaarbedrag, voordat u iets tekent.</p>
+        <div class="person">
+          <span class="avatar" aria-hidden="true"></span>
+          <span><strong>Marta Ibáñez</strong>Eigenarenservice · Dénia · NL / ES<br>marta@solera.es</span>
+        </div>
+      </div>
+      <form onsubmit="return false">
+        <div class="row2">
+          <div class="field"><label for="naam">Uw naam</label><input id="naam" placeholder="Voornaam Achternaam"></div>
+          <div class="field"><label for="mail">E-mail</label><input id="mail" type="email" placeholder="u@voorbeeld.nl"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="plaats">Plaats van het huis</label><input id="plaats" placeholder="Dénia, Jávea, Altea…"></div>
+          <div class="field"><label for="gebruik">Hoe gebruikt u het?</label>
+            <select id="gebruik">
+              <option>Alleen eigen gebruik</option>
+              <option>Eigen gebruik en verhuur</option>
+              <option>Vooral verhuur</option>
+              <option>Nog niet gekocht</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn primary" type="submit">Plan het gesprek</button>
+        <p class="small">Wij bellen binnen twee werkdagen. Geen nieuwsbrief, geen vervolgmails.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="wordmark" style="font-size:20px;color:var(--ink)">Solera</span>
+    <ul>
+      <li><a href="#">Solera Anual</a></li>
+      <li><a href="#">Prijzen</a></li>
+      <li><a href="#">Over ons</a></li>
+      <li><a href="#">Privacy</a></li>
+    </ul>
+    <span>Solera Eigenarenservice S.L. · Dénia, Alicante · CIF B-00000000</span>
+  </div>
+</footer>
+
+</body>
+</html>
