@@ -70,11 +70,8 @@
   .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
   .listing{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:0 0 24px;display:flex;flex-direction:column;background:var(--paper)}
   .listing.hide{display:none}
-  .mp-photo{aspect-ratio:4/3;background:linear-gradient(180deg,var(--clay) 0%,var(--clay-deep) 100%);position:relative;overflow:hidden;border-bottom:1px solid var(--rule)}
-  .mp-photo::before{content:"";position:absolute;left:0;right:0;bottom:0;height:34%;background:oklch(0.83 0.03 70)}
-  .mp-photo::after{content:"";position:absolute;left:20%;bottom:18%;width:32%;height:50%;border:12px solid var(--paper);border-bottom:0;border-radius:50% 50% 0 0/62% 62% 0 0;box-shadow:inset 0 -52px 0 -36px var(--accent);opacity:.9}
-  .listing:nth-child(3n+2) .mp-photo::after{left:52%;width:28%;height:44%}
-  .listing:nth-child(3n) .mp-photo::after{left:12%;width:40%;height:56%}
+  .mp-photo{aspect-ratio:4/3;background:var(--clay);position:relative;overflow:hidden;border-bottom:1px solid var(--rule)}
+  .mp-photo img{width:100%;height:100%;object-fit:cover;display:block}
   .lic-badge{position:absolute;top:12px;left:12px;z-index:2;display:inline-flex;align-items:center;gap:7px;background:rgba(247,240,230,.94);border:1px solid var(--rule);padding:5px 10px;font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--grove-ink)}
   .lic-badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--grove);flex:none}
   .body{padding:22px 24px 0;display:flex;flex-direction:column;flex:1}
@@ -204,7 +201,7 @@
         </select>
       </div>
       <button class="freset" id="f-reset" type="button">Alles tonen</button>
-      <div class="fcount"><strong id="count">9</strong> woningen · alle met geldige vergunning</div>
+      <div class="fcount"><strong id="count">11</strong> woningen · alle met geldige vergunning</div>
     </div>
   </div>
 
@@ -212,7 +209,7 @@
     <div class="grid" id="grid">
 
       <article class="listing" data-region="alicante" data-guests="4" data-low="95">
-        <div class="mp-photo"><span class="lic-badge">Vergunning geldig</span></div>
+        <div class="mp-photo"><img src="img/marina.svg" alt="Appartement met zeezicht aan de jachthaven van Denia" loading="lazy" width="800" height="600"><span class="lic-badge">Vergunning geldig</span></div>
         <div class="body">
           <span class="loc">Dénia · Alicante</span>
           <h3>Appartement met zeezicht aan de Marina</h3>
@@ -226,7 +223,7 @@
       </article>
 
       <article class="listing" data-region="alicante" data-guests="8" data-low="180">
-        <div class="mp-photo"><span class="lic-badge">Vergunning geldig</span></div>
+        <div class="mp-photo"><img src="img/villa-pool.svg" alt="Villa met zwembad en cipressen op het Montgo-plateau" loading="lazy" width="800" height="600"><span class="lic-badge">Vergunning geldig</span></div>
         <div class="body">
           <span class="loc">Jávea · Alicante</span>
           <h3>Villa met tuin op het Montgó-plateau</h3>
@@ -240,7 +237,7 @@
       </article>
 
       <article class="listing" data-region="alicante" data-guests="6" data-low="140">
-        <div class="mp-photo"><span class="lic-badge">Vergunning geldig</span></div>
+        <div class="mp-photo"><img src="img/bay-house.svg" alt="Huis aan de baai van Moraira met terras en zwembad" loading="lazy" width="800" height="600"><span class="lic-badge">Vergunning geldig</span></div>
         <div class="body">
           <span class="loc">Moraira · Alicante</span>
           <h3>Huis aan de baai, vijf minuten van het strand</h3>
@@ -254,7 +251,7 @@
       </article>
 
       <article class="listing" data-region="alicante" data-guests="4" data-low="110">
-        <div class="mp-photo"><span class="lic-badge">Vergunning geldig</span></div>
+        <div class="mp-photo"><img src="img/oldtown.svg" alt="Stadshuis in de oude kern van Altea" loading="lazy" width="800" height="600"><span class="lic-badge">Vergunning geldig</span></div>
         <div class="body">
           <span class="loc">Altea · Alicante</span>
           <h3>Stadshuis in de oude kern</h3>
@@ -268,7 +265,7 @@
       </article>
 
       <article class="listing" data-region="alicante" data-guests="5" data-low="105">
-        <div class="mp-photo"><span class="lic-badge">Vergunning geldig</span></div>
+        <div class="mp-photo"><img src="img/beach-apartment.svg" alt="Appartement aan het Levante-strand bij de Penon" loading="lazy" width="800" height="600"><span class="lic-badge">Vergunning geldig</span></div>
         <div class="body">
           <span class="loc">Calpe · Alicante</span>
           <h3>Appartement aan het Levante-strand</h3>
@@ -282,7 +279,7 @@
       </article>
 
       <article class="listing" data-region="alicante" data-guests="4" data-low="80">
-        <div class="mp-photo"><span class="lic-badge">Vergunning geldig</span></div>
+        <div class="mp-photo"><img src="img/garden-bungalow.svg" alt="Gelijkvloers huis met tuin in Torrevieja" loading="lazy" width="800" height="600"><span class="lic-badge">Vergunning geldig</span></div>
         <div class="body">
           <span class="loc">Torrevieja · Alicante</span>
           <h3>Gelijkvloers huis met eigen tuin</h3>
@@ -296,7 +293,7 @@
       </article>
 
       <article class="listing" data-region="malaga" data-guests="4" data-low="120">
-        <div class="mp-photo"><span class="lic-badge">Vergunning geldig</span></div>
+        <div class="mp-photo"><img src="img/patio-casa.svg" alt="Wit huis met patio en bogen in Nerja" loading="lazy" width="800" height="600"><span class="lic-badge">Vergunning geldig</span></div>
         <div class="body">
           <span class="loc">Nerja · Málaga</span>
           <h3>Casa met patio boven het Balcón</h3>
@@ -310,7 +307,7 @@
       </article>
 
       <article class="listing" data-region="malaga" data-guests="6" data-low="165">
-        <div class="mp-photo"><span class="lic-badge">Vergunning geldig</span></div>
+        <div class="mp-photo"><img src="img/resort.svg" alt="Appartement in een gesloten resort in Marbella" loading="lazy" width="800" height="600"><span class="lic-badge">Vergunning geldig</span></div>
         <div class="body">
           <span class="loc">Marbella · Málaga</span>
           <h3>Appartement in een gesloten resort</h3>
@@ -324,7 +321,7 @@
       </article>
 
       <article class="listing" data-region="almeria" data-guests="5" data-low="98">
-        <div class="mp-photo"><span class="lic-badge">Vergunning geldig</span></div>
+        <div class="mp-photo"><img src="img/hillside.svg" alt="Wit huis op de helling in Mojacar met zeezicht" loading="lazy" width="800" height="600"><span class="lic-badge">Vergunning geldig</span></div>
         <div class="body">
           <span class="loc">Mojácar · Almería</span>
           <h3>Wit huis aan de helling met zeezicht</h3>
@@ -333,6 +330,34 @@
           <div class="price">
             <span class="p">€ <span class="num">98–210</span> <small>per nacht</small></span>
             <span class="lic">VFT/AL/03921</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="listing" data-region="alicante" data-guests="6" data-low="130">
+        <div class="mp-photo"><img src="img/finca-vineyard.svg" alt="Finca tussen de wijngaarden in de Jalon-vallei" loading="lazy" width="800" height="600"><span class="lic-badge">Vergunning geldig</span></div>
+        <div class="body">
+          <span class="loc">Xal&oacute; &middot; Alicante</span>
+          <h3>Finca tussen de wijngaarden</h3>
+          <p class="meta">6 gasten &middot; 3 slaapkamers &middot; 2 badkamers &middot; 160 m&sup2;</p>
+          <div class="amen"><span>Zwembad</span><span>Olijfgaard</span><span>Wifi</span><span>Bergzicht</span></div>
+          <div class="price">
+            <span class="p">&euro; <span class="num">130&ndash;275</span> <small>per nacht</small></span>
+            <span class="lic">VT-476338-A</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="listing" data-region="malaga" data-guests="7" data-low="150">
+        <div class="mp-photo"><img src="img/finca-olive.svg" alt="Cortijo met olijfgaard en bergzicht bij Ronda" loading="lazy" width="800" height="600"><span class="lic-badge">Vergunning geldig</span></div>
+        <div class="body">
+          <span class="loc">Ronda &middot; M&aacute;laga</span>
+          <h3>Cortijo met olijfgaard en bergzicht</h3>
+          <p class="meta">7 gasten &middot; 4 slaapkamers &middot; 2 badkamers &middot; 195 m&sup2;</p>
+          <div class="amen"><span>Zwembad</span><span>Open haard</span><span>Bergzicht</span></div>
+          <div class="price">
+            <span class="p">&euro; <span class="num">150&ndash;320</span> <small>per nacht</small></span>
+            <span class="lic">VFT/MA/58204</span>
           </div>
         </div>
       </article>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Appartement aan het strand met rots op de achtergrond">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6EFE1"/><stop offset="1" stop-color="#EBDECB"/></linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A5BAB1"/><stop offset="1" stop-color="#8DA499"/></linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#sky)"/>
+  <circle cx="140" cy="110" r="30" fill="#E4C9A6" opacity=".5"/>
+  <path d="M556 306 L640 96 L724 306 Z" fill="#C6B9A2"/>
+  <path d="M640 96 L724 306 L664 306 Z" fill="#B8AA92"/>
+  <path d="M0 306 L110 262 L200 292 L300 268 L400 300 L500 282 L560 306 Z" fill="#CFC2AC" opacity=".85"/>
+  <rect y="306" width="800" height="104" fill="url(#sea)"/>
+  <g stroke="#C6D4CC" stroke-width="3" stroke-linecap="round" opacity=".75">
+    <path d="M60 340 q18 -7 36 0 t36 0"/><path d="M250 376 q18 -7 36 0 t36 0"/><path d="M470 344 q18 -7 36 0 t36 0"/><path d="M640 384 q18 -7 36 0 t36 0"/>
+  </g>
+  <rect y="410" width="800" height="190" fill="#E8DCC7"/>
+  <path d="M0 410 q400 26 800 0 v18 H0 Z" fill="#DFD0B6"/>
+  <g>
+    <rect x="150" y="128" width="230" height="282" fill="#FBF7F0"/>
+    <rect x="150" y="128" width="230" height="282" fill="none" stroke="#E2D6C4" stroke-width="2"/>
+    <path d="M140 130 h250 l-12 -20 H152 Z" fill="#B3623C"/>
+    <g fill="#EFE5D5" stroke="#D8CAB4" stroke-width="2">
+      <rect x="172" y="160" width="82" height="46"/><rect x="278" y="160" width="82" height="46"/>
+      <rect x="172" y="228" width="82" height="46"/><rect x="278" y="228" width="82" height="46"/>
+      <rect x="172" y="296" width="82" height="46"/><rect x="278" y="296" width="82" height="46"/>
+    </g>
+    <g fill="#6E6355">
+      <rect x="184" y="168" width="26" height="30"/><rect x="220" y="168" width="26" height="30"/>
+      <rect x="290" y="168" width="26" height="30"/><rect x="326" y="168" width="26" height="30"/>
+      <rect x="184" y="236" width="26" height="30"/><rect x="220" y="236" width="26" height="30"/>
+      <rect x="290" y="236" width="26" height="30"/><rect x="326" y="236" width="26" height="30"/>
+      <rect x="184" y="304" width="26" height="30"/><rect x="220" y="304" width="26" height="30"/>
+      <rect x="290" y="304" width="26" height="30"/><rect x="326" y="304" width="26" height="30"/>
+    </g>
+    <g stroke="#B3623C" stroke-width="4">
+      <path d="M172 212 h82"/><path d="M278 212 h82"/><path d="M172 280 h82"/><path d="M278 280 h82"/><path d="M172 348 h82"/><path d="M278 348 h82"/>
+    </g>
+    <path d="M236 410 v-42 a22 22 0 0 1 44 0 v42 Z" fill="#98502C"/>
+  </g>
+  <g>
+    <rect x="452" y="348" width="9" height="62" fill="#8A7A5E"/>
+    <g fill="#6B7A3C">
+      <path d="M456 348 q-48 -12 -62 -40 q38 4 62 28 Z"/><path d="M456 348 q48 -12 62 -40 q-38 4 -62 28 Z"/>
+      <path d="M456 342 q-34 -30 -28 -62 q26 22 28 54 Z"/><path d="M456 342 q34 -30 28 -62 q-26 22 -28 54 Z"/>
+    </g>
+  </g>
+  <g fill="#B3623C" opacity=".5"><rect x="560" y="452" width="46" height="8" rx="4"/><rect x="640" y="480" width="46" height="8" rx="4"/></g>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Gelijkvloers huis met tuin en haag">
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6EFE1"/><stop offset="1" stop-color="#EBDFCC"/></linearGradient></defs>
+  <rect width="800" height="600" fill="url(#sky)"/>
+  <circle cx="672" cy="118" r="32" fill="#E4C9A6" opacity=".55"/>
+  <path d="M0 322 L120 286 L230 314 L340 288 L460 318 L580 296 L700 322 L800 302 V360 H0 Z" fill="#D2C5AF" opacity=".8"/>
+  <rect y="352" width="800" height="248" fill="#DFD2BE"/>
+  <path d="M0 352 h800 v12 H0 Z" fill="#CDBEA6"/>
+  <g>
+    <rect x="200" y="248" width="386" height="104" fill="#FBF7F0"/>
+    <rect x="200" y="248" width="386" height="104" fill="none" stroke="#E2D6C4" stroke-width="2"/>
+    <path d="M184 250 h418 l-34 -40 H218 Z" fill="#B3623C"/>
+    <path d="M218 210 h176 l-16 40 H184 Z" fill="#98502C"/>
+    <g fill="#EFE5D5" stroke="#D8CAB4" stroke-width="2"><rect x="228" y="276" width="72" height="48"/><rect x="486" y="276" width="72" height="48"/></g>
+    <g fill="#6E6355"><rect x="240" y="284" width="22" height="32"/><rect x="268" y="284" width="22" height="32"/><rect x="498" y="284" width="22" height="32"/><rect x="526" y="284" width="22" height="32"/></g>
+    <path d="M366 352 v-56 a27 27 0 0 1 54 0 v56 Z" fill="#EDE1D0" stroke="#CDBFA9" stroke-width="2"/>
+    <path d="M334 352 v-30 h118 v30" fill="none" stroke="#98502C" stroke-width="5"/>
+  </g>
+  <g fill="#6B7A3C">
+    <rect x="60" y="376" width="680" height="30" rx="15" opacity=".92"/>
+    <circle cx="110" cy="376" r="20"/><circle cx="178" cy="372" r="24"/><circle cx="250" cy="378" r="18"/><circle cx="560" cy="374" r="22"/><circle cx="636" cy="378" r="18"/><circle cx="700" cy="374" r="21"/>
+  </g>
+  <g>
+    <rect x="118" y="284" width="10" height="64" fill="#8A7A5E"/>
+    <circle cx="123" cy="272" r="34" fill="#5E6B34"/><circle cx="100" cy="290" r="22" fill="#6B7A3C"/><circle cx="146" cy="290" r="22" fill="#6B7A3C"/>
+  </g>
+  <g>
+    <rect x="674" y="292" width="9" height="58" fill="#8A7A5E"/>
+    <circle cx="678" cy="282" r="30" fill="#5E6B34"/><circle cx="658" cy="298" r="19" fill="#6B7A3C"/><circle cx="698" cy="298" r="19" fill="#6B7A3C"/>
+  </g>
+  <g fill="#B3623C" opacity=".55"><rect x="300" y="440" width="56" height="10" rx="5"/><rect x="430" y="440" width="56" height="10" rx="5"/><rect x="366" y="466" width="54" height="10" rx="5"/></g>
+  <g stroke="#CDBEA6" stroke-width="3" opacity=".7"><path d="M0 500 h800"/></g>
+</svg>

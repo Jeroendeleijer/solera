@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Wit huis met patio, bogen en planten">
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6EFE1"/><stop offset="1" stop-color="#ECE0CE"/></linearGradient></defs>
+  <rect width="800" height="600" fill="url(#sky)"/>
+  <rect y="0" width="800" height="430" fill="#FBF7F0"/>
+  <rect y="0" width="800" height="430" fill="none" stroke="#E8DCC9" stroke-width="2"/>
+  <g fill="#F3E9DA" stroke="#E0D3BF" stroke-width="2">
+    <path d="M96 430 V236 a72 72 0 0 1 144 0 v194 Z"/>
+    <path d="M328 430 V236 a72 72 0 0 1 144 0 v194 Z"/>
+    <path d="M560 430 V236 a72 72 0 0 1 144 0 v194 Z"/>
+  </g>
+  <g fill="#C7BAA4">
+    <path d="M120 430 V244 a48 48 0 0 1 96 0 v186 Z"/>
+    <path d="M352 430 V244 a48 48 0 0 1 96 0 v186 Z"/>
+    <path d="M584 430 V244 a48 48 0 0 1 96 0 v186 Z"/>
+  </g>
+  <g fill="#B0A28A">
+    <path d="M120 430 V244 a48 48 0 0 1 48 -48 v234 Z"/>
+    <path d="M352 430 V244 a48 48 0 0 1 48 -48 v234 Z"/>
+    <path d="M584 430 V244 a48 48 0 0 1 48 -48 v234 Z"/>
+  </g>
+  <g stroke="#B3623C" stroke-width="6" fill="none">
+    <path d="M96 236 a72 72 0 0 1 144 0"/><path d="M328 236 a72 72 0 0 1 144 0"/><path d="M560 236 a72 72 0 0 1 144 0"/>
+  </g>
+  <rect y="150" width="800" height="10" fill="#B3623C" opacity=".5"/>
+  <rect y="430" width="800" height="170" fill="#DDCFB9"/>
+  <g stroke="#CBBBA2" stroke-width="3">
+    <path d="M0 470 h800"/><path d="M0 516 h800"/><path d="M0 562 h800"/>
+    <path d="M120 430 v170"/><path d="M280 430 v170"/><path d="M440 430 v170"/><path d="M600 430 v170"/><path d="M760 430 v170"/>
+  </g>
+  <g>
+    <path d="M52 430 h68 l-10 -74 H62 Z" fill="#B3623C"/>
+    <path d="M52 430 h34 l-6 -74 H62 Z" fill="#98502C"/>
+    <g fill="#5E6B34"><circle cx="86" cy="330" r="30"/><circle cx="56" cy="344" r="20"/><circle cx="116" cy="344" r="20"/><circle cx="86" cy="300" r="18"/></g>
+  </g>
+  <g>
+    <path d="M684 430 h60 l-9 -62 H693 Z" fill="#B3623C"/>
+    <path d="M684 430 h30 l-5 -62 H693 Z" fill="#98502C"/>
+    <g fill="#6B7A3C"><circle cx="714" cy="348" r="26"/><circle cx="688" cy="360" r="17"/><circle cx="740" cy="360" r="17"/></g>
+  </g>
+  <g>
+    <path d="M262 430 h52 l-8 -52 H270 Z" fill="#98502C"/>
+    <g fill="#6B7A3C"><circle cx="288" cy="364" r="22"/><circle cx="268" cy="374" r="14"/><circle cx="308" cy="374" r="14"/></g>
+  </g>
+  <g stroke="#8A7A5E" stroke-width="3" fill="none" opacity=".8">
+    <path d="M472 150 q22 44 6 86 q-14 38 4 74"/><path d="M478 196 q26 -10 44 -2"/><path d="M480 244 q-28 -8 -46 2"/>
+  </g>
+</svg>

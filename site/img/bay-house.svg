@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Huis aan de baai met terras en zwembad">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F5EDDE"/><stop offset="1" stop-color="#EBDECB"/></linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A5BAB1" /><stop offset="1" stop-color="#8CA398"/></linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#sky)"/>
+  <circle cx="112" cy="104" r="28" fill="#E4C9A6" opacity=".5"/>
+  <path d="M520 250 L620 176 L700 214 L800 158 V250 Z" fill="#C6B9A2"/>
+  <path d="M0 250 L92 208 L170 242 L250 218 L340 250 Z" fill="#CFC2AC"/>
+  <rect y="250" width="800" height="126" fill="url(#sea)"/>
+  <path d="M0 250 q200 44 400 26 q200 -18 400 20 v-46 Z" fill="#B6C7BE" opacity=".55"/>
+  <g stroke="#C6D4CC" stroke-width="3" stroke-linecap="round" opacity=".75">
+    <path d="M70 300 q18 -7 36 0 t36 0"/><path d="M250 336 q18 -7 36 0 t36 0"/><path d="M520 306 q18 -7 36 0 t36 0"/><path d="M640 348 q18 -7 36 0 t36 0"/>
+  </g>
+  <rect y="376" width="800" height="224" fill="#E0D3BF"/>
+  <path d="M0 376 h800 v18 H0 Z" fill="#CEBFA7"/>
+  <g>
+    <rect x="252" y="240" width="300" height="136" fill="#FBF7F0"/>
+    <rect x="252" y="240" width="300" height="136" fill="none" stroke="#E2D6C4" stroke-width="2"/>
+    <path d="M238 242 h328 l-24 -34 H262 Z" fill="#B3623C"/>
+    <path d="M262 208 h140 l-12 34 H238 Z" fill="#98502C"/>
+    <g fill="#EDE1D0" stroke="#CDBFA9" stroke-width="2">
+      <path d="M286 376 v-58 a28 28 0 0 1 56 0 v58 Z"/>
+      <path d="M374 376 v-58 a28 28 0 0 1 56 0 v58 Z"/>
+      <path d="M462 376 v-58 a28 28 0 0 1 56 0 v58 Z"/>
+    </g>
+    <g fill="#6E6355">
+      <rect x="300" y="264" width="30" height="28"/><rect x="386" y="264" width="30" height="28"/><rect x="474" y="264" width="30" height="28"/>
+    </g>
+  </g>
+  <g>
+    <rect x="300" y="428" width="330" height="96" rx="4" fill="#9AB3A8"/>
+    <rect x="300" y="428" width="330" height="96" rx="4" fill="none" stroke="#F1E7D8" stroke-width="7"/>
+    <g stroke="#C0D2C8" stroke-width="4" stroke-linecap="round" opacity=".8">
+      <path d="M336 462 q20 -8 40 0 t40 0"/><path d="M470 494 q20 -8 40 0 t40 0"/>
+    </g>
+  </g>
+  <g fill="#5E6B34">
+    <path d="M168 386 q24 0 24 -60 q0 -48 -12 -68 q-12 20 -12 68 q0 60 -12 60 Z"/>
+    <path d="M206 390 q20 0 20 -50 q0 -40 -10 -57 q-10 17 -10 57 q0 50 -10 50 Z"/>
+  </g>
+  <rect x="170" y="382" width="13" height="18" fill="#6E6355"/>
+  <rect x="208" y="386" width="11" height="14" fill="#6E6355"/>
+  <g>
+    <rect x="690" y="368" width="9" height="60" fill="#8A7A5E"/>
+    <g fill="#6B7A3C">
+      <path d="M694 368 q-46 -12 -60 -38 q36 4 60 26 Z"/><path d="M694 368 q46 -12 60 -38 q-36 4 -60 26 Z"/>
+      <path d="M694 362 q-32 -28 -26 -60 q24 22 26 52 Z"/><path d="M694 362 q32 -28 26 -60 q-24 22 -26 52 Z"/>
+    </g>
+  </g>
+</svg>

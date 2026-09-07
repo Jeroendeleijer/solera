@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Finca tussen de wijngaarden met bergen op de achtergrond">
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6EFE1"/><stop offset="1" stop-color="#ECDFCC"/></linearGradient></defs>
+  <rect width="800" height="600" fill="url(#sky)"/>
+  <circle cx="666" cy="102" r="32" fill="#E4C9A6" opacity=".5"/>
+  <path d="M0 262 L96 178 L168 224 L262 146 L360 232 L448 186 L546 244 L648 190 L742 240 L800 214 V300 H0 Z" fill="#C8BBA4"/>
+  <path d="M262 146 L330 206 L360 232 L292 232 Z" fill="#BCAE95"/>
+  <path d="M648 190 L700 232 L742 240 L664 240 Z" fill="#BCAE95"/>
+  <rect y="300" width="800" height="300" fill="#DDD0BA"/>
+  <path d="M0 300 h800 v12 H0 Z" fill="#CBBBA1"/>
+  <g>
+    <rect x="248" y="216" width="304" height="112" fill="#FBF7F0"/>
+    <rect x="248" y="216" width="304" height="112" fill="none" stroke="#E2D6C4" stroke-width="2"/>
+    <path d="M232 218 h336 l-40 -44 H272 Z" fill="#B3623C"/>
+    <path d="M272 174 h144 l-20 44 H232 Z" fill="#98502C"/>
+    <rect x="470" y="254" width="94" height="74" fill="#F2E8D8"/>
+    <path d="M458 256 h118 l-20 -26 H478 Z" fill="#98502C"/>
+    <g fill="#EFE5D5" stroke="#D8CAB4" stroke-width="2"><rect x="272" y="244" width="66" height="46"/><rect x="404" y="244" width="66" height="46"/></g>
+    <g fill="#6E6355"><rect x="284" y="252" width="20" height="30"/><rect x="310" y="252" width="20" height="30"/><rect x="416" y="252" width="20" height="30"/><rect x="442" y="252" width="20" height="30"/><rect x="500" y="282" width="26" height="46"/></g>
+    <path d="M348 328 v-52 a24 24 0 0 1 48 0 v52 Z" fill="#EDE1D0" stroke="#CDBFA9" stroke-width="2"/>
+    <rect x="292" y="150" width="22" height="30" fill="#98502C"/>
+  </g>
+  <g stroke="#8A7A5E" stroke-width="3" fill="none">
+    <path d="M0 358 h800"/><path d="M0 412 h800"/><path d="M0 470 h800"/><path d="M0 534 h800"/>
+  </g>
+  <g fill="#6B7A3C">
+    <g><circle cx="70" cy="348" r="15"/><circle cx="180" cy="348" r="15"/><circle cx="290" cy="348" r="15"/><circle cx="400" cy="348" r="15"/><circle cx="510" cy="348" r="15"/><circle cx="620" cy="348" r="15"/><circle cx="730" cy="348" r="15"/></g>
+    <g><circle cx="40" cy="400" r="17"/><circle cx="162" cy="400" r="17"/><circle cx="284" cy="400" r="17"/><circle cx="406" cy="400" r="17"/><circle cx="528" cy="400" r="17"/><circle cx="650" cy="400" r="17"/><circle cx="772" cy="400" r="17"/></g>
+    <g><circle cx="88" cy="456" r="19"/><circle cx="224" cy="456" r="19"/><circle cx="360" cy="456" r="19"/><circle cx="496" cy="456" r="19"/><circle cx="632" cy="456" r="19"/><circle cx="768" cy="456" r="19"/></g>
+    <g><circle cx="52" cy="518" r="22"/><circle cx="204" cy="518" r="22"/><circle cx="356" cy="518" r="22"/><circle cx="508" cy="518" r="22"/><circle cx="660" cy="518" r="22"/></g>
+  </g>
+  <g stroke="#8A7A5E" stroke-width="3">
+    <path d="M70 348 v14"/><path d="M180 348 v14"/><path d="M290 348 v14"/><path d="M400 348 v14"/><path d="M510 348 v14"/><path d="M620 348 v14"/><path d="M730 348 v14"/>
+  </g>
+  <g fill="#5E6B34">
+    <path d="M690 328 q24 0 24 -62 q0 -50 -12 -70 q-12 20 -12 70 q0 62 -12 62 Z"/>
+  </g>
+  <rect x="694" y="324" width="13" height="18" fill="#6E6355"/>
+</svg>

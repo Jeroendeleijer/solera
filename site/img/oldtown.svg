@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Stadshuis in de oude kern met kerkkoepel">
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6EEE0"/><stop offset="1" stop-color="#EADDCA"/></linearGradient></defs>
+  <rect width="800" height="600" fill="url(#sky)"/>
+  <circle cx="678" cy="106" r="30" fill="#E4C9A6" opacity=".5"/>
+  <g>
+    <rect x="88" y="196" width="76" height="88" fill="#8FA9A0"/>
+    <path d="M88 196 q38 -68 76 0 Z" fill="#7C9A90"/>
+    <path d="M126 128 v-24" stroke="#6E6355" stroke-width="4"/>
+    <circle cx="126" cy="100" r="6" fill="#B3623C"/>
+    <rect x="76" y="284" width="100" height="96" fill="#F3EADC"/>
+    <rect x="112" y="312" width="28" height="68" fill="#6E6355"/>
+    <g stroke="#7C9A90" stroke-width="3" opacity=".6"><path d="M88 210 h76"/><path d="M96 232 h60"/></g>
+  </g>
+  <rect y="380" width="800" height="220" fill="#DCCEB9"/>
+  <path d="M0 380 h800 v14 H0 Z" fill="#CBBBA2"/>
+  <g>
+    <rect x="196" y="252" width="152" height="128" fill="#FBF7F0"/>
+    <path d="M186 254 h172 l-18 -26 H204 Z" fill="#B3623C"/>
+    <g fill="#6E6355"><rect x="222" y="278" width="30" height="34"/><rect x="292" y="278" width="30" height="34"/></g>
+    <g fill="none" stroke="#B3623C" stroke-width="4"><path d="M214 322 h46"/><path d="M284 322 h46"/></g>
+    <path d="M244 380 v-52 a26 26 0 0 1 52 0 v52 Z" fill="#98502C"/>
+  </g>
+  <g>
+    <rect x="348" y="212" width="136" height="168" fill="#F2E8D8"/>
+    <path d="M338 214 h156 l-16 -24 H354 Z" fill="#98502C"/>
+    <g fill="#6E6355"><rect x="374" y="240" width="28" height="32"/><rect x="432" y="240" width="28" height="32"/><rect x="374" y="304" width="28" height="32"/><rect x="432" y="304" width="28" height="32"/></g>
+    <g fill="none" stroke="#B3623C" stroke-width="3"><path d="M366 280 h44"/><path d="M424 280 h44"/></g>
+  </g>
+  <g>
+    <rect x="484" y="268" width="164" height="112" fill="#FBF7F0"/>
+    <path d="M474 270 h184 l-20 -28 H494 Z" fill="#B3623C"/>
+    <g fill="#6E6355"><rect x="512" y="294" width="32" height="34"/><rect x="588" y="294" width="32" height="34"/></g>
+    <path d="M540 380 v-46 a24 24 0 0 1 48 0 v46 Z" fill="#EDE1D0" stroke="#CDBFA9" stroke-width="2"/>
+  </g>
+  <g fill="#6B7A3C">
+    <rect x="690" y="330" width="10" height="50" fill="#8A7A5E"/>
+    <circle cx="695" cy="316" r="34"/><circle cx="672" cy="334" r="22"/><circle cx="718" cy="334" r="22"/>
+  </g>
+  <g stroke="#CBBBA2" stroke-width="3" opacity=".8"><path d="M0 424 h800"/><path d="M0 466 h800"/></g>
+  <g fill="#B3623C" opacity=".35"><rect x="120" y="430" width="60" height="32"/><rect x="300" y="472" width="60" height="32"/><rect x="560" y="430" width="60" height="32"/></g>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Appartement met zeezicht aan de jachthaven">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6EEE0"/><stop offset="1" stop-color="#EADDCA"/></linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A8BCB4"/><stop offset="1" stop-color="#8FA79C"/></linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#sky)"/>
+  <circle cx="150" cy="112" r="30" fill="#E4C9A6" opacity=".5"/>
+  <path d="M0 268 L96 232 L182 262 L270 238 L360 266 L440 250 L520 268 H0 Z" fill="#CFC2AC" opacity=".8"/>
+  <rect y="268" width="800" height="120" fill="url(#sea)"/>
+  <g stroke="#C3D2CA" stroke-width="3" stroke-linecap="round" opacity=".8">
+    <path d="M40 302 q18 -7 36 0 t36 0"/><path d="M170 330 q18 -7 36 0 t36 0"/><path d="M60 360 q18 -7 36 0 t36 0"/><path d="M300 312 q18 -7 36 0 t36 0"/>
+  </g>
+  <g>
+    <path d="M120 268 v-96" stroke="#7C7367" stroke-width="4"/>
+    <path d="M124 176 L124 252 L182 252 Z" fill="#FBF7F0"/>
+    <path d="M116 190 L116 252 L74 252 Z" fill="#EFE4D4"/>
+    <path d="M96 252 h56 l-10 18 h-36 Z" fill="#98502C"/>
+  </g>
+  <g>
+    <path d="M262 268 v-72" stroke="#7C7367" stroke-width="3"/>
+    <path d="M266 200 L266 256 L308 256 Z" fill="#FBF7F0"/>
+    <path d="M244 256 h44 l-8 14 h-28 Z" fill="#B3623C"/>
+  </g>
+  <rect y="388" width="800" height="212" fill="#DFD2BE"/>
+  <rect y="388" width="800" height="10" fill="#CDBEA6"/>
+  <g>
+    <rect x="404" y="150" width="360" height="238" fill="#FBF7F0"/>
+    <rect x="404" y="150" width="360" height="238" fill="none" stroke="#E2D6C4" stroke-width="2"/>
+    <path d="M392 152 h384 l-14 -22 H406 Z" fill="#B3623C"/>
+    <g fill="#EFE5D5" stroke="#D8CAB4" stroke-width="2">
+      <rect x="428" y="188" width="96" height="52"/><rect x="552" y="188" width="96" height="52"/><rect x="676" y="188" width="64" height="52"/>
+      <rect x="428" y="270" width="96" height="52"/><rect x="552" y="270" width="96" height="52"/><rect x="676" y="270" width="64" height="52"/>
+    </g>
+    <g fill="#6E6355">
+      <rect x="442" y="196" width="30" height="36"/><rect x="486" y="196" width="30" height="36"/>
+      <rect x="566" y="196" width="30" height="36"/><rect x="610" y="196" width="30" height="36"/>
+      <rect x="690" y="196" width="30" height="36"/>
+      <rect x="442" y="278" width="30" height="36"/><rect x="486" y="278" width="30" height="36"/>
+      <rect x="566" y="278" width="30" height="36"/><rect x="610" y="278" width="30" height="36"/>
+      <rect x="690" y="278" width="30" height="36"/>
+    </g>
+    <g stroke="#B3623C" stroke-width="4">
+      <path d="M428 246 h96"/><path d="M552 246 h96"/><path d="M676 246 h64"/>
+      <path d="M428 328 h96"/><path d="M552 328 h96"/><path d="M676 328 h64"/>
+    </g>
+    <path d="M556 388 v-46 a24 24 0 0 1 48 0 v46 Z" fill="#98502C"/>
+  </g>
+  <g>
+    <rect x="322" y="316" width="10" height="72" fill="#8A7A5E"/>
+    <g fill="#6B7A3C">
+      <path d="M327 316 q-52 -12 -68 -42 q40 4 68 28 Z"/><path d="M327 316 q52 -12 68 -42 q-40 4 -68 28 Z"/>
+      <path d="M327 310 q-36 -32 -30 -68 q28 24 30 58 Z"/><path d="M327 310 q36 -32 30 -68 q-28 24 -30 58 Z"/>
+    </g>
+  </g>
+  <ellipse cx="327" cy="392" rx="38" ry="6" fill="#CFC0A8" opacity=".7"/>
+</svg>
