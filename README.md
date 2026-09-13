@@ -8,6 +8,8 @@ Site content follows `solera_concept_and_tech_brief_1.pdf` (September 2026). Not
 
 ## Contents
 
+- `platform/` — reference implementation of the Modelo 210 calculation engine, the per-tax-year rules and the data model from Part 3 of the brief. Python 3.11, standard library only: `cd platform && python3 -m unittest discover -s tests -t .` It files nothing; see `platform/README.md` for what is deliberately absent and why.
+
 - `brand/solera-brand-v1.0.html` — brand identity v1.0 (September 2026): name, positioning, offer, mark & lockup, colour, typography, voice, applications. Self-contained bundle exported from Claude Design; open in a browser.
 
 - `site/` — website mockups (static HTML, open in a browser):
