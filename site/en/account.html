@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solera — My file</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300..700;1,300..500&family=Petrona:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: oklch(0.966 0.014 78);
+    --clay: oklch(0.925 0.022 74);
+    --clay-deep: oklch(0.885 0.026 72);
+    --ink: oklch(0.26 0.021 45);
+    --muted: oklch(0.510 0.022 58);
+    --rule: oklch(0.872 0.020 72);
+    --accent: #B3623C;
+    --accent-ink: #98502C;
+    --grove: #6B7A3C;
+    --grove-ink: #5E6B34;
+    --serif: 'Petrona', Georgia, serif;
+    --sans: 'Karla', system-ui, sans-serif;
+    --measure: 68ch;
+    --gutter: clamp(20px, 5vw, 72px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+  body{font-family:var(--sans);font-size:18px;line-height:29px;font-weight:400}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  h1,h2,h3,.display{font-family:var(--serif);font-weight:400}
+  .eyebrow{font-size:11px;line-height:16px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .wrap{padding-inline:var(--gutter);max-width:1280px;margin-inline:auto}
+  .btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--sans);padding:15px 22px;border:1px solid var(--ink);color:var(--ink);background:transparent;border-radius:2px;cursor:pointer}
+  .btn.primary{background:var(--ink);color:var(--paper)}
+  .btn.primary:hover{background:oklch(0.32 0.021 45)}
+  .btn:hover{background:var(--clay)}
+  .mark{display:inline-block;height:26px;width:auto;vertical-align:middle}
+  .wordmark{font:500 24px/1 var(--serif);letter-spacing:-.01em;display:inline-flex;align-items:center;gap:9px}
+  .num{font-variant-numeric:tabular-nums}
+
+  /* nav */
+  header{border-bottom:1px solid var(--rule)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  nav ul{display:flex;gap:28px;list-style:none;font-size:16px}
+  nav ul a:hover{color:var(--accent-ink)}
+  nav .lang{font-size:13px;color:var(--muted);margin-right:20px}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,96px);padding-block:clamp(56px,9vw,120px) clamp(48px,7vw,96px);align-items:end}
+  .hero h1{font-size:clamp(46px,7vw,84px);line-height:.92;letter-spacing:-.035em;max-width:11ch;margin:22px 0 28px;text-wrap:balance}
+  .hero p.lead{font-size:20px;line-height:31px;max-width:48ch}
+  .hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+  .photo{aspect-ratio:4/3;background:linear-gradient(180deg,var(--clay) 0%,var(--clay-deep) 100%);border:1px solid var(--rule);position:relative;overflow:hidden}
+  .photo::before{content:"";position:absolute;left:0;right:0;bottom:0;height:38%;background:oklch(0.83 0.03 70)}
+  .photo::after{content:"";position:absolute;left:18%;bottom:20%;width:34%;height:52%;border:14px solid var(--paper);border-bottom:0;border-radius:50% 50% 0 0/62% 62% 0 0;box-shadow:inset 0 -60px 0 -40px var(--accent);opacity:.9}
+  .photo figcaption{position:absolute;left:16px;bottom:12px;font-size:12px;color:var(--muted);background:rgba(247,240,230,.85);padding:4px 8px}
+
+  /* year at a glance — the memorable thing */
+  .ledger{background:var(--clay);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .ledger .wrap{padding-block:clamp(48px,6vw,80px)}
+  .ledger-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+  .ledger h2{font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.02em;max-width:22ch;text-wrap:balance}
+  .ledger-note{font-size:15px;line-height:22px;color:var(--muted);max-width:36ch}
+  table.lines{width:100%;border-collapse:collapse;font-size:17px}
+  table.lines th{text-align:left;font-weight:400;padding:20px 0 20px 0;border-top:1px solid var(--rule);vertical-align:top}
+  table.lines td{border-top:1px solid var(--rule);padding:20px 0;vertical-align:top}
+  table.lines .what{width:34%}
+  table.lines .what strong{display:block;font-weight:600}
+  table.lines .what span{display:block;font-size:14px;line-height:20px;color:var(--muted);margin-top:2px}
+  table.lines .when{color:var(--muted);font-size:15px;width:38%;padding-inline:24px}
+  table.lines .cost{text-align:right;font-family:var(--serif);font-size:24px;white-space:nowrap}
+  table.lines tfoot td{border-top:2px solid var(--ink);padding-top:22px}
+  table.lines tfoot .label{font-weight:600}
+  table.lines tfoot .cost{font-size:40px;line-height:1;letter-spacing:-.02em}
+  table.lines tbody .cost small{display:block;font:400 13px/18px var(--sans);color:var(--muted);margin-top:4px;white-space:normal}
+  table.lines tfoot .cost small{display:block;font:400 14px/18px var(--sans);letter-spacing:normal;color:var(--muted);margin-top:8px}
+  .ledger-foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;margin-top:26px}
+  .ledger-foot p{font-size:15px;line-height:22px;color:var(--muted);max-width:52ch}
+
+  /* four obligations */
+  section.plain .wrap{padding-block:clamp(64px,8vw,112px)}
+  .section-title{font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.02em;max-width:24ch;text-wrap:balance}
+  .intro{margin-top:18px;max-width:var(--measure);color:var(--ink)}
+  .modules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin-top:52px;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+  .module{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:32px 30px 30px}
+  .module .idx{font-family:var(--serif);font-size:15px;color:var(--accent-ink)}
+  .module h3{font-size:28px;line-height:1.15;letter-spacing:-.015em;margin:12px 0 10px}
+  .module q{display:block;font-family:var(--serif);font-style:italic;font-size:19px;line-height:27px;color:var(--ink);margin-bottom:14px;quotes:"“" "”"}
+  .module p{font-size:16px;line-height:25px;color:var(--ink);max-width:44ch}
+  .module .terms{margin-top:18px;font-size:13px;line-height:19px;color:var(--muted);padding-top:12px;border-top:1px solid var(--rule)}
+
+  /* dossier */
+  .dossier{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:center}
+  .card{background:var(--paper);border:1px solid var(--rule);padding:30px 30px 26px;max-width:420px;box-shadow:0 1px 0 var(--rule)}
+  .card .top{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
+  .card h3{font-size:34px;line-height:1.05;letter-spacing:-.02em;margin:22px 0 4px}
+  .card .sub{font-size:15px;color:var(--muted)}
+  .card ul{list-style:none;margin-top:26px;border-top:1px solid var(--rule)}
+  .card li{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule);font-size:16px}
+  .card li .state{font-size:13px;font-weight:600;color:var(--grove-ink);display:inline-flex;align-items:center;gap:7px}
+  .card li .state::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--grove)}
+  .card li .state.pending{color:var(--muted)}
+  .card li .state.pending::before{background:transparent;border:1px solid var(--muted)}
+  .card .foot{display:flex;justify-content:space-between;align-items:baseline;margin-top:22px}
+  .card .foot .total{font-family:var(--serif);font-size:30px;letter-spacing:-.02em}
+  .card .foot .total small{font:400 13px var(--sans);letter-spacing:normal;color:var(--muted)}
+  .dossier-copy h2{font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.02em;max-width:22ch;text-wrap:balance}
+  .dossier-copy p{margin-top:18px;max-width:52ch}
+  .dossier-copy .quarter{margin-top:28px;padding:18px 22px;border-left:3px solid var(--grove);background:var(--clay);font-family:var(--serif);font-size:21px;line-height:30px;max-width:40ch}
+
+  /* not */
+  .split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,6vw,96px)}
+  .split h2{font-size:clamp(28px,3.2vw,38px);line-height:1.12;letter-spacing:-.02em}
+  .split ul{list-style:none;margin-top:22px;max-width:44ch}
+  .split li{padding:14px 0 14px 22px;text-indent:-22px;border-top:1px solid var(--rule);font-size:17px;line-height:26px}
+  .split .no li{color:var(--muted)}
+  .split .no li::before{content:"—";color:var(--accent);margin-right:12px}
+  .split .yes li::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--grove);margin-right:12px;vertical-align:1px}
+
+  /* contact */
+  .contact{background:var(--ink);color:var(--paper)}
+  .contact .wrap{padding-block:clamp(64px,8vw,112px);display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,6vw,96px);align-items:start}
+  .contact h2{font-size:clamp(34px,4.5vw,56px);line-height:1;letter-spacing:-.03em;max-width:14ch;text-wrap:balance}
+  .contact p{margin-top:22px;max-width:44ch;color:oklch(0.86 0.014 78)}
+  .contact .person{margin-top:36px;display:flex;gap:16px;align-items:center;font-size:15px;line-height:22px;color:oklch(0.86 0.014 78)}
+  .contact .person .avatar{width:48px;height:48px;border-radius:50%;background:var(--accent);flex:none}
+  .contact .person strong{display:block;color:var(--paper);font-weight:600}
+  form{display:grid;gap:18px}
+  .field{display:grid;gap:6px}
+  .field label{font-size:14px;color:oklch(0.86 0.014 78)}
+  .field input,.field select{font:400 17px var(--sans);padding:13px 14px;background:transparent;color:var(--paper);border:1px solid oklch(0.45 0.02 45);border-radius:2px;width:100%}
+  .field input::placeholder{color:oklch(0.6 0.02 45)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .contact .btn.primary{background:var(--accent);color:var(--paper);border-color:var(--accent);justify-self:start;margin-top:6px}
+  .contact .btn.primary:hover{background:var(--accent-ink)}
+  .contact .small{font-size:13px;line-height:19px;color:oklch(0.7 0.014 78);margin-top:4px}
+
+  /* footer */
+  footer{border-top:1px solid var(--rule)}
+  footer .wrap{padding-block:36px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--muted)}
+  footer ul{display:flex;gap:22px;list-style:none}
+
+  @media (max-width:900px){
+    .hero,.dossier,.split,.contact .wrap{grid-template-columns:1fr}
+    .hero{align-items:start}
+    .hero h1{max-width:none}
+    .modules{grid-template-columns:1fr}
+    table.lines .when{display:none}
+    table.lines .what{width:auto}
+    nav ul{display:none}
+    .row2{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .btn{transition:background .15s ease}
+  }
+
+  /* modelo 210 hook — the entry product */
+  .hook{background:var(--ink);color:var(--paper)}
+  .hook .wrap{padding-block:clamp(56px,7vw,100px);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,80px);align-items:start}
+  .hook h2{font-size:clamp(32px,4.4vw,54px);line-height:1.02;letter-spacing:-.03em;max-width:15ch;text-wrap:balance;margin:16px 0 0}
+  .hook p.say{margin-top:20px;max-width:46ch;color:oklch(0.86 0.014 78)}
+  .hook .price{font-family:var(--serif);font-size:clamp(56px,8vw,92px);line-height:1;letter-spacing:-.035em;margin-top:30px}
+  .hook .price small{display:block;font:400 15px/22px var(--sans);letter-spacing:normal;color:oklch(0.72 0.02 78);margin-top:12px}
+  .hook ul{list-style:none;margin-top:30px;max-width:52ch}
+  .hook li{padding:15px 0;border-top:1px solid oklch(0.42 0.02 45);font-size:16px;line-height:24px;color:oklch(0.84 0.014 78)}
+  .hook li strong{display:block;color:var(--paper);font-weight:600;margin-bottom:2px}
+  .hook .btn{background:var(--accent);border-color:var(--accent);color:var(--paper);margin-top:28px}
+  .hook .btn:hover{background:var(--accent-ink);border-color:var(--accent-ink)}
+  .checkup{border:1px solid oklch(0.42 0.02 45);padding:28px 28px 24px}
+  .checkup h3{font-size:24px;line-height:1.1;letter-spacing:-.02em;margin-bottom:14px}
+  .checkup p{font-size:16px;line-height:25px;color:oklch(0.84 0.014 78)}
+  .checkup ol{list-style:none;margin-top:20px;counter-reset:c}
+  .checkup li{counter-increment:c;position:relative;padding:10px 0 10px 30px;font-size:15px;line-height:22px;border-top:1px solid oklch(0.42 0.02 45);color:oklch(0.84 0.014 78)}
+  .checkup li::before{content:counter(c);position:absolute;left:0;font-family:var(--serif);color:var(--accent)}
+  /* three service lines */
+  .modules.lines3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .module .split-line{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-size:14px;line-height:21px;color:var(--muted)}
+  .module .split-line b{color:var(--ink);font-weight:600}
+  @media (max-width:1040px){ .modules.lines3{grid-template-columns:repeat(2,minmax(0,1fr))} }
+  @media (max-width:900px){
+    .hook .wrap{grid-template-columns:1fr}
+    .modules.lines3{grid-template-columns:1fr}
+  }
+
+  /* prototype notice */
+  .proto{background:var(--accent);color:var(--paper)}
+  .proto .wrap{padding-block:11px;font-size:13px;line-height:19px}
+  .proto strong{font-weight:700}
+  /* account: signed out */
+  .auth{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,4vw,56px);align-items:start;padding-block:clamp(36px,4.5vw,60px) clamp(56px,7vw,96px)}
+  .panel{border:1px solid var(--rule);padding:30px 30px 26px;background:var(--paper)}
+  .panel.alt{background:var(--clay)}
+  .panel h2{font-size:27px;line-height:1.1;letter-spacing:-.02em;margin-bottom:8px}
+  .panel .sub{font-size:15px;line-height:23px;color:var(--muted);margin-bottom:24px}
+  .stack2{display:grid;gap:18px}
+  .stack2 .crow{gap:18px}
+  .msg{margin-top:16px;font-size:14px;line-height:21px;color:var(--accent-ink)}
+  /* account: dashboard */
+  .dash-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;padding-block:clamp(34px,4vw,54px) 26px}
+  .dash-head h1{font-size:clamp(30px,3.8vw,44px);line-height:1.04;letter-spacing:-.03em}
+  .dash-head .who{font-size:15px;color:var(--muted);margin-top:8px}
+  .tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-left:1px solid var(--rule);border-top:1px solid var(--rule)}
+  .tile{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:22px 24px 20px}
+  .tile .k{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .tile .v{font-family:var(--serif);font-size:33px;line-height:1;letter-spacing:-.02em;margin-top:12px}
+  .tile .s{font-size:14px;line-height:20px;color:var(--muted);margin-top:8px}
+  .sec{padding-block:clamp(34px,4vw,52px);border-bottom:1px solid var(--rule)}
+  .sec:last-of-type{border-bottom:0}
+  .sec h2{font-size:25px;letter-spacing:-.02em;line-height:1.1}
+  .sec .lede{font-size:15px;line-height:23px;color:var(--muted);margin:6px 0 22px;max-width:60ch}
+  table.grid{width:100%;border-collapse:collapse;font-size:16px}
+  table.grid th{text-align:left;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:0 14px 12px 0;border-bottom:1px solid var(--rule)}
+  table.grid td{padding:15px 14px 15px 0;border-bottom:1px solid var(--rule);vertical-align:top;line-height:23px}
+  table.grid td.r{text-align:right;font-variant-numeric:tabular-nums;padding-right:0}
+  table.grid th.r{text-align:right;padding-right:0}
+  table.grid .muted{display:block;font-size:13px;line-height:19px;color:var(--muted);margin-top:2px}
+  .pill2{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;white-space:nowrap}
+  .pill2::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--muted);flex:none}
+  .pill2.done{color:var(--grove-ink)}.pill2.done::before{background:var(--grove)}
+  .pill2.now{color:var(--accent-ink)}.pill2.now::before{background:var(--accent)}
+  .pill2.wait{color:var(--muted)}.pill2.wait::before{background:transparent;border:1px solid var(--muted)}
+  .rowacts{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+  .danger{margin-top:14px;font-size:13px;line-height:20px;color:var(--muted)}
+  .linkish{background:none;border:0;padding:0;font:600 13px var(--sans);color:var(--accent-ink);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+  @media (max-width:900px){
+    .auth{grid-template-columns:1fr}
+    .tiles{grid-template-columns:1fr}
+    table.grid thead{display:none}
+    table.grid td{display:block;border:0;padding:4px 0}
+    table.grid tr{display:block;padding:16px 0;border-bottom:1px solid var(--rule)}
+    table.grid td.r{text-align:left}
+  }
+</style>
+</head>
+<body>
+
+<div class="proto">
+  <div class="wrap"><strong>Prototype.</strong> This is a working example of the client file, not the real portal yet. What you enter stays in this browser &mdash; it does not reach Solera and it does not reach a server. So please do <em>not</em> enter a real NIE, IBAN or <em>referencia catastral</em>.</div>
+</div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="wordmark" href="index.html" aria-label="Solera">
+        <svg class="mark" viewBox="0 0 60 40" aria-hidden="true"><path d="M8 40 V22 A22 22 0 0 1 52 22 V40" fill="none" stroke="currentColor" stroke-width="5"/><rect x="28" y="24" width="4" height="16" fill="#B3623C"/></svg>
+        Solera
+      </a>
+      <ul>
+        <li><a href="modelo210.html">Modelo 210 &mdash; &euro;29.99</a></li>
+        <li><a href="index.html#year">Solera Anual</a></li>
+        <li><a href="services.html">All services</a></li>
+        <li><a class="current" href="#">My file</a></li>
+      </ul>
+      <div>
+        <span class="lang"><a href="../solera-account.html">NL</a> &middot; <strong style="color:var(--ink)">EN</strong></span>
+        <a class="btn" href="index.html#call">Book a call</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div id="signedout">
+  <div class="wrap" style="padding-top:clamp(40px,5vw,72px)">
+    <span class="eyebrow">My file</span>
+    <h1 style="font-size:clamp(36px,5vw,58px);line-height:1;letter-spacing:-.03em;max-width:17ch;margin:18px 0 18px">One file for your house in Spain.</h1>
+    <p class="lead" style="font-size:19px;line-height:30px;max-width:56ch">Your filings, receipts, policies and check-ups in one place &mdash; including earlier years. Open a file below; you can decide afterwards whether we do the filing.</p>
+  </div>
+
+  <div class="wrap auth">
+    <div class="panel">
+      <h2>New to Solera</h2>
+      <p class="sub">Fill in what you know about the property. Leave anything you don't know blank &mdash; we look it up later. There is no password: the real portal gets a proper sign-in, this example only keeps a name in this browser.</p>
+      <form class="stack2" id="signup" onsubmit="return false">
+        <div class="crow">
+          <div class="cfield"><label for="s-name">Your name</label><input id="s-name" placeholder="First name Last name"></div>
+          <div class="cfield"><label for="s-mail">Email</label><input id="s-mail" type="email" placeholder="you@example.com"></div>
+        </div>
+        <div class="crow">
+          <div class="cfield">
+            <label for="s-country">Country where you are tax resident</label>
+            <select id="s-country">
+              <optgroup label="EU / EEA &mdash; 19%">
+                <option data-rate="19" selected>Netherlands</option><option data-rate="19">Belgium</option>
+                <option data-rate="19">Germany</option><option data-rate="19">France</option>
+                <option data-rate="19">Ireland</option><option data-rate="19">Another EU/EEA country</option>
+              </optgroup>
+              <optgroup label="Outside the EU/EEA &mdash; 24%">
+                <option data-rate="24">United Kingdom</option><option data-rate="24">Switzerland</option>
+                <option data-rate="24">United States</option><option data-rate="24">Another country outside the EU/EEA</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="cfield"><label for="s-place">Town the property is in</label><input id="s-place" placeholder="D&eacute;nia" value="D&eacute;nia"></div>
+        </div>
+        <div class="crow">
+          <div class="cfield"><label for="s-cv">Cadastral value</label><input id="s-cv" type="number" min="0" step="100" value="150000"><span class="hint">Shown on the IBI bill.</span></div>
+          <div class="cfield"><label for="s-share">Your share (%)</label><input id="s-share" type="number" min="1" max="100" step="1" value="50"><span class="hint">Two owners, half each: 50.</span></div>
+        </div>
+        <div class="cfield">
+          <span class="lbl">Has the cadastral value been revised in the past ten years?</span>
+          <div class="seg2">
+            <label><input type="radio" name="s-rev" value="yes" checked><span>Yes &mdash; 1.1%</span></label>
+            <label><input type="radio" name="s-rev" value="no"><span>No or unsure &mdash; 2%</span></label>
+          </div>
+        </div>
+        <button class="btn primary" type="button" id="btn-create" style="justify-self:start">Open my file</button>
+        <p class="msg" id="signup-msg" hidden></p>
+      </form>
+    </div>
+
+    <div class="panel alt">
+      <h2>Already have a file</h2>
+      <p class="sub">Enter the email address you opened the file with.</p>
+      <form class="stack2" id="signin" onsubmit="return false">
+        <div class="cfield"><label for="i-mail">Email</label><input id="i-mail" type="email" placeholder="you@example.com"></div>
+        <button class="btn" type="button" id="btn-signin" style="justify-self:start">Open my file</button>
+        <p class="msg" id="signin-msg" hidden></p>
+      </form>
+      <p class="danger" style="margin-top:26px;padding-top:18px;border-top:1px solid var(--rule)">In the real portal this uses a password and two-factor authentication, and your data sits in Solera&rsquo;s own environment in the EU &mdash; not with an AI service and not with an ad network.</p>
+    </div>
+  </div>
+</div>
+
+<div id="dash" hidden>
+  <div class="wrap dash-head">
+    <div>
+      <span class="eyebrow">My file</span>
+      <h1 id="d-greet">Hello</h1>
+      <p class="who" id="d-who"></p>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a class="btn" href="modelo210.html">Calculate a filing</a>
+      <button class="btn" type="button" id="btn-signout">Sign out</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="tiles">
+      <div class="tile"><div class="k">Properties</div><div class="v num" id="t-props">1</div><div class="s" id="t-props-s">&mdash;</div></div>
+      <div class="tile"><div class="k">Filings on file</div><div class="v num" id="t-filings">3</div><div class="s" id="t-filings-s">&mdash;</div></div>
+      <div class="tile"><div class="k">Next deadline</div><div class="v" id="t-next">&mdash;</div><div class="s" id="t-next-s">&mdash;</div></div>
+    </div>
+  </div>
+
+  <section class="wrap sec">
+    <h2>Filing history</h2>
+    <p class="lede">Every Modelo 210 filed through Solera, with the official AEAT receipt. Filings from before your first year with us can be added yourself.</p>
+    <table class="grid">
+      <thead><tr><th>Year</th><th>Type</th><th>Property</th><th>Status</th><th class="r">Amount</th><th class="r">Receipt</th></tr></thead>
+      <tbody id="rows-filings"></tbody>
+    </table>
+    <div class="rowacts">
+      <button class="btn" type="button" id="btn-addfiling">Add a filing from an earlier year</button>
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <h2>Properties and ownership</h2>
+    <p class="lede">The data we calculate from. If the house is in more than one name, each owner files their own return &mdash; we keep them together in one file.</p>
+    <table class="grid">
+      <thead><tr><th>Property</th><th>Cadastral value</th><th>Percentage</th><th>Your share</th><th class="r">Notional income</th></tr></thead>
+      <tbody id="rows-props"></tbody>
+    </table>
+    <div class="rowacts">
+      <button class="btn" type="button" id="btn-addprop">Add a property</button>
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <h2>What is not yet in place</h2>
+    <p class="lede">This is the annual check-up: what we can see from your file, with the amount alongside. Whether you act on it is up to you.</p>
+    <table class="grid">
+      <thead><tr><th>Topic</th><th>What we see</th><th class="r">What it costs</th></tr></thead>
+      <tbody id="rows-checkup"></tbody>
+    </table>
+    <div class="rowacts">
+      <a class="btn primary" href="index.html#call">Request Solera Anual &mdash; &euro;249 a year</a>
+      <a class="btn" href="services.html">See all services</a>
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <h2>Your details</h2>
+    <p class="lede">The real portal also holds your NIE, your mandate and your direct-debit details. This prototype deliberately keeps no more than what is below.</p>
+    <table class="grid"><tbody id="rows-me"></tbody></table>
+    <p class="danger">Everything you entered lives only in this browser, under the key <code>solera.demo.v1</code>.
+      <button class="linkish" type="button" id="btn-wipe">Delete my data from this browser</button>
+    </p>
+  </section>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="wordmark" style="font-size:20px;color:var(--ink)">Solera</span>
+    <ul>
+      <li><a href="index.html">Solera Anual</a></li>
+      <li><a href="modelo210.html">Modelo 210</a></li>
+      <li><a href="services.html">All services</a></li>
+      <li><a href="#">Privacy</a></li>
+    </ul>
+    <span>Solera Eigenarenservice S.L. &middot; D&eacute;nia, Alicante &middot; CIF B-00000000</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var KEY = 'solera.demo.v1';
+  var eur  = new Intl.NumberFormat('en-IE',{style:'currency',currency:'EUR',minimumFractionDigits:2});
+  var eur0 = new Intl.NumberFormat('en-IE',{style:'currency',currency:'EUR',maximumFractionDigits:0});
+  var $ = function(id){ return document.getElementById(id); };
+  var esc = function(t){ var d=document.createElement('div'); d.textContent=t==null?'':String(t); return d.innerHTML; };
+
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)); } catch(e){ return null; } }
+  function save(a){ try { localStorage.setItem(KEY, JSON.stringify(a)); return true; } catch(e){ return false; } }
+  function wipe(){ try { localStorage.removeItem(KEY); } catch(e){} }
+
+  function taxFor(p, rate){
+    var base = p.cv * (p.pct/100) * (p.share/100);
+    return { base: base, tax: base * (rate/100) };
+  }
+
+  var STATUS = {
+    paid:      {cls:'done', label:'Paid'},
+    filed:     {cls:'done', label:'Filed'},
+    calculated:{cls:'now',  label:'Calculated — ready to file'},
+    confirmed: {cls:'wait', label:'Details confirmed'}
+  };
+
+  function seedFilings(acct){
+    var p = acct.properties[0], out = [];
+    [{y:2024,st:'paid'},{y:2025,st:'paid'},{y:2026,st:'calculated'}].forEach(function(f){
+      var t = taxFor(p, acct.rate);
+      out.push({ year:f.y, type:'Notional income', propId:p.id, amount:t.tax, status:f.st,
+                 receipt: (f.st==='paid'||f.st==='filed') ? 'CSV ' + f.y + 'ES' + String(1000000+Math.floor(Math.random()*8999999)) : null });
+    });
+    return out;
+  }
+
+  function render(){
+    var a = load();
+    if (!a){ $('signedout').hidden = false; $('dash').hidden = true; return; }
+    $('signedout').hidden = true; $('dash').hidden = false;
+
+    $('d-greet').textContent = 'Hello, ' + (a.name || 'owner');
+    $('d-who').textContent = a.email + ' · tax resident in ' + a.country + ' · rate ' + a.rate + '%';
+
+    $('t-props').textContent = a.properties.length;
+    $('t-props-s').textContent = a.properties.map(function(p){return p.place;}).join(', ');
+    $('t-filings').textContent = a.filings.length;
+    var open = a.filings.filter(function(f){ return f.status!=='paid'; }).length;
+    $('t-filings-s').textContent = open ? open + ' not yet complete' : 'all complete';
+    var pend = a.filings.filter(function(f){ return f.status!=='paid' && f.status!=='filed'; })[0];
+    $('t-next').textContent = pend ? '31 Dec' : '1 Apr';
+    $('t-next-s').textContent = pend
+      ? 'Modelo 210 for ' + pend.year + ' — file before 31 December ' + (pend.year+1)
+      : 'Next window opens 1 April';
+
+    $('rows-filings').innerHTML = a.filings.slice().sort(function(x,y){return y.year-x.year;}).map(function(f){
+      var st = STATUS[f.status] || STATUS.confirmed;
+      var prop = a.properties.filter(function(p){return p.id===f.propId;})[0] || {place:'—'};
+      return '<tr>'
+        + '<td><strong>' + f.year + '</strong></td>'
+        + '<td>' + esc(f.type) + '<span class="muted">1 filing, your share</span></td>'
+        + '<td>' + esc(prop.place) + '</td>'
+        + '<td><span class="pill2 ' + st.cls + '">' + st.label + '</span></td>'
+        + '<td class="r">' + eur.format(f.amount) + '</td>'
+        + '<td class="r">' + (f.receipt ? '<span class="muted" style="margin:0">' + esc(f.receipt) + '</span>' : '<span class="muted" style="margin:0">—</span>') + '</td>'
+        + '</tr>';
+    }).join('');
+
+    $('rows-props').innerHTML = a.properties.map(function(p){
+      var t = taxFor(p, a.rate);
+      return '<tr>'
+        + '<td><strong>' + esc(p.place) + '</strong><span class="muted">Alicante</span></td>'
+        + '<td>' + eur0.format(p.cv) + '</td>'
+        + '<td>' + p.pct + '%</td>'
+        + '<td>' + p.share + '%</td>'
+        + '<td class="r">' + eur.format(t.base) + '</td>'
+        + '</tr>';
+    }).join('');
+
+    var rows = [];
+    if (!a.anual) rows.push(['Solera Anual','You pay per filing. From two filings a year the annual subscription is cheaper.','&euro;249 / year']);
+    if (a.properties[0].share < 100) rows.push(['Co-owner','The property is in more than one name. Your co-owner has to file their own Modelo 210.','&euro;29.99 per filing']);
+    if (a.properties[0].cv >= 120000) rows.push(['Insurance','At this cadastral value it is worth checking that the sum insured still matches.','Included in Anual']);
+    if (a.properties[0].pct === 2) rows.push(['Cadastral revision','You are on 2%. If your municipality was in fact revised you are overpaying — we check the list.','Included in Anual']);
+    rows.push(['Spanish will','Without a Spanish will an estate here takes months longer to settle.','&euro;260 per person']);
+    $('rows-checkup').innerHTML = rows.map(function(r){
+      return '<tr><td><strong>' + r[0] + '</strong></td><td>' + r[1] + '</td><td class="r">' + r[2] + '</td></tr>';
+    }).join('');
+
+    $('rows-me').innerHTML = [
+      ['Name', esc(a.name)], ['Email', esc(a.email)],
+      ['Tax resident in', esc(a.country) + ' — rate ' + a.rate + '%'],
+      ['File opened', new Date(a.created).toLocaleDateString('en-GB')],
+      ['Solera Anual', a.anual ? 'Active' : 'Not taken']
+    ].map(function(r){ return '<tr><td style="width:34%"><strong>' + r[0] + '</strong></td><td>' + r[1] + '</td></tr>'; }).join('');
+  }
+
+  function show(el, text){ el.hidden = false; el.textContent = text; }
+
+  $('btn-create').addEventListener('click', function(){
+    var name = $('s-name').value.trim(), mail = $('s-mail').value.trim();
+    if (!name || !mail || mail.indexOf('@') < 1) { show($('signup-msg'), 'Please enter a name and a valid email address.'); return; }
+    var opt = $('s-country').selectedOptions[0];
+    var acct = {
+      name: name, email: mail, country: opt.textContent.trim(),
+      rate: parseFloat(opt.dataset.rate), created: Date.now(), anual: false,
+      properties: [{
+        id: 'p1',
+        place: $('s-place').value.trim() || 'Dénia',
+        cv: Math.max(0, parseFloat($('s-cv').value) || 0),
+        share: Math.min(100, Math.max(1, parseFloat($('s-share').value) || 100)),
+        pct: document.querySelector('input[name=s-rev]:checked').value === 'yes' ? 1.1 : 2
+      }]
+    };
+    acct.filings = seedFilings(acct);
+    if (!save(acct)) { show($('signup-msg'), 'This browser does not allow storage, so the file cannot be kept.'); return; }
+    render(); window.scrollTo(0,0);
+  });
+
+  $('btn-signin').addEventListener('click', function(){
+    var a = load(), mail = $('i-mail').value.trim();
+    if (!a) { show($('signin-msg'), 'There is no file in this browser yet. Open one on the left.'); return; }
+    if (mail.toLowerCase() !== a.email.toLowerCase()) { show($('signin-msg'), 'That email address does not match the file in this browser.'); return; }
+    render(); window.scrollTo(0,0);
+  });
+
+  $('btn-signout').addEventListener('click', function(){
+    $('signedout').hidden = false; $('dash').hidden = true; window.scrollTo(0,0);
+  });
+
+  $('btn-addprop').addEventListener('click', function(){
+    var a = load(); if (!a) return;
+    var place = prompt('Which town is the property in?', 'Jávea'); if (place === null) return;
+    var cv = parseFloat(prompt('Cadastral value in euros?', '95000')); if (isNaN(cv)) return;
+    a.properties.push({ id:'p'+(a.properties.length+1), place: place || 'Unknown', cv: Math.max(0,cv), share: 100, pct: 1.1 });
+    save(a); render();
+  });
+
+  $('btn-addfiling').addEventListener('click', function(){
+    var a = load(); if (!a) return;
+    var yrs = a.filings.map(function(f){return f.year;});
+    var y = parseInt(prompt('Which year?', String(Math.min.apply(null, yrs) - 1)), 10);
+    if (isNaN(y)) return;
+    if (yrs.indexOf(y) > -1) { alert('That year is already on file.'); return; }
+    var t = taxFor(a.properties[0], a.rate);
+    a.filings.push({ year:y, type:'Notional income', propId:a.properties[0].id, amount:t.tax, status:'confirmed', receipt:null });
+    save(a); render();
+  });
+
+  $('btn-wipe').addEventListener('click', function(){
+    if (!confirm('Delete everything from this browser? This cannot be undone.')) return;
+    wipe(); $('signedout').hidden = false; $('dash').hidden = true; window.scrollTo(0,0);
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

@@ -15,6 +15,7 @@ Site content follows `solera_concept_and_tech_brief_1.pdf` (September 2026). Not
   - `solera-verhuur.html` — owner rental listing page with live preview
   - `solera-diensten.html` — full list of tax, administration and legal services
   - `solera-modelo210.html` — free Modelo 210 calculator (no account) and how filing works; the acquisition page for the hook. English twin at `en/modelo210.html`
+  - `solera-account.html` — client-file prototype: sign-up, filing history, properties, annual check-up. English twin at `en/account.html`. **Front-end only** — state lives in the visitor's own browser under `solera.demo.v1`; there is no server, no auth and no password. It is a demonstration of the portal described in Part 3 of the brief, not that portal.
   - `img/` — SVG illustrations of villas, town houses and fincas in the brand palette; drawn for the marketplace page, currently unused
   - `en/` — English version of the three pages (`index.html`, `rental.html`, `services.html`); the NL · EN control in the header swaps between counterpart pages, not to the homepage
 
