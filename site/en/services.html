@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solera — All services, with the amount</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300..700;1,300..500&family=Petrona:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: oklch(0.966 0.014 78);
+    --clay: oklch(0.925 0.022 74);
+    --clay-deep: oklch(0.885 0.026 72);
+    --ink: oklch(0.26 0.021 45);
+    --muted: oklch(0.510 0.022 58);
+    --rule: oklch(0.872 0.020 72);
+    --accent: #B3623C;
+    --accent-ink: #98502C;
+    --grove: #6B7A3C;
+    --grove-ink: #5E6B34;
+    --serif: 'Petrona', Georgia, serif;
+    --sans: 'Karla', system-ui, sans-serif;
+    --gutter: clamp(20px, 5vw, 72px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  body{font-family:var(--sans);font-size:17px;line-height:27px}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  h1,h2,h3{font-family:var(--serif);font-weight:400}
+  .eyebrow{font-size:11px;line-height:16px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .wrap{padding-inline:var(--gutter);max-width:1280px;margin-inline:auto}
+  .btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--sans);padding:15px 22px;border:1px solid var(--ink);color:var(--ink);background:transparent;border-radius:2px;cursor:pointer}
+  .btn.primary{background:var(--ink);color:var(--paper)}
+  .btn:hover{background:var(--clay)} .btn.primary:hover{background:oklch(0.32 0.021 45)}
+  .mark{display:inline-block;height:26px;vertical-align:middle}
+  .wordmark{font:500 24px/1 var(--serif);display:inline-flex;align-items:center;gap:9px}
+  .num{font-variant-numeric:tabular-nums}
+  em{font-family:var(--serif);font-style:italic;font-size:1.05em}
+
+  header{border-bottom:1px solid var(--rule)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  nav ul{display:flex;gap:28px;list-style:none;font-size:16px}
+  nav ul a.current{border-bottom:2px solid var(--accent);padding-bottom:4px}
+  nav .lang{font-size:13px;color:var(--muted);margin-right:20px}
+
+  .page-head{padding-block:clamp(40px,6vw,72px) clamp(32px,4vw,52px);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:end;border-bottom:1px solid var(--rule)}
+  .page-head h1{font-size:clamp(38px,5vw,62px);line-height:.98;letter-spacing:-.03em;margin:16px 0 18px;max-width:16ch;text-wrap:balance}
+  .page-head p{max-width:52ch;font-size:18px;line-height:29px}
+  .key{border-left:1px solid var(--rule);padding-left:22px;font-size:15px;line-height:23px;color:var(--muted)}
+  .key p{margin-bottom:10px}
+  .pill{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:2px;white-space:nowrap}
+  .pill.in{background:var(--grove);color:var(--paper)}
+  .pill.fixed{background:var(--clay-deep);color:var(--ink)}
+  .pill.quote{border:1px solid var(--rule);color:var(--muted)}
+
+  /* lifecycle strip */
+  .life{padding-block:clamp(32px,4vw,52px);border-bottom:1px solid var(--rule)}
+  .life ol{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-left:1px solid var(--rule)}
+  .life li{padding:6px 18px 4px;border-right:1px solid var(--rule)}
+  .life li a{display:block}
+  .life li strong{display:block;font:400 22px/1.15 var(--serif);letter-spacing:-.015em;margin-bottom:6px}
+  .life li span{font-size:14px;line-height:20px;color:var(--muted);display:block}
+  .life li a:hover strong{color:var(--accent-ink)}
+
+  /* groups */
+  .group{padding-block:clamp(56px,7vw,96px);border-bottom:1px solid var(--rule)}
+  .group-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);align-items:end;margin-bottom:34px}
+  .group-head h2{font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.02em;max-width:18ch;text-wrap:balance}
+  .group-head p{max-width:56ch}
+  table.svc{width:100%;border-collapse:collapse}
+  table.svc th{text-align:left;font-weight:400;font-size:13px;color:var(--muted);padding:0 0 10px;border-bottom:1px solid var(--rule)}
+  table.svc td{padding:18px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+  table.svc td.name{width:30%;padding-right:20px}
+  table.svc td.name strong{display:block;font-weight:600;font-size:17px}
+  table.svc td.name span{display:block;font-size:14px;line-height:20px;color:var(--muted);margin-top:2px}
+  table.svc td.desc{font-size:15px;line-height:23px;padding-right:24px;color:var(--ink)}
+  table.svc td.when{width:19%;font-size:14px;line-height:20px;color:var(--muted);padding-right:20px}
+  table.svc td.cost{width:16%;text-align:right;white-space:nowrap}
+  table.svc td.cost .p{font-family:var(--serif);font-size:22px;letter-spacing:-.01em;display:block}
+  table.svc td.cost .p small{font:400 12px var(--sans);color:var(--muted);display:block;margin-top:2px}
+  table.svc tr.anual td{background:linear-gradient(90deg,var(--clay) 0,var(--clay) 100%)}
+  table.svc tr.anual td:first-child{padding-left:14px}
+  table.svc tr.anual td.cost{padding-right:14px}
+  .caveat{font-size:14px;line-height:21px;color:var(--muted);max-width:70ch;margin-top:18px}
+
+  /* the rule */
+  .rulebox{background:var(--clay);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .rulebox .wrap{padding-block:clamp(48px,6vw,72px);display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,56px)}
+  .rulebox h3{font-size:24px;line-height:1.15;letter-spacing:-.015em;margin-bottom:10px}
+  .rulebox p{font-size:15px;line-height:23px;max-width:34ch}
+
+  .cta{padding-block:clamp(56px,7vw,96px);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:center}
+  .cta h2{font-size:clamp(30px,4vw,48px);line-height:1;letter-spacing:-.03em;max-width:16ch;text-wrap:balance}
+  .cta p{margin-top:16px;max-width:48ch}
+  .cta .actions{display:flex;gap:12px;flex-wrap:wrap;justify-self:end}
+
+  footer{border-top:1px solid var(--rule)}
+  footer .wrap{padding-block:36px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--muted)}
+  footer ul{display:flex;gap:22px;list-style:none}
+
+  @media (max-width:980px){
+    .page-head,.group-head,.cta{grid-template-columns:1fr}
+    .cta .actions{justify-self:start}
+    .life ol{grid-template-columns:1fr;border-left:0}
+    .life li{border-right:0;border-top:1px solid var(--rule);padding:14px 0}
+    .rulebox .wrap{grid-template-columns:1fr}
+    nav ul{display:none}
+    table.svc td.when{display:none}
+    table.svc td.name{width:40%}
+  }
+  @media (max-width:640px){
+    table.svc, table.svc tbody, table.svc tr, table.svc td{display:block;width:auto!important}
+    table.svc thead{display:none}
+    table.svc tr{padding:16px 0;border-bottom:1px solid var(--rule)}
+    table.svc td{padding:4px 0;border:0}
+    table.svc td.cost{text-align:left;margin-top:8px}
+    table.svc tr.anual td{background:transparent}
+    table.svc tr.anual{background:var(--clay);padding-inline:12px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="wordmark" href="index.html" aria-label="Solera">
+        <svg class="mark" viewBox="0 0 60 40" aria-hidden="true"><path d="M8 40 V22 A22 22 0 0 1 52 22 V40" fill="none" stroke="currentColor" stroke-width="5"/><rect x="28" y="24" width="4" height="16" fill="#B3623C"/></svg>
+        Solera
+      </a>
+      <ul>
+        <li><a href="index.html#year">What the year costs</a></li>
+        <li><a class="current" href="#">All services</a></li>
+        <li><a href="rental.html">Letting</a></li>
+      </ul>
+      <div>
+        <span class="lang"><a href="../solera-diensten.html">NL</a> &middot; <strong style="color:var(--ink)">EN</strong></span>
+        <a class="btn" href="index.html#call">Book a call</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap page-head">
+    <div>
+      <span class="eyebrow">All services</span>
+      <h1>Everything a house in Spain asks of you. With the amount.</h1>
+      <p>Solera Anual covers the four annual obligations. Around those sits a life: buying, inheriting, renovating, selling. This is the full list &mdash; what it is, when it applies, and what it costs.</p>
+    </div>
+    <div class="key">
+      <p><span class="pill in">Included</span> &nbsp;Part of Solera Anual &mdash; no separate invoice.</p>
+      <p><span class="pill fixed">Fixed fee</span> &nbsp;One price, up front, including VAT. Government and notary fees separate, always named.</p>
+      <p><span class="pill quote">Quote</span> &nbsp;Depends on the case. You get a figure before we start, not after.</p>
+    </div>
+  </div>
+
+  <div class="wrap life">
+    <ol>
+      <li><a href="#buying"><strong>Buying</strong><span>NIE, due diligence, notary, transfer-tax return</span></a></li>
+      <li><a href="#owning"><strong>Owning</strong><span>Modelo 210, IBI, wealth tax, comunidad, insurance</span></a></li>
+      <li><a href="#letting"><strong>Letting</strong><span>Licence, quarterly returns, rental bookkeeping, tourist tax</span></a></li>
+      <li><a href="#selling"><strong>Selling</strong><span>3% retention, plusval&iacute;a, energy certificate, refund</span></a></li>
+      <li><a href="#inheritance"><strong>Inheriting</strong><span>Spanish will, accepting an estate, inheritance tax, power of attorney</span></a></li>
+    </ol>
+  </div>
+
+  <!-- TAX -->
+  <section class="wrap group" id="owning">
+    <div class="group-head">
+      <h2>Tax and fiscal</h2>
+      <p>Spain taxes non-residents on ownership, on income, on wealth and on every transfer. Your own country is looking at the same house from the other side. We handle the Spanish side, and give your own adviser exactly the summary they need.</p>
+    </div>
+    <table class="svc">
+      <thead><tr><th>Service</th><th>What we do</th><th>When</th><th style="text-align:right">Cost</th></tr></thead>
+      <tbody>
+        <tr class="anual">
+          <td class="name"><strong>Modelo 210 &mdash; own use</strong><span>Non-resident income tax on a notional income</span></td>
+          <td class="desc">Calculated from the cadastral value, filed and paid by <em>domiciliaci&oacute;n</em>. Due even in a year with no letting at all.</td>
+          <td class="when">Annually, before 31 December</td>
+          <td class="cost"><span class="pill in">Included</span></td>
+        </tr>
+        <tr class="anual">
+          <td class="name"><strong>IBI and refuse charge</strong><span>Municipal property tax (<em>basura</em>)</span></td>
+          <td class="desc">Assessment checked, payment set up by direct debit, cadastral value monitored &mdash; so a revaluation reaches you in time, not inside the bill.</td>
+          <td class="when">Annually, varies by municipality</td>
+          <td class="cost"><span class="pill in">Included</span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Modelo 714 &mdash; wealth tax</strong><span><em>Impuesto sobre el Patrimonio</em></span></td>
+          <td class="desc">We test whether your Spanish assets exceed the regional allowance (Comunitat Valenciana: &euro;500,000) and file if they do. We warn you before a valuation crosses the line.</td>
+          <td class="when">Annually, April&ndash;June, only above the threshold</td>
+          <td class="cost"><span class="p num">&euro;240<small>per return</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Fiscal representative</strong><span><em>Representante fiscal</em></span></td>
+          <td class="desc">Solera as your official address for the Spanish tax authority. Required in some situations, sensible in all of them: letters from the <em>Agencia Tributaria</em> reach us, not an empty letterbox in Spain.</td>
+          <td class="when">Ongoing</td>
+          <td class="cost"><span class="p num">&euro;180<small>per year</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Summary for your home tax return</strong><span>For your own accountant or adviser</span></td>
+          <td class="desc">One page in January: cadastral value, Spanish tax paid, mortgage balance, rental income. Exactly what your own adviser needs to claim relief under the double-tax treaty between Spain and your country of residence.</td>
+          <td class="when">Annually, in January</td>
+          <td class="cost"><span class="p num">&euro;95<small>per year</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Appeals and correspondence</strong><span>Answering a <em>requerimiento</em> or an assessment</span></td>
+          <td class="desc">A letter from the tax office carries a ten-working-day deadline. We read it, explain what it says, and file the response or the appeal.</td>
+          <td class="when">As it arises</td>
+          <td class="cost"><span class="p num">&euro;160<small>per case, hourly rate named thereafter</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Tax check beforehand</strong><span>One hour, before or after the purchase</span></td>
+          <td class="desc">In whose name? Personally or through a company? What does it mean for tax at home, for inheritance tax, for a later sale? One conversation, one memo, in English.</td>
+          <td class="when">One-off</td>
+          <td class="cost"><span class="p num">&euro;220<small>incl. memo</small></span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="caveat">Whether you are resident in the EU/EEA changes the Spanish figures materially &mdash; the rate on rental income and on a later gain, and whether costs are deductible at all. We tell you which of the two regimes applies to you before quoting anything.</p>
+  </section>
+
+  <!-- LETTING -->
+  <section class="wrap group" id="letting">
+    <div class="group-head">
+      <h2>Letting, administration and bookkeeping</h2>
+      <p>As soon as there is rental income the return becomes quarterly, and the tax office wants the costs evidenced. We keep the books so that every euro can be traced &mdash; for Spain, and for your own return at home.</p>
+    </div>
+    <table class="svc">
+      <thead><tr><th>Service</th><th>What we do</th><th>When</th><th style="text-align:right">Cost</th></tr></thead>
+      <tbody>
+        <tr class="anual">
+          <td class="name"><strong>Licencia tur&iacute;stica</strong><span>Rental licence and registration</span></td>
+          <td class="desc">Your registration checked with the Generalitat, applied for where that is still possible, annual compliance check. We say so when it is no longer possible.</td>
+          <td class="when">Annually, by region</td>
+          <td class="cost"><span class="pill in">Included</span></td>
+        </tr>
+        <tr class="anual">
+          <td class="name"><strong>Modelo 210 &mdash; letting</strong><span>Quarterly return on rental income</span></td>
+          <td class="desc">Income and costs per quarter, filed and paid. If you are resident in the EU/EEA you may deduct expenses and the rate is 19%; outside the EU/EEA the rate is 24% on gross rent with no deduction. We apply whichever is yours, and say which.</td>
+          <td class="when">Quarterly, in the first 20 days of April, July, October and January</td>
+          <td class="cost"><span class="pill in">Included</span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Rental bookkeeping</strong><span>A ledger for the property</span></td>
+          <td class="desc">Every receipt and cost posted: rent, cleaning, comunidad, utilities, maintenance, depreciation. Quarterly overview in your dossier; annual overview in January.</td>
+          <td class="when">Ongoing</td>
+          <td class="cost"><span class="p num">&euro;35<small>per month</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Tourist tax and guest registration</strong><span><em>Registro de viajeros</em> (Guardia Civil / Polic&iacute;a)</span></td>
+          <td class="desc">The compulsory report of every guest within 24 hours, and the regional tourist tax. We link it to your booking calendar so it happens by itself.</td>
+          <td class="when">Per booking</td>
+          <td class="cost"><span class="p num">&euro;4<small>per booking</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Long-term tenancy agreement</strong><span>Drafted or reviewed, <em>LAU</em> or <em>temporada</em></span></td>
+          <td class="desc">A Spanish tenancy agreement under the current housing act, with the deposit lodged with the region as required, and an English note on each clause.</td>
+          <td class="when">For a new tenant</td>
+          <td class="cost"><span class="p num">&euro;290<small>per agreement</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Spanish bank account and payments</strong><span>Opening an account, setting up <em>domiciliaciones</em></span></td>
+          <td class="desc">Help opening a non-resident account and putting IBI, comunidad, water and electricity on direct debit. After that we keep an eye on what is actually taken.</td>
+          <td class="when">One-off, then ongoing</td>
+          <td class="cost"><span class="p num">&euro;140<small>one-off &middot; monitoring included in Anual</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Maintenance and trades</strong><span>Keyholding, breakdowns, quotes</span></td>
+          <td class="desc">One number for a leaking boiler or a dead air-conditioning unit. We get two quotes, summarised in English, and supervise the work. No mark-up on the tradesman's invoice.</td>
+          <td class="when">As it arises</td>
+          <td class="cost"><span class="p num">&euro;45<small>per hour, estimated in advance</small></span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="caveat">We do not do bookkeeping for a Spanish S.L. or for trading activity in Spain &mdash; that needs an <em>asesor&iacute;a</em> with its own licence. We refer you to a firm we work with, and stay your point of contact.</p>
+  </section>
+
+  <!-- LEGAL -->
+  <section class="wrap group" id="buying">
+    <div class="group-head">
+      <h2>Legal and notarial</h2>
+      <p>The moments when a Spanish signature does something irreversible: buying, selling, granting a power of attorney, inheriting. Our legal work is done by an <em>abogado</em> registered with the Colegio de Abogados de Alicante; Solera translates, schedules and watches the deadlines.</p>
+    </div>
+    <table class="svc">
+      <thead><tr><th>Service</th><th>What we do</th><th>When</th><th style="text-align:right">Cost</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="name"><strong>NIE number</strong><span><em>N&uacute;mero de Identidad de Extranjero</em></span></td>
+          <td class="desc">Applied for through the Spanish consulate in your own country or the police in Spain, including the appointment, form EX-15 and the fee. Without a NIE there is no notary, no bank and no contract.</td>
+          <td class="when">Before the purchase &middot; about 3 weeks</td>
+          <td class="cost"><span class="p num">&euro;120<small>per person, official fee separate (&euro;10)</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Pre-purchase due diligence</strong><span>Checks before you sign</span></td>
+          <td class="desc"><em>Nota simple</em> from the land registry, cadastre, mortgages and charges, debts to the comunidad, building permits, <em>c&eacute;dula de habitabilidad</em>, energy certificate. One report: buy, do not buy, or buy on these conditions.</td>
+          <td class="when">Before the <em>contrato de arras</em></td>
+          <td class="cost"><span class="p num">&euro;690<small>fixed, whatever the outcome</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Purchase conveyancing</strong><span><em>Arras</em>, notary, registration, taxes</span></td>
+          <td class="desc">Reservation and deposit contract reviewed, <em>escritura</em> at the notary (we attend, or sign under power of attorney), registration at the <em>Registro de la Propiedad</em>, the transfer-tax return (ITP, 10% in Valencia) or VAT plus AJD on a new build, and the transfer of water, electricity and IBI.</td>
+          <td class="when">From offer to keys &middot; 6&ndash;10 weeks</td>
+          <td class="cost"><span class="p num">1%<small>of the price, min. &euro;1,900 &middot; notary and registry separate</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Notarial power of attorney</strong><span><em>Poder notarial</em></span></td>
+          <td class="desc">So you do not have to fly out for every signature. We draft it, limited to what is actually needed, to be signed before a Spanish notary or before a notary at home with an apostille.</td>
+          <td class="when">One-off</td>
+          <td class="cost"><span class="p num">&euro;190<small>excl. notary fees (approx. &euro;60&ndash;90)</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Comunidad matters</strong><span>Meetings, disputes, special levies</span></td>
+          <td class="desc">We represent you at the annual meeting under proxy, vote to your instruction, and watch your three-month window to challenge a resolution you disagree with.</td>
+          <td class="when">Annually &middot; and as it arises</td>
+          <td class="cost"><span class="p num">&euro;110<small>per meeting &middot; disputes on quote</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Renovation and permits</strong><span><em>Licencia de obra</em>, <em>declaraci&oacute;n responsable</em></span></td>
+          <td class="desc">Which permit your work needs, the application to the town hall, and afterwards the update of the cadastral record &mdash; so the new square metres are on the <em>escritura</em> when you sell.</td>
+          <td class="when">Before the work starts</td>
+          <td class="cost"><span class="pill quote">Quote</span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Disputes and debt recovery</strong><span>Tenant, builder, neighbours, seller</span></td>
+          <td class="desc">A letter first, proceedings only after. You get the prospects of success and the cost of each step, in euros, before you decide anything.</td>
+          <td class="when">As it arises</td>
+          <td class="cost"><span class="pill quote">Quote</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SELLING -->
+  <section class="wrap group" id="selling">
+    <div class="group-head">
+      <h2>Selling</h2>
+      <p>On a sale the buyer withholds 3% of the price for the Spanish tax authority, and the town hall taxes the increase in land value. Both can be calculated before you agree a price &mdash; and anything over-withheld can be reclaimed.</p>
+    </div>
+    <table class="svc">
+      <thead><tr><th>Service</th><th>What we do</th><th>When</th><th style="text-align:right">Cost</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="name"><strong>Net-proceeds calculation</strong><span>What do you actually keep?</span></td>
+          <td class="desc">Capital gains tax &mdash; 19% if you are resident in the EU/EEA, 24% if you are not &mdash; on the purchase price, costs and improvements, plus the 3% retention, the <em>plusval&iacute;a municipal</em> and agent's fees. One page, before you set the price.</td>
+          <td class="when">Before going to market</td>
+          <td class="cost"><span class="p num">&euro;180<small>one-off</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Sale conveyancing</strong><span><em>Arras</em>, notary, completion</span></td>
+          <td class="desc">Contract reviewed, energy certificate and <em>c&eacute;dula</em> arranged, <em>escritura</em> at the notary, comunidad and utilities settled, proceeds to your account. We do not sell &mdash; your agent does that; we make sure what you sign is right.</td>
+          <td class="when">From offer to notary</td>
+          <td class="cost"><span class="p num">&euro;1,400<small>fixed &middot; notary separate</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Modelo 210 &mdash; sale and 3% refund</strong><span>Modelo 211 checked, refund claimed</span></td>
+          <td class="desc">The gain declared within four months of completion, set against the 3% the buyer paid over, and the difference reclaimed &mdash; that takes six to twelve months and is otherwise often forgotten.</td>
+          <td class="when">Within 4 months of the sale</td>
+          <td class="cost"><span class="p num">&euro;320<small>incl. chasing the refund</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Plusval&iacute;a municipal</strong><span>Municipal tax on the rise in land value</span></td>
+          <td class="desc">Calculated under both permitted methods (actual gain or objective), the lower one chosen, filed within 30 days. At a loss: we demonstrate that nothing is due.</td>
+          <td class="when">Within 30 days of the sale</td>
+          <td class="cost"><span class="p num">&euro;150<small>per return</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Energy certificate</strong><span><em>Certificado de eficiencia energ&eacute;tica</em></span></td>
+          <td class="desc">Compulsory for both selling and letting. An approved assessor visits the property; the certificate is registered with the region. Valid for ten years.</td>
+          <td class="when">Before selling or letting</td>
+          <td class="cost"><span class="p num">&euro;150<small>incl. registration</small></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- INHERITANCE -->
+  <section class="wrap group" id="inheritance" style="border-bottom:0">
+    <div class="group-head">
+      <h2>Inheriting and passing on</h2>
+      <p>On death a Spanish house falls under Spanish inheritance tax whatever your nationality, and the estate is accepted before a Spanish notary. With a Spanish will and a choice of your national law, that becomes a matter of weeks rather than a year.</p>
+    </div>
+    <table class="svc">
+      <thead><tr><th>Service</th><th>What we do</th><th>When</th><th style="text-align:right">Cost</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="name"><strong>Spanish will</strong><span>Limited to the Spanish estate, with a choice of law</span></td>
+          <td class="desc">A will before a Spanish notary covering only your Spanish assets, leaving your will at home untouched &mdash; with the choice of the law of your nationality, which Spain applies under EU Succession Regulation 650/2012 whatever your nationality. We draft; you sign with a certified English translation alongside.</td>
+          <td class="when">Shortly after the purchase</td>
+          <td class="cost"><span class="p num">&euro;260<small>per person &middot; notary approx. &euro;80 separate</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Winding up an estate</strong><span><em>Aceptaci&oacute;n de herencia</em> and registration</span></td>
+          <td class="desc">Death certificate and the register of wills, grant of heirship, deed of acceptance at the notary, the inheritance tax return (Modelo 650 &mdash; in Valencia with generous allowances for children and spouse), and registration in the heirs' names. Deadline: six months.</td>
+          <td class="when">Within 6 months of death</td>
+          <td class="cost"><span class="p num">&euro;1,650<small>fixed for one property &middot; tax and notary separate</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Lifetime gift</strong><span>Transfer to children, Modelo 651</span></td>
+          <td class="desc">Often better than inheriting, sometimes not &mdash; in both countries. The calculation first, the notary after. Includes Spanish gift tax and the effect on your position at home.</td>
+          <td class="when">When you choose</td>
+          <td class="cost"><span class="p num">&euro;220<small>calculation &middot; transfer on quote</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>Lasting power of attorney</strong><span>For when you can no longer arrange it yourself</span></td>
+          <td class="desc">A Spanish power of attorney that survives loss of capacity, so your spouse or children can manage or sell the house without going before a Spanish judge.</td>
+          <td class="when">One-off</td>
+          <td class="cost"><span class="p num">&euro;240<small>excl. notary</small></span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="caveat">All amounts include 21% VAT and apply to one property in the names of up to two people. Government, notary and registry fees and the tax itself are always on top &mdash; named in advance, never discovered afterwards.</p>
+  </section>
+
+  <section class="rulebox">
+    <div class="wrap">
+      <div><h3>The figure is there before you call.</h3><p>Trust across a border is built in euros. If something is on quote, you get that quote before we work an hour.</p></div>
+      <div><h3>We say so when something cannot be done.</h3><p>A licence that is no longer issued, an appeal with no prospect: you hear it, and you do not pay for the attempt.</p></div>
+      <div><h3>One dossier, one number.</h3><p>Tax, notary or comunidad: it lands in the same dossier, with the same person on the phone. In English.</p></div>
+    </div>
+  </section>
+
+  <div class="wrap cta">
+    <div>
+      <h2>Not sure what you need?</h2>
+      <p>Tell us where the house is and what is going on. In twenty minutes you will know which three lines on this page apply to you, and what they cost together.</p>
+    </div>
+    <div class="actions">
+      <a class="btn primary" href="index.html#call">Book a call</a>
+      <a class="btn" href="index.html#year">See Solera Anual</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="wordmark" style="font-size:20px">Solera</span>
+    <ul>
+      <li><a href="#">Solera Anual</a></li>
+      <li><a href="#">All services</a></li>
+      <li><a href="#">About us</a></li>
+      <li><a href="#">Privacy</a></li>
+    </ul>
+    <span>Solera Eigenarenservice S.L. &middot; D&eacute;nia, Alicante</span>
+  </div>
+</footer>
+</body>
+</html>

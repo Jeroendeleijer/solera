@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Solera — Verhuur uw huis</title>
+<title>Solera — Let your house</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300..700;1,300..500&family=Petrona:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -200,15 +200,15 @@
         Solera
       </a>
       <ul>
-        <li><a href="index.html#jaar">Wat het jaar kost</a></li>
-        <li><a href="solera-diensten.html">Alle diensten</a></li>
-        <li><a href="index.html#verplichtingen">Belasting</a></li>
-        <li><a href="index.html#verplichtingen">Verzekering</a></li>
-        <li><a class="current" href="#">Verhuur</a></li>
+        <li><a href="index.html#year">What the year costs</a></li>
+        <li><a href="services.html">All services</a></li>
+        <li><a href="index.html#obligations">Tax</a></li>
+        <li><a href="index.html#obligations">Insurance</a></li>
+        <li><a class="current" href="#">Letting</a></li>
       </ul>
       <div>
-        <span class="lang"><strong style="color:var(--ink)">NL</strong> &middot; <a href="en/rental.html">EN</a></span>
-        <a class="btn" href="index.html#gesprek">Plan een gesprek</a>
+        <span class="lang"><a href="../solera-verhuur.html">NL</a> &middot; <strong style="color:var(--ink)">EN</strong></span>
+        <a class="btn" href="index.html#call">Book a call</a>
       </div>
     </nav>
   </div>
@@ -217,19 +217,19 @@
 <main class="wrap">
   <div class="page-head">
     <div>
-      <span class="eyebrow">Verhuur · voor eigenaren met Solera Anual</span>
-      <h1>Zet uw huis te huur. Wij zorgen dat het legaal blijft.</h1>
-      <p>Vul de woning één keer in. Wij controleren de verhuurvergunning, zetten de toeristenbelasting op de aangifte en houden de kalender bij. U bepaalt de prijs en wie er komt.</p>
+      <span class="eyebrow">Letting &middot; for owners on Solera Anual</span>
+      <h1>Put your house up for let. We keep it legal.</h1>
+      <p>Fill the property in once. We check the rental licence, put the tourist tax on the return and keep the calendar. You set the price and who comes.</p>
     </div>
-    <ol class="steps" aria-label="Voortgang">
-      <li class="done">Woning</li>
-      <li class="done">Adres</li>
-      <li class="now">Voorzieningen</li>
-      <li>Foto's</li>
-      <li>Huisregels</li>
-      <li>Beschikbaarheid</li>
-      <li>Prijzen</li>
-      <li>Vergunning</li>
+    <ol class="steps" aria-label="Progress">
+      <li class="done">Property</li>
+      <li class="done">Address</li>
+      <li class="now">Amenities</li>
+      <li>Photos</li>
+      <li>House rules</li>
+      <li>Availability</li>
+      <li>Pricing</li>
+      <li>Licence</li>
     </ol>
   </div>
 
@@ -237,207 +237,207 @@
   <form id="listing" onsubmit="return false">
 
     <fieldset>
-      <div class="sec-head"><span class="n">1 van 8</span><h2>De woning</h2></div>
+      <div class="sec-head"><span class="n">1 of 8</span><h2>The property</h2></div>
       <div class="stack">
         <div class="field">
           <span class="lbl">Type</span>
           <div class="seg" role="radiogroup">
-            <label><input type="radio" name="type" value="Appartement" checked><span>Appartement</span></label>
-            <label><input type="radio" name="type" value="Huis"><span>Huis</span></label>
+            <label><input type="radio" name="type" value="Apartment" checked><span>Apartment</span></label>
+            <label><input type="radio" name="type" value="House"><span>House</span></label>
             <label><input type="radio" name="type" value="Villa"><span>Villa</span></label>
             <label><input type="radio" name="type" value="Finca"><span>Finca</span></label>
           </div>
         </div>
         <div class="field">
-          <label for="titel">Naam van de woning, zoals gasten die zien</label>
-          <input id="titel" data-pv="title" value="Appartement met zeezicht aan de Marina" maxlength="70">
-          <span class="help">Zeg wat het is en waar het staat. Geen "droomappartement".</span>
+          <label for="title">The name of the property, as guests see it</label>
+          <input id="title" data-pv="title" value="Apartment with sea view at the Marina" maxlength="70">
+          <span class="help">Say what it is and where it is. Not &ldquo;dream apartment&rdquo;.</span>
         </div>
         <div class="grid4">
-          <div class="field"><span class="lbl">Slaapkamers</span><div class="counter"><button type="button" data-dec="bed">−</button><output id="bed" data-pv="bed">2</output><button type="button" data-inc="bed">+</button></div></div>
-          <div class="field"><span class="lbl">Badkamers</span><div class="counter"><button type="button" data-dec="bath">−</button><output id="bath" data-pv="bath">1</output><button type="button" data-inc="bath">+</button></div></div>
-          <div class="field"><span class="lbl">Bedden</span><div class="counter"><button type="button" data-dec="beds">−</button><output id="beds">3</output><button type="button" data-inc="beds">+</button></div></div>
-          <div class="field"><span class="lbl">Max. gasten</span><div class="counter"><button type="button" data-dec="guests">−</button><output id="guests" data-pv="guests">4</output><button type="button" data-inc="guests">+</button></div></div>
+          <div class="field"><span class="lbl">Bedrooms</span><div class="counter"><button type="button" data-dec="bed">&minus;</button><output id="bed" data-pv="bed">2</output><button type="button" data-inc="bed">+</button></div></div>
+          <div class="field"><span class="lbl">Bathrooms</span><div class="counter"><button type="button" data-dec="bath">&minus;</button><output id="bath" data-pv="bath">1</output><button type="button" data-inc="bath">+</button></div></div>
+          <div class="field"><span class="lbl">Beds</span><div class="counter"><button type="button" data-dec="beds">&minus;</button><output id="beds">3</output><button type="button" data-inc="beds">+</button></div></div>
+          <div class="field"><span class="lbl">Max. guests</span><div class="counter"><button type="button" data-dec="guests">&minus;</button><output id="guests" data-pv="guests">4</output><button type="button" data-inc="guests">+</button></div></div>
         </div>
         <div class="grid3">
-          <div class="field with-unit"><label for="m2">Woonoppervlak</label><input id="m2" data-pv="m2" value="78" inputmode="numeric"><span>m²</span></div>
-          <div class="field with-unit"><label for="terras">Terras / tuin</label><input id="terras" value="14" inputmode="numeric"><span>m²</span></div>
-          <div class="field"><label for="verdieping">Verdieping</label><select id="verdieping"><option>Begane grond</option><option>1e</option><option selected>2e</option><option>3e of hoger</option><option>Meerdere verdiepingen</option></select></div>
+          <div class="field with-unit"><label for="m2">Floor area</label><input id="m2" data-pv="m2" value="78" inputmode="numeric"><span>m&sup2;</span></div>
+          <div class="field with-unit"><label for="terrace">Terrace / garden</label><input id="terrace" value="14" inputmode="numeric"><span>m&sup2;</span></div>
+          <div class="field"><label for="floor">Floor</label><select id="floor"><option>Ground floor</option><option>1st</option><option selected>2nd</option><option>3rd or higher</option><option>Multiple floors</option></select></div>
         </div>
         <div class="field">
-          <label for="omschr">Omschrijving</label>
-          <textarea id="omschr">Licht appartement op de tweede verdieping, honderd meter van de jachthaven van Dénia. Twee slaapkamers, een terras op het zuiden en zicht op zee vanuit de woonkamer. Bakker en supermarkt om de hoek; het strand van Les Marines op tien minuten lopen.</textarea>
-          <span class="help">Schrijf zoals u het aan een vriend zou uitleggen. Wij vertalen naar Engels en Spaans.</span>
+          <label for="descr">Description</label>
+          <textarea id="descr">A bright second-floor apartment, a hundred metres from the marina in D&eacute;nia. Two bedrooms, a south-facing terrace and a view of the sea from the living room. Baker and supermarket round the corner; the beach at Les Marines is ten minutes on foot.</textarea>
+          <span class="help">Write it the way you would explain it to a friend. We translate into Dutch and Spanish.</span>
         </div>
       </div>
     </fieldset>
 
     <fieldset>
-      <div class="sec-head"><span class="n">2 van 8</span><h2>Adres</h2><span class="hint">Gasten zien de straat pas na de boeking</span></div>
+      <div class="sec-head"><span class="n">2 of 8</span><h2>Address</h2><span class="hint">Guests only see the street after booking</span></div>
       <div class="stack">
         <div class="grid2">
-          <div class="field"><label for="straat">Straat en nummer</label><input id="straat" value="Calle Marqués de Campo 14, 2º B"></div>
-          <div class="field"><label for="urb">Urbanización / complex (optioneel)</label><input id="urb" placeholder="bijv. Residencial Las Marinas"></div>
+          <div class="field"><label for="street">Street and number</label><input id="street" value="Calle Marqu&eacute;s de Campo 14, 2&ordm; B"></div>
+          <div class="field"><label for="urb">Urbanizaci&oacute;n / complex (optional)</label><input id="urb" placeholder="e.g. Residencial Las Marinas"></div>
         </div>
         <div class="grid3">
           <div class="field"><label for="pc">Postcode</label><input id="pc" value="03700"></div>
-          <div class="field"><label for="plaats">Plaats</label><input id="plaats" data-pv="place" value="Dénia"></div>
-          <div class="field"><label for="prov">Provincie</label><select id="prov" data-pv="prov"><option selected>Alicante</option><option>Valencia</option><option>Castellón</option><option>Murcia</option><option>Málaga</option><option>Illes Balears</option></select></div>
+          <div class="field"><label for="place">Town</label><input id="place" data-pv="place" value="D&eacute;nia"></div>
+          <div class="field"><label for="prov">Province</label><select id="prov" data-pv="prov"><option selected>Alicante</option><option>Valencia</option><option>Castell&oacute;n</option><option>Murcia</option><option>M&aacute;laga</option><option>Illes Balears</option></select></div>
         </div>
         <div class="field">
           <label for="ref">Referencia catastral</label>
-          <input id="ref" placeholder="20 tekens, staat op uw IBI-aanslag">
-          <span class="help">Nodig voor de vergunning en de Modelo 210. Weet u het niet? Laat leeg — wij zoeken het op.</span>
+          <input id="ref" placeholder="20 characters, shown on your IBI bill">
+          <span class="help">Needed for the licence and the Modelo 210. Don't know it? Leave it blank &mdash; we'll look it up.</span>
         </div>
       </div>
     </fieldset>
 
     <fieldset>
-      <div class="sec-head"><span class="n">3 van 8</span><h2>Voorzieningen</h2></div>
+      <div class="sec-head"><span class="n">3 of 8</span><h2>Amenities</h2></div>
       <div class="amen" id="amen">
         <label><input type="checkbox" value="Wifi" checked>Wifi</label>
-        <label><input type="checkbox" value="Airco" checked>Airconditioning</label>
-        <label><input type="checkbox" value="Verwarming">Verwarming</label>
-        <label><input type="checkbox" value="Zwembad" checked>Zwembad (gedeeld)</label>
-        <label><input type="checkbox" value="Privézwembad">Privézwembad</label>
-        <label><input type="checkbox" value="Parkeren" checked>Parkeerplaats</label>
-        <label><input type="checkbox" value="Terras" checked>Terras of balkon</label>
-        <label><input type="checkbox" value="Zeezicht" checked>Zeezicht</label>
+        <label><input type="checkbox" value="Air conditioning" checked>Air conditioning</label>
+        <label><input type="checkbox" value="Heating">Heating</label>
+        <label><input type="checkbox" value="Pool" checked>Pool (shared)</label>
+        <label><input type="checkbox" value="Private pool">Private pool</label>
+        <label><input type="checkbox" value="Parking" checked>Parking space</label>
+        <label><input type="checkbox" value="Terrace" checked>Terrace or balcony</label>
+        <label><input type="checkbox" value="Sea view" checked>Sea view</label>
         <label><input type="checkbox" value="Lift" checked>Lift</label>
-        <label><input type="checkbox" value="Wasmachine" checked>Wasmachine</label>
-        <label><input type="checkbox" value="Vaatwasser">Vaatwasser</label>
+        <label><input type="checkbox" value="Washing machine" checked>Washing machine</label>
+        <label><input type="checkbox" value="Dishwasher">Dishwasher</label>
         <label><input type="checkbox" value="Oven">Oven</label>
-        <label><input type="checkbox" value="Tv">Tv met streaming</label>
+        <label><input type="checkbox" value="TV">TV with streaming</label>
         <label><input type="checkbox" value="Barbecue">Barbecue</label>
-        <label><input type="checkbox" value="Kluis">Kluisje</label>
-        <label><input type="checkbox" value="Huisdieren">Huisdieren welkom</label>
-        <label><input type="checkbox" value="Kinderbed">Kinderbed en -stoel</label>
-        <label><input type="checkbox" value="Toegankelijk">Rolstoeltoegankelijk</label>
+        <label><input type="checkbox" value="Safe">Safe</label>
+        <label><input type="checkbox" value="Pets">Pets welcome</label>
+        <label><input type="checkbox" value="Cot">Cot and high chair</label>
+        <label><input type="checkbox" value="Accessible">Wheelchair accessible</label>
       </div>
     </fieldset>
 
     <fieldset>
-      <div class="sec-head"><span class="n">4 van 8</span><h2>Foto's</h2><span class="hint">Minimaal 8 · liggend · geen tekst in beeld</span></div>
+      <div class="sec-head"><span class="n">4 of 8</span><h2>Photos</h2><span class="hint">At least 8 &middot; landscape &middot; no text in the image</span></div>
       <div class="drop">
-        <strong>Sleep foto's hierheen of kies bestanden</strong>
-        JPG of HEIC, minimaal 1600 px breed. De eerste foto is de omslag; sleep om de volgorde te wijzigen.
+        <strong>Drag photos here or choose files</strong>
+        JPG or HEIC, at least 1600 px wide. The first photo is the cover; drag to reorder.
       </div>
       <div class="thumbs">
-        <div class="thumb cover"><span>Woonkamer</span></div>
-        <div class="thumb"><span>Terras</span></div>
-        <div class="thumb"><span>Slaapkamer 1</span></div>
-        <div class="thumb"><span>Keuken</span></div>
-        <div class="thumb"><span>Badkamer</span></div>
-        <div class="thumb"><span>Zwembad</span></div>
-        <div class="thumb add">+ Foto toevoegen</div>
+        <div class="thumb cover"><span>Living room</span></div>
+        <div class="thumb"><span>Terrace</span></div>
+        <div class="thumb"><span>Bedroom 1</span></div>
+        <div class="thumb"><span>Kitchen</span></div>
+        <div class="thumb"><span>Bathroom</span></div>
+        <div class="thumb"><span>Pool</span></div>
+        <div class="thumb add">+ Add photo</div>
       </div>
     </fieldset>
 
     <fieldset>
-      <div class="sec-head"><span class="n">5 van 8</span><h2>Huisregels</h2></div>
+      <div class="sec-head"><span class="n">5 of 8</span><h2>House rules</h2></div>
       <div class="grid3" style="margin-bottom:18px">
-        <div class="field"><label for="cin">Inchecken vanaf</label><input id="cin" type="time" value="16:00"></div>
-        <div class="field"><label for="cout">Uitchecken vóór</label><input id="cout" type="time" value="10:00"></div>
-        <div class="field"><label for="sleutel">Sleuteloverdracht</label><select id="sleutel"><option>Sleutelkluis bij de deur</option><option selected>Persoonlijk door Solera</option><option>Door de eigenaar</option></select></div>
+        <div class="field"><label for="cin">Check-in from</label><input id="cin" type="time" value="16:00"></div>
+        <div class="field"><label for="cout">Check-out before</label><input id="cout" type="time" value="10:00"></div>
+        <div class="field"><label for="keys">Key handover</label><select id="keys"><option>Key safe at the door</option><option selected>In person by Solera</option><option>By the owner</option></select></div>
       </div>
       <div class="rules">
-        <div class="rule-row"><div>Roken binnen<span class="sub"> — buiten op het terras wel</span></div><label class="switch"><input type="checkbox"><i></i></label></div>
-        <div class="rule-row"><div>Feesten en evenementen</div><label class="switch"><input type="checkbox"><i></i></label></div>
-        <div class="rule-row"><div>Huisdieren<span class="sub"> — geldt ook voor de verzekering</span></div><label class="switch"><input type="checkbox"><i></i></label></div>
-        <div class="rule-row"><div>Kinderen welkom</div><label class="switch"><input type="checkbox" checked><i></i></label></div>
-        <div class="rule-row"><div>Stilte na 23:00<span class="sub"> — verplicht in de meeste comunidades</span></div><label class="switch"><input type="checkbox" checked><i></i></label></div>
+        <div class="rule-row"><div>Smoking indoors<span class="sub"> &mdash; outside on the terrace is fine</span></div><label class="switch"><input type="checkbox"><i></i></label></div>
+        <div class="rule-row"><div>Parties and events</div><label class="switch"><input type="checkbox"><i></i></label></div>
+        <div class="rule-row"><div>Pets<span class="sub"> &mdash; this affects the insurance too</span></div><label class="switch"><input type="checkbox"><i></i></label></div>
+        <div class="rule-row"><div>Children welcome</div><label class="switch"><input type="checkbox" checked><i></i></label></div>
+        <div class="rule-row"><div>Quiet after 23:00<span class="sub"> &mdash; required in most comunidades</span></div><label class="switch"><input type="checkbox" checked><i></i></label></div>
       </div>
       <div class="field" style="margin-top:18px">
-        <label for="extra">Extra regels of aanwijzingen voor gasten</label>
-        <textarea id="extra" style="min-height:80px">Zonnescherm 's avonds inrollen bij wind. De comunidad staat geen handdoeken over de balustrade toe.</textarea>
+        <label for="extra">Extra rules or notes for guests</label>
+        <textarea id="extra" style="min-height:80px">Roll the awning in at night if it is windy. The comunidad does not allow towels over the balcony rail.</textarea>
       </div>
     </fieldset>
 
     <fieldset>
-      <div class="sec-head"><span class="n">6 van 8</span><h2>Beschikbaarheid</h2><span class="hint">Klik een dag om hem voor uzelf te houden</span></div>
+      <div class="sec-head"><span class="n">6 of 8</span><h2>Availability</h2><span class="hint">Click a day to keep it for yourself</span></div>
       <div class="grid2" style="align-items:start">
         <div>
           <div class="cal">
-            <div class="cal-head"><button type="button" aria-label="Vorige maand">‹</button><span>juli 2027</span><button type="button" aria-label="Volgende maand">›</button></div>
+            <div class="cal-head"><button type="button" aria-label="Previous month">&lsaquo;</button><span>July 2027</span><button type="button" aria-label="Next month">&rsaquo;</button></div>
             <div class="cal-grid" id="cal"></div>
           </div>
-          <div class="legend"><span class="l-own">Eigen gebruik</span><span class="l-booked">Geboekt</span></div>
+          <div class="legend"><span class="l-own">Own use</span><span class="l-booked">Booked</span></div>
         </div>
         <div class="stack">
           <div class="field">
-            <label for="minstay">Minimaal verblijf</label>
-            <select id="minstay"><option>2 nachten</option><option>3 nachten</option><option selected>5 nachten</option><option>7 nachten</option><option>14 nachten</option></select>
+            <label for="minstay">Minimum stay</label>
+            <select id="minstay"><option>2 nights</option><option>3 nights</option><option selected>5 nights</option><option>7 nights</option><option>14 nights</option></select>
           </div>
           <div class="field">
-            <label for="wissel">Wisseldag in het hoogseizoen</label>
-            <select id="wissel"><option>Elke dag</option><option selected>Zaterdag</option><option>Zondag</option></select>
+            <label for="changeover">Changeover day in high season</label>
+            <select id="changeover"><option>Any day</option><option selected>Saturday</option><option>Sunday</option></select>
           </div>
           <div class="field">
-            <label for="buffer">Dagen tussen twee boekingen</label>
-            <select id="buffer"><option>0</option><option selected>1 — voor schoonmaak</option><option>2</option></select>
+            <label for="buffer">Days between two bookings</label>
+            <select id="buffer"><option>0</option><option selected>1 &mdash; for cleaning</option><option>2</option></select>
           </div>
           <div class="field">
-            <label for="sync">Kalender synchroniseren</label>
-            <input id="sync" placeholder="Plak de iCal-link van Airbnb of Booking">
-            <span class="help">Boekingen van elders verschijnen dan hier, zodat u nooit dubbel verhuurt.</span>
+            <label for="sync">Sync calendar</label>
+            <input id="sync" placeholder="Paste the iCal link from Airbnb or Booking">
+            <span class="help">Bookings from elsewhere then appear here, so you never double-let.</span>
           </div>
         </div>
       </div>
     </fieldset>
 
     <fieldset>
-      <div class="sec-head"><span class="n">7 van 8</span><h2>Prijzen</h2><span class="hint">Per nacht, in euro's, inclusief btw</span></div>
+      <div class="sec-head"><span class="n">7 of 8</span><h2>Pricing</h2><span class="hint">Per night, in euros, including VAT</span></div>
       <div class="seasons">
-        <div class="season" style="border-bottom:0;padding-bottom:6px;color:var(--muted);font-size:13px"><span>Seizoen</span><span>Per nacht</span><span>Weekend-toeslag</span></div>
-        <div class="season"><div class="name">Laagseizoen<span>1 nov – 31 mrt</span></div><div class="field with-euro"><input data-pv="low" value="95" inputmode="numeric"><span>€</span></div><div class="field with-euro"><input value="0" inputmode="numeric"><span>€</span></div></div>
-        <div class="season"><div class="name">Middenseizoen<span>1 apr – 30 jun · 1 sep – 31 okt</span></div><div class="field with-euro"><input value="140" inputmode="numeric"><span>€</span></div><div class="field with-euro"><input value="15" inputmode="numeric"><span>€</span></div></div>
-        <div class="season"><div class="name">Hoogseizoen<span>1 jul – 31 aug · Pasen · Kerst</span></div><div class="field with-euro"><input data-pv="high" value="215" inputmode="numeric"><span>€</span></div><div class="field with-euro"><input value="25" inputmode="numeric"><span>€</span></div></div>
+        <div class="season" style="border-bottom:0;padding-bottom:6px;color:var(--muted);font-size:13px"><span>Season</span><span>Per night</span><span>Weekend supplement</span></div>
+        <div class="season"><div class="name">Low season<span>1 Nov &ndash; 31 Mar</span></div><div class="field with-euro"><input data-pv="low" value="95" inputmode="numeric"><span>&euro;</span></div><div class="field with-euro"><input value="0" inputmode="numeric"><span>&euro;</span></div></div>
+        <div class="season"><div class="name">Mid season<span>1 Apr &ndash; 30 Jun &middot; 1 Sep &ndash; 31 Oct</span></div><div class="field with-euro"><input value="140" inputmode="numeric"><span>&euro;</span></div><div class="field with-euro"><input value="15" inputmode="numeric"><span>&euro;</span></div></div>
+        <div class="season"><div class="name">High season<span>1 Jul &ndash; 31 Aug &middot; Easter &middot; Christmas</span></div><div class="field with-euro"><input data-pv="high" value="215" inputmode="numeric"><span>&euro;</span></div><div class="field with-euro"><input value="25" inputmode="numeric"><span>&euro;</span></div></div>
       </div>
       <div class="fees" style="margin-top:22px">
-        <div class="fee"><div>Schoonmaakkosten<span class="sub">Eenmalig per verblijf</span></div><div class="field with-euro"><input value="85" inputmode="numeric"><span>€</span></div></div>
-        <div class="fee"><div>Borg<span class="sub">Binnen 7 dagen na vertrek terug</span></div><div class="field with-euro"><input value="300" inputmode="numeric"><span>€</span></div></div>
-        <div class="fee"><div>Toeristenbelasting<span class="sub">Comunitat Valenciana — wij zetten dit op de aangifte</span></div><div style="font-size:15px;color:var(--muted);text-align:right">Automatisch</div></div>
-        <div class="fee"><div>Korting bij 7+ nachten</div><div class="field with-unit"><input value="10" inputmode="numeric"><span>%</span></div></div>
-        <div class="fee"><div>Korting bij 28+ nachten</div><div class="field with-unit"><input value="25" inputmode="numeric"><span>%</span></div></div>
+        <div class="fee"><div>Cleaning fee<span class="sub">Once per stay</span></div><div class="field with-euro"><input value="85" inputmode="numeric"><span>&euro;</span></div></div>
+        <div class="fee"><div>Deposit<span class="sub">Returned within 7 days of departure</span></div><div class="field with-euro"><input value="300" inputmode="numeric"><span>&euro;</span></div></div>
+        <div class="fee"><div>Tourist tax<span class="sub">Comunitat Valenciana &mdash; we put this on the return</span></div><div style="font-size:15px;color:var(--muted);text-align:right">Automatic</div></div>
+        <div class="fee"><div>Discount for 7+ nights</div><div class="field with-unit"><input value="10" inputmode="numeric"><span>%</span></div></div>
+        <div class="fee"><div>Discount for 28+ nights</div><div class="field with-unit"><input value="25" inputmode="numeric"><span>%</span></div></div>
       </div>
     </fieldset>
 
     <fieldset>
-      <div class="sec-head"><span class="n">8 van 8</span><h2>Verhuurvergunning</h2></div>
+      <div class="sec-head"><span class="n">8 of 8</span><h2>Rental licence</h2></div>
       <div class="licence">
-        <label class="opt"><input type="radio" name="lic" value="have" checked data-pv="lic"><div><strong>Ik heb een licencia turística</strong><span>Vul het nummer in; wij controleren de registratie bij de Generalitat en zetten het op elke advertentie, zoals de wet vereist.</span>
+        <label class="opt"><input type="radio" name="lic" value="have" checked data-pv="lic"><div><strong>I have a licencia tur&iacute;stica</strong><span>Enter the number; we check the registration with the Generalitat and put it on every listing, as the law requires.</span>
           <div class="field" style="margin-top:12px;max-width:320px"><input id="licnr" value="VT-482116-A" placeholder="VT-000000-A"></div></div></label>
-        <label class="opt"><input type="radio" name="lic" value="need" data-pv="lic"><div><strong>Nog geen vergunning</strong><span>Wij vragen hem aan waar dat nog kan (in Dénia en Jávea meestal wel, in delen van Alicante-stad niet meer) en zeggen het eerlijk als het niet lukt. Tot die tijd blijft de woning offline.</span></div></label>
-        <label class="opt"><input type="radio" name="lic" value="unsure" data-pv="lic"><div><strong>Weet ik niet</strong><span>Wij zoeken het uit op basis van de referencia catastral. Meestal binnen drie werkdagen.</span></div></label>
+        <label class="opt"><input type="radio" name="lic" value="need" data-pv="lic"><div><strong>No licence yet</strong><span>We apply for one where that is still possible (usually yes in D&eacute;nia and J&aacute;vea, no longer in parts of Alicante city) and tell you honestly if it cannot be done. Until then the property stays offline.</span></div></label>
+        <label class="opt"><input type="radio" name="lic" value="unsure" data-pv="lic"><div><strong>I don't know</strong><span>We find out from the referencia catastral. Usually within three working days.</span></div></label>
       </div>
     </fieldset>
 
     <div class="actions">
-      <button class="btn primary" type="submit">Plaats de woning</button>
-      <button class="btn" type="button">Bewaar als concept</button>
-      <p class="note">Plaatsen betekent: wij controleren de vergunning en de verzekering, en zetten de woning live zodra beide kloppen. U krijgt daar bericht van — in het Nederlands, met wat het kost.</p>
+      <button class="btn primary" type="submit">Publish the property</button>
+      <button class="btn" type="button">Save as draft</button>
+      <p class="note">Publishing means: we check the licence and the insurance, and put the property live once both are right. You get word of that &mdash; in English, with what it costs.</p>
     </div>
   </form>
 
   <aside>
-    <div class="preview" aria-label="Voorbeeld van de advertentie">
-      <div class="pv-photo"><span class="tag">Zo zien gasten het</span></div>
+    <div class="preview" aria-label="Preview of the listing">
+      <div class="pv-photo"><span class="tag">This is what guests see</span></div>
       <div class="pv-body">
-        <div class="pv-loc"><span id="pv-place">Dénia</span>, <span id="pv-prov">Alicante</span></div>
-        <h3 id="pv-title">Appartement met zeezicht aan de Marina</h3>
-        <div class="pv-meta"><span id="pv-guests">4</span> gasten · <span id="pv-bed">2</span> slaapkamers · <span id="pv-bath">1</span> badkamer · <span id="pv-m2">78</span> m²</div>
+        <div class="pv-loc"><span id="pv-place">D&eacute;nia</span>, <span id="pv-prov">Alicante</span></div>
+        <h3 id="pv-title">Apartment with sea view at the Marina</h3>
+        <div class="pv-meta"><span id="pv-guests">4</span> guests &middot; <span id="pv-bed">2</span> bedrooms &middot; <span id="pv-bath">1</span> bathroom &middot; <span id="pv-m2">78</span> m&sup2;</div>
         <div class="pv-amen" id="pv-amen"></div>
         <div class="pv-price">
-          <div class="p">€ <span id="pv-low">95</span>–<span id="pv-high">215</span> <small>per nacht</small></div>
+          <div class="p">&euro; <span id="pv-low">95</span>&ndash;<span id="pv-high">215</span> <small>per night</small></div>
           <span class="lic" id="pv-lic">VT-482116-A</span>
         </div>
-        <p class="pv-cap">Prijzen per seizoen; schoonmaak en toeristenbelasting worden apart getoond vóór het boeken.</p>
+        <p class="pv-cap">Prices by season; cleaning and tourist tax are shown separately before booking.</p>
       </div>
     </div>
     <div class="year-box">
-      <span class="eyebrow">Wat verhuur voor uw jaar betekent</span>
-      <div class="big num">+ € 0 / jaar</div>
-      <p>De verhuurmodule zit in Solera Anual. Wat verandert: Modelo 210 wordt per kwartaal ingediend, en uw polis krijgt de verhuurdekking — beide al in uw jaarbedrag opgenomen.</p>
+      <span class="eyebrow">What letting means for your year</span>
+      <div class="big num">+ &euro;0 / year</div>
+      <p>The letting module is part of Solera Anual. What changes: Modelo 210 is filed quarterly, and your policy gains the letting cover &mdash; both already inside your annual figure.</p>
     </div>
   </aside>
   </div>
@@ -448,11 +448,11 @@
     <span class="wordmark" style="font-size:20px">Solera</span>
     <ul>
       <li><a href="#">Solera Anual</a></li>
-      <li><a href="#">Prijzen</a></li>
-      <li><a href="#">Over ons</a></li>
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">About us</a></li>
       <li><a href="#">Privacy</a></li>
     </ul>
-    <span>Solera Eigenarenservice S.L. · Dénia, Alicante</span>
+    <span>Solera Eigenarenservice S.L. &middot; D&eacute;nia, Alicante</span>
   </div>
 </footer>
 
@@ -466,8 +466,8 @@
         const v = document.querySelector('input[name=lic]:checked').value;
         const out = pv('lic');
         if (v === 'have') { out.textContent = document.getElementById('licnr').value || 'VT-…'; out.className = 'lic'; }
-        else if (v === 'need') { out.textContent = 'Vergunning in aanvraag'; out.className = 'lic pending'; }
-        else { out.textContent = 'Vergunning wordt gecontroleerd'; out.className = 'lic pending'; }
+        else if (v === 'need') { out.textContent = 'Licence applied for'; out.className = 'lic pending'; }
+        else { out.textContent = 'Licence being checked'; out.className = 'lic pending'; }
         return;
       }
       pv(key).textContent = el.value !== undefined && el.tagName !== 'OUTPUT' ? el.value : el.textContent;
@@ -481,7 +481,7 @@
     const id = b.dataset.inc || b.dataset.dec, o = document.getElementById(id);
     o.textContent = Math.max(0, +o.textContent + (b.dataset.inc ? 1 : -1));
     if (o.dataset.pv) pv(o.dataset.pv).textContent = o.textContent;
-    if (id === 'bath') pv('bath').nextSibling.textContent = o.textContent == 1 ? ' badkamer · ' : ' badkamers · ';
+    if (id === 'bath') pv('bath').nextSibling.textContent = o.textContent == 1 ? ' bathroom · ' : ' bathrooms · ';
   }));
 
   // amenities → chips
@@ -489,14 +489,14 @@
   const drawAmen = () => { chips.innerHTML = ''; amen.querySelectorAll('input:checked').forEach(i => { const s = document.createElement('span'); s.textContent = i.value; chips.appendChild(s); }); };
   amen.addEventListener('change', drawAmen); drawAmen();
 
-  // calendar — juli 2027 starts on Thursday
+  // calendar — July 2027 starts on Thursday
   const cal = document.getElementById('cal');
-  ['ma','di','wo','do','vr','za','zo'].forEach(d => { const s = document.createElement('div'); s.className = 'dow'; s.textContent = d; cal.appendChild(s); });
+  ['Mo','Tu','We','Th','Fr','Sa','Su'].forEach(d => { const s = document.createElement('div'); s.className = 'dow'; s.textContent = d; cal.appendChild(s); });
   const own = new Set([10,11,12,13,14,15,16,17]), booked = new Set([24,25,26,27,28,29,30,31]);
   for (let i = 0; i < 3; i++) { const b = document.createElement('button'); b.type = 'button'; b.className = 'blank'; b.tabIndex = -1; cal.appendChild(b); }
   for (let d = 1; d <= 31; d++) {
     const b = document.createElement('button'); b.type = 'button'; b.textContent = d;
-    if (own.has(d)) b.className = 'own'; if (booked.has(d)) { b.className = 'booked'; b.title = 'Geboekt — fam. Vermeulen'; }
+    if (own.has(d)) b.className = 'own'; if (booked.has(d)) { b.className = 'booked'; b.title = 'Booked — the Vermeulen family'; }
     b.addEventListener('click', () => { if (b.classList.contains('booked')) return; b.classList.toggle('own'); });
     cal.appendChild(b);
   }

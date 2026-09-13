@@ -13,6 +13,9 @@ Year-round ownership service for Dutch owners of a Spanish house. One annual fee
   - `solera-verhuur.html` — owner rental listing page with live preview
   - `solera-diensten.html` — full list of tax, administration and legal services
   - `img/` — SVG illustrations of villas, town houses and fincas in the brand palette; drawn for the marketplace page, currently unused
+  - `en/` — English version of the three pages (`index.html`, `rental.html`, `services.html`); the NL · EN control in the header swaps between counterpart pages, not to the homepage
+
+The English version is written for English-speaking owners rather than translated line by line. Where a Spanish rule depends on the owner's residence it states both cases — rental income and capital gains are taxed at 19% with costs deductible for EU/EEA residents, and at 24% on gross with no deduction for everyone else — instead of asserting one. Home-country specifics from the Dutch copy (box 3, the NL–ES treaty, the consulate in The Hague, a choice of Dutch succession law) are generalised to "your own adviser" and "the law of your nationality".
 
 ## Brand at a glance
 
