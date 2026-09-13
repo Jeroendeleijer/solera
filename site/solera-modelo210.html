@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Solera — Uw huis in Spanje, het hele jaar geregeld</title>
+<title>Solera — Bereken uw Modelo 210</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300..700;1,300..500&family=Petrona:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -183,6 +183,48 @@
     .hook .wrap{grid-template-columns:1fr}
     .modules.lines3{grid-template-columns:1fr}
   }
+
+  /* modelo 210 calculator */
+  .calc-layout{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,72px);align-items:start;padding-block:clamp(36px,4.5vw,60px) clamp(56px,7vw,96px)}
+  .calc-form{display:grid;gap:24px}
+  .cfield{display:grid;gap:7px}
+  .cfield label,.cfield .lbl{font-size:14px;font-weight:600}
+  .cfield .hint{font-size:13px;line-height:19px;color:var(--muted)}
+  .cfield input,.cfield select{font:400 17px var(--sans);padding:13px 14px;background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:2px;width:100%}
+  .cfield input:focus-visible,.cfield select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .crow{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .seg2{display:flex;border:1px solid var(--rule);border-radius:2px;overflow:hidden}
+  .seg2 label{flex:1;position:relative;margin:0}
+  .seg2 input{position:absolute;inset:0;opacity:0;cursor:pointer;margin:0}
+  .seg2 span{display:block;text-align:center;padding:12px 10px;font-size:15px;background:var(--paper);pointer-events:none}
+  .seg2 input:checked ~ span{background:var(--ink);color:var(--paper)}
+  .seg2 input:focus-visible ~ span{outline:2px solid var(--accent);outline-offset:-2px}
+  .result{border:1px solid var(--rule);background:var(--clay);padding:28px 28px 24px;position:sticky;top:24px}
+  .result .big{font-family:var(--serif);font-size:clamp(44px,6vw,62px);line-height:1;letter-spacing:-.03em;margin:14px 0 6px}
+  .result .per{font-size:14px;color:var(--muted)}
+  .result dl{margin-top:24px;border-top:1px solid var(--rule)}
+  .result .line{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:15px}
+  .result .line dt{color:var(--muted);margin:0}
+  .result .line dd{margin:0;font-variant-numeric:tabular-nums;text-align:right}
+  .result .note{margin-top:18px;font-size:13px;line-height:19px;color:var(--muted)}
+  .result .btn{margin-top:20px;width:100%;justify-content:center}
+  .result .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+  .result .btn.primary:hover{background:var(--accent-ink);border-color:var(--accent-ink)}
+  /* how it works */
+  .how{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--clay)}
+  .how .wrap{padding-block:clamp(56px,7vw,88px)}
+  .how-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:42px;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+  .how-step{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:30px 28px 28px}
+  .how-step .n{font-family:var(--serif);font-size:40px;line-height:1;color:var(--accent);letter-spacing:-.02em}
+  .how-step h3{font-size:22px;margin:14px 0 10px;line-height:1.15;letter-spacing:-.015em}
+  .how-step p{font-size:16px;line-height:25px}
+  .how-step .t{margin-top:14px;font-size:13px;color:var(--muted);padding-top:10px;border-top:1px solid var(--rule)}
+  @media (max-width:900px){
+    .calc-layout{grid-template-columns:1fr}
+    .result{position:static}
+    .how-grid{grid-template-columns:1fr}
+    .crow{grid-template-columns:1fr}
+  }
 </style>
 </head>
 <body>
@@ -190,162 +232,139 @@
 <header>
   <div class="wrap">
     <nav>
-      <a class="wordmark" href="#" aria-label="Solera">
+      <a class="wordmark" href="index.html" aria-label="Solera">
         <svg class="mark" viewBox="0 0 60 40" aria-hidden="true"><path d="M8 40 V22 A22 22 0 0 1 52 22 V40" fill="none" stroke="currentColor" stroke-width="5"/><rect x="28" y="24" width="4" height="16" fill="#B3623C"/></svg>
         Solera
       </a>
       <ul>
-        <li><a href="solera-modelo210.html">Modelo 210 &mdash; &euro;&nbsp;29,99</a></li>
-        <li><a href="#jaar">Solera Anual</a></li>
+        <li><a class="current" href="#">Modelo 210 &mdash; &euro;&nbsp;29,99</a></li>
+        <li><a href="index.html#jaar">Solera Anual</a></li>
         <li><a href="solera-diensten.html">Alle diensten</a></li>
-        <li><a href="#verplichtingen">Belasting</a></li>
-        <li><a href="#verplichtingen">Verzekering</a></li>
         <li><a href="solera-verhuur.html">Verhuur</a></li>
       </ul>
       <div>
-        <span class="lang"><strong style="color:var(--ink)">NL</strong> &middot; <a href="en/index.html">EN</a></span>
-        <a class="btn" href="#gesprek">Plan een gesprek</a>
+        <span class="lang"><strong style="color:var(--ink)">NL</strong> &middot; <a href="en/modelo210.html">EN</a></span>
+        <a class="btn" href="index.html#gesprek">Plan een gesprek</a>
       </div>
     </nav>
   </div>
 </header>
 
 <main>
-  <section class="wrap hero">
-    <div>
-      <span class="eyebrow">Voor Nederlandse eigenaren van een huis in Spanje</span>
-      <h1>Uw huis in Spanje, het hele jaar geregeld.</h1>
-      <p class="lead">Begin bij de Modelo 210 &mdash; de aangifte die elke niet-ingezeten eigenaar elk jaar moet doen. &euro;&nbsp;29,99 per aangifte, automatisch ingediend. Wilt u daarna meer geregeld hebben: belasting, juridisch en verzekering, in het Nederlands, tegen een bedrag dat vooraf vaststaat.</p>
-      <div class="actions">
-        <a class="btn primary" href="solera-modelo210.html">Doe uw Modelo 210 &mdash; &euro;&nbsp;29,99</a>
-        <a class="btn" href="#jaar">Bekijk Solera Anual</a>
-      </div>
-    </div>
-    <figure class="photo" aria-label="Foto: eigenaar op het eigen terras">
-      <figcaption>Eigenaar op het eigen terras, Dénia — 4:3</figcaption>
-    </figure>
-  </section>
+  <div class="wrap page-head" style="display:block;padding-block:clamp(44px,6vw,76px) 0;max-width:1280px">
+    <span class="eyebrow">Modelo 210 &middot; aangifte niet-ingezetenen</span>
+    <h1 style="font-size:clamp(38px,5.2vw,62px);line-height:.98;letter-spacing:-.03em;max-width:16ch;margin:20px 0 20px">Wat kost uw Modelo 210 dit jaar?</h1>
+    <p class="lead" style="font-size:19px;line-height:30px;max-width:58ch">Reken het hieronder uit. Geen account, geen e-mailadres, geen verplichting &mdash; u ziet het bedrag voordat u iets beslist. Wilt u daarna dat wij hem indienen: &euro;&nbsp;29,99 per aangifte.</p>
+  </div>
 
-  <section class="hook" id="modelo210">
+  <div class="wrap calc-layout">
+    <form class="calc-form" id="calc" onsubmit="return false" aria-label="Rekenhulp Modelo 210">
+
+      <div class="cfield">
+        <label for="year">Belastingjaar</label>
+        <select id="year">
+          <option value="2026" selected>2026</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+        </select>
+      </div>
+
+      <div class="cfield">
+        <label for="country">Land waar u belastingplichtig bent</label>
+        <select id="country">
+          <optgroup label="EU / EER &mdash; 19%">
+            <option data-rate="19" selected>Nederland</option>
+            <option data-rate="19">Belgi&euml;</option>
+            <option data-rate="19">Duitsland</option>
+            <option data-rate="19">Frankrijk</option>
+            <option data-rate="19">Ierland</option>
+            <option data-rate="19">Zweden</option>
+            <option data-rate="19">Denemarken</option>
+            <option data-rate="19">Noorwegen</option>
+            <option data-rate="19">IJsland</option>
+            <option data-rate="19">Liechtenstein</option>
+            <option data-rate="19">Ander EU/EER-land</option>
+          </optgroup>
+          <optgroup label="Buiten de EU/EER &mdash; 24%">
+            <option data-rate="24">Verenigd Koninkrijk</option>
+            <option data-rate="24">Zwitserland</option>
+            <option data-rate="24">Verenigde Staten</option>
+            <option data-rate="24">Ander land buiten de EU/EER</option>
+          </optgroup>
+        </select>
+        <span class="hint">Het tarief hangt hiervan af: 19% voor inwoners van de EU, Noorwegen, IJsland en Liechtenstein; 24% voor de rest. Het Verenigd Koninkrijk valt sinds de brexit onder 24%.</span>
+      </div>
+
+      <div class="cfield">
+        <label for="cv">Kadastrale waarde (<em>valor catastral</em>)</label>
+        <input id="cv" type="number" inputmode="numeric" min="0" step="100" value="150000">
+        <span class="hint">Staat op uw IBI- of SUMA-aanslag. Dit is niet de marktwaarde en niet wat u betaald heeft.</span>
+      </div>
+
+      <div class="cfield">
+        <span class="lbl">Is de kadastrale waarde van uw gemeente in de afgelopen tien jaar collectief herzien?</span>
+        <div class="seg2">
+          <label><input type="radio" name="rev" value="yes" checked><span>Ja &mdash; 1,1%</span></label>
+          <label><input type="radio" name="rev" value="no"><span>Nee of onbekend &mdash; 2%</span></label>
+        </div>
+        <span class="hint">Dit bepaalt het percentage waarmee het fictieve inkomen wordt berekend. De Belastingdienst publiceert de lijst met herziene gemeenten elk jaar; weet u het niet, dan zoeken wij het op v&oacute;&oacute;r wij indienen.</span>
+      </div>
+
+      <div class="crow">
+        <div class="cfield">
+          <label for="share">Uw aandeel in de woning</label>
+          <input id="share" type="number" inputmode="numeric" min="0" max="100" step="1" value="50">
+          <span class="hint">In procenten. Twee eigenaren, ieder de helft: 50.</span>
+        </div>
+        <div class="cfield">
+          <label for="days">Dagen in eigendom dit jaar</label>
+          <input id="days" type="number" inputmode="numeric" min="0" max="365" step="1" value="365">
+          <span class="hint">Heel jaar: 365. Gekocht in de loop van het jaar: het aantal dagen sinds de notaris.</span>
+        </div>
+      </div>
+
+    </form>
+
+    <aside class="result" aria-live="polite">
+      <span class="eyebrow">Te betalen belasting</span>
+      <div class="big num" id="r-tax">&euro; 156,75</div>
+      <div class="per" id="r-per">voor uw aandeel, belastingjaar 2026</div>
+      <dl>
+        <div class="line"><dt>Kadastrale waarde</dt><dd id="r-cv">&euro; 150.000</dd></div>
+        <div class="line"><dt>Percentage fictief inkomen</dt><dd id="r-pct">1,1%</dd></div>
+        <div class="line"><dt>Fictief inkomen, hele woning</dt><dd id="r-basefull">&euro; 1.650</dd></div>
+        <div class="line"><dt>Uw aandeel &times; dagen</dt><dd id="r-prorate">50% &times; 365/365</dd></div>
+        <div class="line"><dt>Uw belastbare grondslag</dt><dd id="r-base">&euro; 825</dd></div>
+        <div class="line"><dt>Tarief</dt><dd id="r-rate">19%</dd></div>
+      </dl>
+      <p class="note" id="r-note">Dit is een berekening, geen aangifte. Bij twee eigenaren dient elk zijn eigen Modelo 210 in &mdash; hierboven staat alleen uw deel.</p>
+      <a class="btn primary" href="index.html#gesprek">Laat Solera hem indienen &mdash; &euro;&nbsp;29,99</a>
+    </aside>
+  </div>
+
+  <section class="how">
     <div class="wrap">
-      <div>
-        <span class="eyebrow" style="color:oklch(0.72 0.02 78)">Zo begint het</span>
-        <h2>Uw Modelo 210, automatisch ingediend.</h2>
-        <div class="price num">&euro;&nbsp;29,99<small>per aangifte, per mede-eigenaar &middot; incl. btw &middot; geen abonnement</small></div>
-        <p class="say">Elke niet-ingezeten eigenaar moet de Modelo 210 elk jaar indienen &mdash; ook in een jaar waarin het huis nooit verhuurd is. Wij doen dat met onze eigen software, over de offici&euml;le batchkoppeling van de Spaanse Belastingdienst, met automatische incasso van uw eigen Nederlandse rekening.</p>
-        <ul>
-          <li><strong>U hoeft niets te doen</strong>Kadastrale waarde uit uw IBI-aanslag, de berekening, de indiening en de incasso: wij regelen het en bewaken de termijn.</li>
-          <li><strong>Ontvangstbewijs binnen drie werkdagen</strong>In uw portaal, met een samenvatting in het Nederlands van wat er is aangegeven en betaald.</li>
-          <li><strong>E&eacute;n aangifte per mede-eigenaar</strong>Zo schrijft de wet het voor. Staat het huis op twee namen, dan zijn het twee aangiftes &mdash; wij dienen ze samen in.</li>
-        </ul>
-        <a class="btn" href="solera-modelo210.html">Bereken en dien in</a>
-      </div>
-      <div class="checkup">
-        <h3>En u krijgt de jaarcheck.</h3>
-        <p>Bij elk ontvangstbewijs hoort een check van de woning, op &eacute;&eacute;n pagina. Geen verkooppraat &mdash; alleen wat wij bij het indienen toch al zien:</p>
-        <ol>
-          <li>Of uw verzekerde som nog past bij de kadastrale waarde.</li>
-          <li>Of er wordt verhuurd, en of daar een vergunning voor is.</li>
-          <li>Of het huis op de juiste na(a)m(en) staat, en wat dat betekent voor erfbelasting.</li>
-          <li>Of een SL of een Spaans testament in uw geval iets zou schelen.</li>
-        </ol>
-      </div>
-    </div>
-  </section>
-
-  <section class="ledger" id="jaar">
-    <div class="wrap">
-      <div class="ledger-head">
-        <h2>Wilt u de rest ook geregeld hebben? Solera Anual, &euro;&nbsp;249 per jaar.</h2>
-        <p class="ledger-note">Per woning, per jaar, inclusief de Modelo 210 voor elke mede-eigenaar. Premies, leges en de belasting zelf blijven van u &mdash; die noemen wij apart, met bedrag, v&oacute;&oacute;rdat wij iets voor u betalen.</p>
-      </div>
-      <table class="lines">
-        <tbody>
-          <tr>
-            <th class="what"><strong>Modelo 210, elke mede-eigenaar</strong><span>Aangifte niet-ingezetenen, IBI-bewaking, vermogensbelasting-check</span></th>
-            <td class="when">Jaarlijks &middot; 1 april t/m 31 december &middot; verhuur jaarlijks in april</td>
-            <td class="cost">Inbegrepen</td>
-          </tr>
-          <tr>
-            <th class="what"><strong>Verzekering geplaatst en verlengd</strong><span>Opstal, inboedel en verhuurdekking via onze verzekeringspartner</span></th>
-            <td class="when">Bij afsluiten en bij elke verlenging beoordeeld</td>
-            <td class="cost">Inbegrepen<small>premie apart, ca. &euro;&nbsp;450</small></td>
-          </tr>
-          <tr>
-            <th class="what"><strong>Juridische helpdesk</strong><span>Register- en kadastercontroles, post uit Spanje, vertegenwoordiging bij aanschrijvingen</span></th>
-            <td class="when">Doorlopend &middot; wij houden het postadres</td>
-            <td class="cost">Inbegrepen</td>
-          </tr>
-          <tr>
-            <th class="what"><strong>Jaarcheck en dossier</strong><span>Wat er geregeld is, wat niet, en wat dat zou kosten</span></th>
-            <td class="when">Elk jaar, bij het ontvangstbewijs</td>
-            <td class="cost">Inbegrepen</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td class="label" colspan="2">Solera Anual &mdash; &eacute;&eacute;n factuur, per woning</td>
-            <td class="cost num">&euro;&nbsp;249<small>per jaar, incl. btw</small></td>
-          </tr>
-        </tfoot>
-      </table>
-      <div class="ledger-foot">
-        <p>Kopen, verkopen, NIE, volmacht, een SL of een erfenis is werk op afroep. Daarvoor geldt een vast bedrag dat op de dienstenpagina staat &mdash; geen &lsquo;vanaf&rsquo;-prijzen, geen uurtarief achteraf.</p>
-        <a class="btn primary" href="#gesprek">Vraag uw eigen jaarbedrag aan</a>
-      </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="plain" id="verplichtingen">
-    <div class="wrap">
-      <h2 class="section-title">Drie lijnen. E&eacute;n dossier, &eacute;&eacute;n aanspreekpunt.</h2>
-      <p class="intro">Alles wat een huis in Spanje van u vraagt valt in drie lijnen. Wat elk jaar terugkomt zit in Solera Anual; de rest doen wij op afroep, tegen een bedrag dat vooraf op deze site staat. Het fiscale werk doen onze eigen asesor&iacute;as, het juridische werk een <em>abogado</em> uit ons netwerk, de verzekering een vergunninghoudende makelaar.</p>
-      <div class="modules lines3">
-        <article class="module">
-          <span class="idx">Lijn 1</span>
-          <h3>Belasting</h3>
-          <q>De aangifte die niemand u heeft uitgelegd.</q>
-          <p>Ook in een jaar zonder verhuur is er belasting verschuldigd over een fictief inkomen. Wij dienen de Modelo 210 in voor elke mede-eigenaar, bewaken de IBI en waarschuwen voor vermogensbelasting v&oacute;&oacute;rdat een taxatie de grens overschrijdt.</p>
-          <div class="split-line"><b>In Anual:</b> Modelo 210, IBI-bewaking, jaarcheck.<br><b>Op afroep:</b> vermogenswinst en 3%-teruggave bij verkoop, vermogensbelasting, SL-boekhouding.</div>
-        </article>
-        <article class="module">
-          <span class="idx">Lijn 2</span>
-          <h3>Juridisch</h3>
-          <q>E&eacute;n nummer voor alles met een handtekening.</q>
-          <p>De momenten waarop een Spaanse handtekening iets onomkeerbaars doet: kopen, verkopen, volmacht geven, erven. Wij bereiden het dossier voor; een <em>abogado</em> ingeschreven bij het Colegio de Abogados tekent.</p>
-          <div class="split-line"><b>In Anual:</b> helpdesk, registercontroles, post en vertegenwoordiging.<br><b>Op afroep:</b> aankoop en verkoop, NIE, volmacht, SL, testament en erfenis, verhuurvergunning.</div>
-        </article>
-        <article class="module">
-          <span class="idx">Lijn 3</span>
-          <h3>Verzekering</h3>
-          <q>Uw polis, uitgelegd in het Nederlands.</q>
-          <p>Een gewone opstalverzekering dekt geen toeristische verhuur. Wij plaatsen de polis met de dekking die uw gebruik werkelijk vraagt, en handelen schade hier af &mdash; in uw eigen taal, niet in het Spaans.</p>
-          <div class="split-line"><b>In Anual:</b> plaatsing, jaarlijkse toets en verlenging, schade-afhandeling.<br><b>Op afroep:</b> leven, aansprakelijkheid, bouw; hertaxatie bij verbouwing.</div>
-        </article>
-      </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="plain" id="dossier" style="background:var(--clay);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)">
-    <div class="wrap dossier">
-      <div class="card" aria-label="Voorbeeld jaardossier">
-        <div class="top"><span class="wordmark" style="font-size:18px">Solera</span><span>Dénia · Alicante</span></div>
-        <h3>Jaardossier 2027</h3>
-        <div class="sub">Calle Marqués de Campo 14, 2º B</div>
-        <ul>
-          <li>Modelo 210 &middot; 2 eigenaren <span class="state">Ingediend 12 dec</span></li>
-          <li>Hogar &amp; verhuur <span class="state">Verlengd tot 1 mrt 2028</span></li>
-          <li>Comunidad &amp; post <span class="state">Bijgewerkt 3 sep</span></li>
-          <li>Jaarcheck 2027 <span class="state pending">Volgt 15 okt</span></li>
-        </ul>
-        <div class="foot"><span>3 van 4 geregeld</span><span class="total num">&euro;&nbsp;249 <small>/ jaar</small></span></div>
-      </div>
-      <div class="dossier-copy">
-        <h2>Eén dossier. Altijd in gewoon Nederlands.</h2>
-        <p>U ziet op elk moment wat gedaan is, wat wanneer moet, en wat het kost. Geen vijf inlogportalen, geen Spaanse brieven doorsturen. Een bericht wanneer er iets gebeurt &mdash; meestal dit:</p>
-        <p class="quarter">U hoeft niets te doen. Beide Modelo 210-aangiftes zijn op 12 december ingediend; de volgende termijn is 20 april 2027.</p>
+      <h2 class="section-title">Drie stappen. U doet alleen de eerste.</h2>
+      <p class="intro">Dit is geen doe-het-zelfportaal. U stuurt ons &eacute;&eacute;n document; de rest gebeurt bij ons, met een mens die tekent voordat er iets naar de Belastingdienst gaat.</p>
+      <div class="how-grid">
+        <div class="how-step">
+          <span class="n">1</span>
+          <h3>U stuurt uw IBI-aanslag</h3>
+          <p>Daar staat alles op wat wij nodig hebben: de kadastrale waarde, de <em>referencia catastral</em> en de gemeente. Een foto met de telefoon is genoeg. Weet u niet welk papier het is? Stuur wat u heeft, dan zoeken wij het eruit.</p>
+          <div class="t">Uw werk: ongeveer twee minuten</div>
+        </div>
+        <div class="how-step">
+          <span class="n">2</span>
+          <h3>Wij rekenen en dienen in</h3>
+          <p>Onze software leest de aanslag, past de regels van het betreffende belastingjaar toe en maakt de aangifte klaar. Een fiscalist controleert en tekent; daarna gaat hij over de offici&euml;le batchkoppeling van de Belastingdienst, met incasso van uw eigen Nederlandse rekening.</p>
+          <div class="t">Uw werk: niets</div>
+        </div>
+        <div class="how-step">
+          <span class="n">3</span>
+          <h3>Ontvangstbewijs en jaarcheck</h3>
+          <p>Binnen drie werkdagen staat het offici&euml;le ontvangstbewijs van de Belastingdienst in uw portaal, met een samenvatting in het Nederlands. Daarbij hoort de jaarcheck: wat er verder aan deze woning speelt, op &eacute;&eacute;n pagina.</p>
+          <div class="t">Binnen drie werkdagen</div>
+        </div>
       </div>
     </div>
   </section>
@@ -353,56 +372,23 @@
   <section class="plain">
     <div class="wrap split">
       <div class="yes">
-        <h2>Zo werken wij</h2>
+        <h2>Wat dit wel is</h2>
         <ul>
-          <li>Elk bedrag, elke heffing, elke belasting: genoemd vóórdat u ernaar vraagt.</li>
-          <li>Spaanse woorden voor Spaanse dingen — <em>escritura</em>, <em>gestor</em> — altijd met uitleg erbij.</li>
-          <li>Een huis is een beslissing voor tien jaar. Hier haast niemand u, en niets telt af.</li>
-          <li>Software doet het herhaalwerk, een mens tekent. Daarom kost een 210 hier &euro;&nbsp;29,99 en geen &euro;&nbsp;150.</li>
-          <li>Nederlands geschreven door een Nederlander, niet vertaald.</li>
+          <li>De aangifte over fictief inkomen &mdash; de aangifte die elke niet-ingezeten eigenaar elk jaar moet doen, ook als het huis leegstaat.</li>
+          <li>&Eacute;&eacute;n aangifte per mede-eigenaar. Staat het huis op twee namen, dan zijn het twee aangiftes van elk &euro;&nbsp;29,99.</li>
+          <li>Garage of berging met een eigen <em>referencia catastral</em>: dat is een eigen aangifte.</li>
+          <li>Wordt er verhuurd? Dan komt de huuraangifte erbij, jaarlijks in april, met kostenbijlage.</li>
         </ul>
       </div>
       <div class="no">
-        <h2>Wat Solera niet is</h2>
+        <h2>Wat de rekenhulp niet doet</h2>
         <ul>
-          <li>Een gestor met een website. Het herhaalwerk is hier ge&aacute;utomatiseerd, niet alleen online gezet.</li>
-          <li>Engels behang over Spaanse juridische taal.</li>
-          <li>Een makelaar. Geen aanbod, geen verkoopcommissie.</li>
-          <li>Vijf losse facturen van vijf losse partijen.</li>
+          <li>Verhuurinkomsten. Die worden apart berekend, met aftrekbare kosten voor inwoners van de EU/EER.</li>
+          <li>Vermogenswinst bij verkoop, en de teruggave van de 3%-inhouding.</li>
+          <li>De lijst met herziene gemeenten controleren &mdash; dat doen wij handmatig v&oacute;&oacute;r het indienen.</li>
+          <li>Rekening houden met aanslagen uit eerdere jaren die nog openstaan.</li>
         </ul>
       </div>
-    </div>
-  </section>
-
-  <section class="contact" id="gesprek">
-    <div class="wrap">
-      <div>
-        <h2>Plan een gesprek van twintig minuten.</h2>
-        <p>U vertelt waar het huis staat en hoe u het gebruikt. Wij vertellen welke vier verplichtingen daarbij horen en wat het jaar kost — in euro's, als jaarbedrag, voordat u iets tekent.</p>
-        <div class="person">
-          <span class="avatar" aria-hidden="true"></span>
-          <span><strong>Marta Ibáñez</strong>Eigenarenservice · Dénia · NL / ES<br>marta@solera.es</span>
-        </div>
-      </div>
-      <form onsubmit="return false">
-        <div class="row2">
-          <div class="field"><label for="naam">Uw naam</label><input id="naam" placeholder="Voornaam Achternaam"></div>
-          <div class="field"><label for="mail">E-mail</label><input id="mail" type="email" placeholder="u@voorbeeld.nl"></div>
-        </div>
-        <div class="row2">
-          <div class="field"><label for="plaats">Plaats van het huis</label><input id="plaats" placeholder="Dénia, Jávea, Altea…"></div>
-          <div class="field"><label for="gebruik">Hoe gebruikt u het?</label>
-            <select id="gebruik">
-              <option>Alleen eigen gebruik</option>
-              <option>Eigen gebruik en verhuur</option>
-              <option>Vooral verhuur</option>
-              <option>Nog niet gekocht</option>
-            </select>
-          </div>
-        </div>
-        <button class="btn primary" type="submit">Plan het gesprek</button>
-        <p class="small">Wij bellen binnen twee werkdagen. Geen nieuwsbrief, geen vervolgmails.</p>
-      </form>
     </div>
   </section>
 </main>
@@ -411,14 +397,58 @@
   <div class="wrap">
     <span class="wordmark" style="font-size:20px;color:var(--ink)">Solera</span>
     <ul>
-      <li><a href="#">Solera Anual</a></li>
-      <li><a href="#">Prijzen</a></li>
-      <li><a href="#">Over ons</a></li>
+      <li><a href="index.html">Solera Anual</a></li>
+      <li><a href="solera-diensten.html">Alle diensten</a></li>
+      <li><a href="solera-verhuur.html">Verhuur</a></li>
       <li><a href="#">Privacy</a></li>
     </ul>
-    <span>Solera Eigenarenservice S.L. · Dénia, Alicante · CIF B-00000000</span>
+    <span>Solera Eigenarenservice S.L. &middot; D&eacute;nia, Alicante &middot; CIF B-00000000</span>
   </div>
 </footer>
 
+<script>
+  (function(){
+    var eur = new Intl.NumberFormat('nl-NL', {style:'currency', currency:'EUR', minimumFractionDigits:2});
+    var eur0 = new Intl.NumberFormat('nl-NL', {style:'currency', currency:'EUR', maximumFractionDigits:0});
+    var pctFmt = function(n){ return String(n).replace('.', ',') + '%'; };
+    var $ = function(id){ return document.getElementById(id); };
+
+    function calc(){
+      var cv    = Math.max(0, parseFloat($('cv').value) || 0);
+      var pct   = document.querySelector('input[name=rev]:checked').value === 'yes' ? 1.1 : 2;
+      var opt   = $('country').selectedOptions[0];
+      var rate  = parseFloat(opt.dataset.rate);
+      var share = Math.min(100, Math.max(0, parseFloat($('share').value) || 0));
+      var days  = Math.min(365, Math.max(0, parseFloat($('days').value) || 0));
+      var year  = $('year').value;
+
+      var baseFull = cv * (pct/100);
+      var base     = baseFull * (share/100) * (days/365);
+      var tax      = base * (rate/100);
+
+      $('r-tax').textContent      = eur.format(tax);
+      $('r-per').textContent      = 'voor uw aandeel, belastingjaar ' + year;
+      $('r-cv').textContent       = eur0.format(cv);
+      $('r-pct').textContent      = pctFmt(pct);
+      $('r-basefull').textContent = eur0.format(baseFull);
+      $('r-prorate').textContent  = share + '% × ' + days + '/365';
+      $('r-base').textContent     = eur.format(base);
+      $('r-rate').textContent     = rate + '%';
+
+      var note = 'Dit is een berekening, geen aangifte.';
+      if (share > 0 && share < 100) {
+        note += ' Bij meerdere eigenaren dient elk zijn eigen Modelo 210 in — hierboven staat alleen uw deel.';
+      }
+      if (rate === 24) {
+        note += ' Buiten de EU/EER geldt 24% en zijn kosten niet aftrekbaar.';
+      }
+      $('r-note').textContent = note;
+    }
+
+    document.getElementById('calc').addEventListener('input', calc);
+    document.getElementById('calc').addEventListener('change', calc);
+    calc();
+  })();
+</script>
 </body>
 </html>
