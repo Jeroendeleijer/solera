@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Solera — Verhuur uw huis</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300..700;1,300..500&family=Petrona:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -36,13 +37,13 @@
   .btn.primary:hover{background:oklch(0.32 0.021 45)}
   .btn:hover{background:var(--clay)}
   .btn.small{padding:10px 14px;font-size:14px}
-  .mark{display:inline-block;height:26px;vertical-align:middle}
-  .wordmark{font:500 24px/1 var(--serif);display:inline-flex;align-items:center;gap:9px}
+  .mark{display:inline-block;height:.655em;width:auto;flex:none;vertical-align:middle}
+  .wordmark{font:400 31px/1 var(--serif);letter-spacing:-.025em;display:inline-flex;align-items:center;gap:.218em}
   .num{font-variant-numeric:tabular-nums}
 
   header{border-bottom:1px solid var(--rule)}
   nav{display:flex;align-items:center;justify-content:space-between;height:74px}
-  nav ul{display:flex;gap:28px;list-style:none;font-size:16px}
+  nav ul{display:flex;gap:22px;list-style:none;font-size:16px}
   nav ul a.current{border-bottom:2px solid var(--accent);padding-bottom:4px}
   nav .lang{font-size:13px;color:var(--muted);margin-right:20px}
 
@@ -188,6 +189,14 @@
     .grid2,.grid3,.grid4,.season,.fee,.amen{grid-template-columns:1fr}
     .thumbs{grid-template-columns:1fr 1fr}
   }
+
+  /* logo descriptor + regulatory line (logo guidelines sections 8) */
+  .lockup{display:inline-flex;flex-direction:column;gap:6px;align-items:flex-start}
+  .descriptor{font:700 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .reg-line{font-size:9px;line-height:14px;color:var(--muted)}
+
+  .nextstep{margin-bottom:24px;padding:16px 20px;background:var(--clay);border-left:3px solid var(--accent);font-size:16px;line-height:25px}
+  .nextstep a{font-weight:600;color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
 </style>
 </head>
 <body>
@@ -196,15 +205,15 @@
   <div class="wrap">
     <nav>
       <a class="wordmark" href="index.html" aria-label="Solera">
-        <svg class="mark" viewBox="0 0 60 40" aria-hidden="true"><path d="M8 40 V22 A22 22 0 0 1 52 22 V40" fill="none" stroke="currentColor" stroke-width="5"/><rect x="28" y="24" width="4" height="16" fill="#B3623C"/></svg>
+        <svg class="mark" viewBox="0 0 6 6" aria-hidden="true" focusable="false"><rect x="0" y="0" width="3" height="1" fill="#B3623C"/><rect x="0" y="2.5" width="4.5" height="1" fill="currentColor"/><rect x="0" y="5" width="6" height="1" fill="currentColor"/></svg>
         Solera
       </a>
       <ul>
         <li><a href="solera-modelo210.html">Modelo 210 &mdash; &euro;&nbsp;29,99</a></li>
         <li><a href="index.html#jaar">Wat het jaar kost</a></li>
         <li><a href="solera-diensten.html">Alle diensten</a></li>
-        <li><a href="index.html#verplichtingen">Belasting</a></li>
-        <li><a href="index.html#verplichtingen">Verzekering</a></li>
+        <li><a href="index.html#lines">Belasting</a></li>
+        <li><a href="index.html#lines">Verzekering</a></li>
         <li><a class="current" href="#">Verhuur</a></li>
         <li><a href="solera-account.html">Mijn dossier</a></li>
       </ul>
@@ -217,6 +226,7 @@
 </header>
 
 <main class="wrap">
+  <p class="nextstep">Verhuren zonder geregistreerde vergunning is de boete die wij het vaakst zien. Begin met de gratis vergunningcheck &mdash; die kost twee minuten en zegt of u bij de Generalitat geregistreerd staat. <a href="index.html?topic=licence#gesprek">Check mijn vergunning &rarr;</a></p>
   <div class="page-head">
     <div>
       <span class="eyebrow">Verhuur · voor eigenaren met Solera Anual</span>
@@ -447,14 +457,14 @@
 
 <footer>
   <div class="wrap">
-    <span class="wordmark" style="font-size:20px">Solera</span>
+    <span class="lockup"><span class="wordmark" style="font-size:31px"><svg class="mark" viewBox="0 0 6 6" aria-hidden="true" focusable="false"><rect x="0" y="0" width="3" height="1" fill="#B3623C"/><rect x="0" y="2.5" width="4.5" height="1" fill="currentColor"/><rect x="0" y="5" width="6" height="1" fill="currentColor"/></svg>Solera</span><span class="descriptor">Financi&euml;le diensten Spanje</span></span>
     <ul>
-      <li><a href="#">Solera Anual</a></li>
-      <li><a href="#">Prijzen</a></li>
-      <li><a href="#">Over ons</a></li>
-      <li><a href="#">Privacy</a></li>
+      <li><a href="index.html#jaar">Solera Anual</a></li>
+      <li><a href="solera-diensten.html">Prijzen</a></li>
+      <li><a href="index.html#wie-tekent">Over ons</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
     </ul>
-    <span>Solera Spain S.L. · Alicante · CIF B-00000000</span>
+    <span class="reg-line">Solera Spain S.L. · Alicante · CIF {{cif}}</span>
   </div>
 </footer>
 

@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Solera — Uw huis in Spanje, het hele jaar geregeld</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300..700;1,300..500&family=Petrona:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -36,14 +37,14 @@
   .btn.primary{background:var(--ink);color:var(--paper)}
   .btn.primary:hover{background:oklch(0.32 0.021 45)}
   .btn:hover{background:var(--clay)}
-  .mark{display:inline-block;height:26px;width:auto;vertical-align:middle}
-  .wordmark{font:500 24px/1 var(--serif);letter-spacing:-.01em;display:inline-flex;align-items:center;gap:9px}
+  .mark{display:inline-block;height:.655em;width:auto;flex:none;vertical-align:middle}
+  .wordmark{font:400 31px/1 var(--serif);letter-spacing:-.025em;display:inline-flex;align-items:center;gap:.218em}
   .num{font-variant-numeric:tabular-nums}
 
   /* nav */
   header{border-bottom:1px solid var(--rule)}
   nav{display:flex;align-items:center;justify-content:space-between;height:74px}
-  nav ul{display:flex;gap:28px;list-style:none;font-size:16px}
+  nav ul{display:flex;gap:22px;list-style:none;font-size:16px}
   nav ul a:hover{color:var(--accent-ink)}
   nav .lang{font-size:13px;color:var(--muted);margin-right:20px}
 
@@ -72,6 +73,9 @@
   table.lines .when{color:var(--muted);font-size:15px;width:38%;padding-inline:24px}
   table.lines .cost{text-align:right;font-family:var(--serif);font-size:24px;white-space:nowrap}
   table.lines tfoot td{border-top:2px solid var(--ink);padding-top:22px}
+  table.lines tfoot tr.compare td{border-top:1px solid var(--rule);padding-top:18px;padding-bottom:4px;color:var(--muted)}
+  table.lines tfoot tr.compare .cost{font-size:24px;color:var(--muted)}
+  table.lines tfoot tr.compare + tr td{border-top:2px solid var(--ink)}
   table.lines tfoot .label{font-weight:600}
   table.lines tfoot .cost{font-size:40px;line-height:1;letter-spacing:-.02em}
   table.lines tbody .cost small{display:block;font:400 13px/18px var(--sans);color:var(--muted);margin-top:4px;white-space:normal}
@@ -136,6 +140,9 @@
   .contact .btn.primary{background:var(--accent);color:var(--paper);border-color:var(--accent);justify-self:start;margin-top:6px}
   .contact .btn.primary:hover{background:var(--accent-ink)}
   .contact .small{font-size:13px;line-height:19px;color:oklch(0.7 0.014 78);margin-top:4px}
+  .optin{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:21px;color:oklch(0.86 0.014 78);cursor:pointer}
+  .optin input{margin-top:3px;flex:none;accent-color:var(--accent)}
+  .prepurchase{font-size:14px;line-height:21px;color:oklch(0.86 0.014 78);border-left:2px solid var(--accent);padding-left:14px}
 
   /* footer */
   footer{border-top:1px solid var(--rule)}
@@ -183,6 +190,26 @@
     .hook .wrap{grid-template-columns:1fr}
     .modules.lines3{grid-template-columns:1fr}
   }
+
+  /* logo descriptor + regulatory line (logo guidelines sections 8) */
+  .lockup{display:inline-flex;flex-direction:column;gap:6px;align-items:flex-start}
+  .descriptor{font:700 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .reg-line{font-size:9px;line-height:14px;color:var(--muted)}
+
+  /* who signs what (trust) */
+  .signs{border-top:1px solid var(--rule)}
+  .signs .wrap{padding-block:clamp(56px,7vw,96px)}
+  .signs h2{font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.02em;max-width:22ch;text-wrap:balance}
+  .signs .intro{margin-top:16px;max-width:var(--measure);color:var(--muted)}
+  .signs-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--rule);border-left:1px solid var(--rule);margin-top:40px}
+  .signs-col{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:28px 26px 26px}
+  .signs-col h3{font-size:22px;line-height:1.15;letter-spacing:-.015em;margin-bottom:10px}
+  .signs-col p{font-size:16px;line-height:25px;max-width:38ch}
+  .behind{display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(24px,3vw,44px);align-items:start;margin-top:48px;padding-top:40px;border-top:1px solid var(--rule)}
+  .behind .portrait{aspect-ratio:4/5;background:var(--clay);border:1px solid var(--rule)}
+  .behind h3{font-size:24px;letter-spacing:-.02em;margin-bottom:12px}
+  .behind p{max-width:56ch}
+  @media (max-width:900px){ .signs-grid{grid-template-columns:1fr} .behind{grid-template-columns:1fr} .behind .portrait{max-width:200px} }
 </style>
 </head>
 <body>
@@ -191,7 +218,7 @@
   <div class="wrap">
     <nav>
       <a class="wordmark" href="#" aria-label="Solera">
-        <svg class="mark" viewBox="0 0 60 40" aria-hidden="true"><path d="M8 40 V22 A22 22 0 0 1 52 22 V40" fill="none" stroke="currentColor" stroke-width="5"/><rect x="28" y="24" width="4" height="16" fill="#B3623C"/></svg>
+        <svg class="mark" viewBox="0 0 6 6" aria-hidden="true" focusable="false"><rect x="0" y="0" width="3" height="1" fill="#B3623C"/><rect x="0" y="2.5" width="4.5" height="1" fill="currentColor"/><rect x="0" y="5" width="6" height="1" fill="currentColor"/></svg>
         Solera
       </a>
       <ul>
@@ -199,8 +226,8 @@
         <li><a href="#jaar">Solera Anual</a></li>
         <li><a href="solera-diensten.html">Alle diensten</a></li>
         <li><a href="solera-account.html">Mijn dossier</a></li>
-        <li><a href="#verplichtingen">Belasting</a></li>
-        <li><a href="#verplichtingen">Verzekering</a></li>
+        <li><a href="#lines">Belasting</a></li>
+        <li><a href="#lines">Verzekering</a></li>
         <li><a href="solera-verhuur.html">Verhuur</a></li>
       </ul>
       <div>
@@ -222,9 +249,7 @@
         <a class="btn" href="#jaar">Bekijk Solera Anual</a>
       </div>
     </div>
-    <figure class="photo" aria-label="Foto: eigenaar op het eigen terras">
-      <figcaption>Eigenaar op het eigen terras, Dénia — 4:3</figcaption>
-    </figure>
+    <figure class="photo" role="img" aria-label="Eigenaar op het terras van het eigen huis in Dénia, Alicante"></figure>
   </section>
 
   <section class="hook" id="modelo210">
@@ -273,7 +298,7 @@
             <td class="cost">Inbegrepen<small>premie apart, ca. &euro;&nbsp;450</small></td>
           </tr>
           <tr>
-            <th class="what"><strong>Juridische helpdesk</strong><span>Register- en kadastercontroles, post uit Spanje, vertegenwoordiging bij aanschrijvingen</span></th>
+            <th class="what"><strong>Juridische helpdesk</strong><span>Register- en kadastercontroles, post uit Spanje, vertegenwoordiging bij aanschrijvingen. Maximaal vier zaken per jaar; daarna tegen het gepubliceerde tarief.</span></th>
             <td class="when">Doorlopend &middot; wij houden het postadres</td>
             <td class="cost">Inbegrepen</td>
           </tr>
@@ -284,6 +309,11 @@
           </tr>
         </tbody>
         <tfoot>
+          <tr class="compare">
+            <td class="label">Los afgenomen</td>
+            <td class="when">2 &times; Modelo 210 (&euro;&nbsp;59,98) + fiscaal vertegenwoordiger (&euro;&nbsp;180) + overzicht voor uw Nederlandse aangifte (&euro;&nbsp;95)</td>
+            <td class="cost num">&euro;&nbsp;335</td>
+          </tr>
           <tr>
             <td class="label" colspan="2">Solera Anual &mdash; &eacute;&eacute;n factuur, per woning</td>
             <td class="cost num">&euro;&nbsp;249<small>per jaar, incl. btw</small></td>
@@ -298,7 +328,7 @@
     </div>
   </section>
 
-  <section class="plain" id="verplichtingen">
+  <section class="plain" id="lines">
     <div class="wrap">
       <h2 class="section-title">Drie lijnen. E&eacute;n dossier, &eacute;&eacute;n aanspreekpunt.</h2>
       <p class="intro">Alles wat een huis in Spanje van u vraagt valt in drie lijnen. Wat elk jaar terugkomt zit in Solera Anual; de rest doen wij op afroep, tegen een bedrag dat vooraf op deze site staat. Het fiscale werk doen onze eigen asesor&iacute;as, het juridische werk een <em>abogado</em> uit ons netwerk, de verzekering een vergunninghoudende makelaar.</p>
@@ -315,7 +345,7 @@
           <h3>Juridisch</h3>
           <q>E&eacute;n nummer voor alles met een handtekening.</q>
           <p>De momenten waarop een Spaanse handtekening iets onomkeerbaars doet: kopen, verkopen, volmacht geven, erven. Wij bereiden het dossier voor; een <em>abogado</em> ingeschreven bij het Colegio de Abogados tekent.</p>
-          <div class="split-line"><b>In Anual:</b> helpdesk, registercontroles, post en vertegenwoordiging.<br><b>Op afroep:</b> aankoop en verkoop, NIE, volmacht, SL, testament en erfenis, verhuurvergunning.</div>
+          <div class="split-line"><b>In Anual:</b> helpdesk, registercontroles, post en vertegenwoordiging.<br><b>Op afroep:</b> aankoop en verkoop, NIE, volmacht, SL, testament en erfenis.<br><b>Verhuurvergunning:</b> jaarlijkse compliancecheck inbegrepen in Anual &middot; aanvraag op offerte.</div>
         </article>
         <article class="module">
           <span class="idx">Lijn 3</span>
@@ -332,7 +362,7 @@
   <section class="plain" id="dossier" style="background:var(--clay);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)">
     <div class="wrap dossier">
       <div class="card" aria-label="Voorbeeld jaardossier">
-        <div class="top"><span class="wordmark" style="font-size:18px">Solera</span><span>Dénia · Alicante</span></div>
+        <div class="top"><span class="wordmark" style="font-size:31px"><svg class="mark" viewBox="0 0 6 6" aria-hidden="true" focusable="false"><rect x="0" y="0" width="3" height="1" fill="#B3623C"/><rect x="0" y="2.5" width="4.5" height="1" fill="currentColor"/><rect x="0" y="5" width="6" height="1" fill="currentColor"/></svg>Solera</span><span>Dénia · Alicante</span></div>
         <h3>Jaardossier 2027</h3>
         <div class="sub">Calle Marqués de Campo 14, 2º B</div>
         <ul>
@@ -375,17 +405,46 @@
     </div>
   </section>
 
+  <section class="signs" id="wie-tekent">
+    <div class="wrap">
+      <h2>Wie tekent wat.</h2>
+      <p class="intro">Solera bereidt voor en co&ouml;rdineert; het werk wordt getekend door mensen met een eigen vergunning en een eigen beroepsaansprakelijkheid. Hieronder staat wie dat per lijn is.</p>
+      <div class="signs-grid">
+        <div class="signs-col">
+          <h3>Belasting</h3>
+          <p>Ingediend door {{asesoria}}, ingeschreven asesor&iacute;a te Alicante. Beroepsaansprakelijkheidsverzekering aanwezig.</p>
+        </div>
+        <div class="signs-col">
+          <h3>Juridisch</h3>
+          <p>Voorbereid door Solera, getekend door een <em>abogado</em> ingeschreven bij het Colegio de Abogados de Alicante, nr. {{colegiado}}.</p>
+        </div>
+        <div class="signs-col">
+          <h3>Verzekering</h3>
+          <p>Geplaatst door {{corredor}}, vergunninghoudend <em>corredor de seguros</em>, reg. {{dgs_number}}.</p>
+        </div>
+      </div>
+      <div class="behind">
+        <div class="portrait" role="img" aria-label="Portret van Jeroen de Leijer"></div>
+        <div>
+          <h3>Achter Solera</h3>
+          <p>Solera wordt vanuit Alicante geleid door Jeroen de Leijer, die al 25 jaar bedrijven bouwt in Nederland en Spanje en hier zelf een huis heeft. Wat hij als eigenaar tegenkwam &mdash; vier partijen die niet met elkaar praten en een rekening achteraf &mdash; is de reden dat Solera &eacute;&eacute;n dossier en &eacute;&eacute;n bedrag vooraf hanteert.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="contact" id="gesprek">
     <div class="wrap">
       <div>
         <h2>Plan een gesprek van twintig minuten.</h2>
-        <p>U vertelt waar het huis staat en hoe u het gebruikt. Wij vertellen welke vier verplichtingen daarbij horen en wat het jaar kost — in euro's, als jaarbedrag, voordat u iets tekent.</p>
+        <p>U vertelt waar het huis staat en hoe u het gebruikt. Wij vertellen welke verplichtingen daarbij horen en wat het jaar kost — in euro's, als jaarbedrag, voordat u iets tekent.</p>
         <div class="person">
           <span class="avatar" aria-hidden="true"></span>
           <span><strong>Marta Ibáñez</strong>Eigenarenservice · Alicante · NL / ES<br>marta@solera.es</span>
         </div>
       </div>
-      <form onsubmit="return false">
+      <form onsubmit="return false" id="callform">
+        <input type="hidden" id="topic" name="topic" value="">
         <div class="row2">
           <div class="field"><label for="naam">Uw naam</label><input id="naam" placeholder="Voornaam Achternaam"></div>
           <div class="field"><label for="mail">E-mail</label><input id="mail" type="email" placeholder="u@voorbeeld.nl"></div>
@@ -401,8 +460,10 @@
             </select>
           </div>
         </div>
-        <button class="btn primary" type="submit">Plan het gesprek</button>
-        <p class="small">Wij bellen binnen twee werkdagen. Geen nieuwsbrief, geen vervolgmails.</p>
+        <label class="optin"><input type="checkbox" id="deadlines" name="deadlines"> Stuur mij mijn deadlines (8 mails per jaar)</label>
+        <button class="btn primary" type="submit" id="call-submit">Plan het gesprek</button>
+        <p class="prepurchase" id="prepurchase" hidden>Wij nemen de NIE, de aankoopcontrole en de fiscale check door &mdash; de drie dingen die v&oacute;&oacute;r de <em>arras</em> geregeld moeten zijn.</p>
+        <p class="small">Wij bellen binnen twee werkdagen. Geen nieuwsbrief &mdash; alleen uw deadlines, acht mails per jaar, altijd uit te schrijven.</p>
       </form>
     </div>
   </section>
@@ -410,16 +471,37 @@
 
 <footer>
   <div class="wrap">
-    <span class="wordmark" style="font-size:20px;color:var(--ink)">Solera</span>
+    <span class="lockup"><span class="wordmark" style="font-size:31px;color:var(--ink)"><svg class="mark" viewBox="0 0 6 6" aria-hidden="true" focusable="false"><rect x="0" y="0" width="3" height="1" fill="#B3623C"/><rect x="0" y="2.5" width="4.5" height="1" fill="currentColor"/><rect x="0" y="5" width="6" height="1" fill="currentColor"/></svg>Solera</span><span class="descriptor">Financi&euml;le diensten Spanje</span></span>
     <ul>
-      <li><a href="#">Solera Anual</a></li>
-      <li><a href="#">Prijzen</a></li>
-      <li><a href="#">Over ons</a></li>
-      <li><a href="#">Privacy</a></li>
+      <li><a href="index.html#jaar">Solera Anual</a></li>
+      <li><a href="solera-diensten.html">Prijzen</a></li>
+      <li><a href="#wie-tekent">Over ons</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
     </ul>
-    <span>Solera Spain S.L. · Alicante · CIF B-00000000</span>
+    <span class="reg-line">Solera Spain S.L. · Alicante · CIF {{cif}}</span>
   </div>
 </footer>
 
+
+<script>
+  (function(){
+    // topic can be prefilled from the query string, e.g. ?topic=licence
+    var params = new URLSearchParams(location.search);
+    var topic = params.get('topic');
+    var field = document.getElementById('topic');
+    if (field && topic) field.value = topic;
+
+    // "Nog niet gekocht" turns this into a pre-purchase call
+    var use = document.getElementById('gebruik');
+    var btn = document.getElementById('call-submit');
+    var note = document.getElementById('prepurchase');
+    function sync(){
+      var pre = use.value === 'Nog niet gekocht';
+      btn.textContent = pre ? 'Plan een aankoopgesprek' : 'Plan het gesprek';
+      note.hidden = !pre;
+    }
+    if (use && btn && note){ use.addEventListener('change', sync); sync(); }
+  })();
+</script>
 </body>
 </html>

@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Solera — Alle diensten: belasting, administratie en juridisch</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300..700;1,300..500&family=Petrona:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -34,14 +35,14 @@
   .btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--sans);padding:15px 22px;border:1px solid var(--ink);color:var(--ink);background:transparent;border-radius:2px;cursor:pointer}
   .btn.primary{background:var(--ink);color:var(--paper)}
   .btn:hover{background:var(--clay)} .btn.primary:hover{background:oklch(0.32 0.021 45)}
-  .mark{display:inline-block;height:26px;vertical-align:middle}
-  .wordmark{font:500 24px/1 var(--serif);display:inline-flex;align-items:center;gap:9px}
+  .mark{display:inline-block;height:.655em;width:auto;flex:none;vertical-align:middle}
+  .wordmark{font:400 31px/1 var(--serif);letter-spacing:-.025em;display:inline-flex;align-items:center;gap:.218em}
   .num{font-variant-numeric:tabular-nums}
   em{font-family:var(--serif);font-style:italic;font-size:1.05em}
 
   header{border-bottom:1px solid var(--rule)}
   nav{display:flex;align-items:center;justify-content:space-between;height:74px}
-  nav ul{display:flex;gap:28px;list-style:none;font-size:16px}
+  nav ul{display:flex;gap:22px;list-style:none;font-size:16px}
   nav ul a.current{border-bottom:2px solid var(--accent);padding-bottom:4px}
   nav .lang{font-size:13px;color:var(--muted);margin-right:20px}
 
@@ -119,6 +120,14 @@
     table.svc tr.anual td{background:transparent}
     table.svc tr.anual{background:var(--clay);padding-inline:12px}
   }
+
+  /* logo descriptor + regulatory line (logo guidelines sections 8) */
+  .lockup{display:inline-flex;flex-direction:column;gap:6px;align-items:flex-start}
+  .descriptor{font:700 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .reg-line{font-size:9px;line-height:14px;color:var(--muted)}
+
+  .nextstep{margin-top:18px;padding:16px 20px;background:var(--clay);border-left:3px solid var(--accent);font-size:16px;line-height:25px;max-width:62ch}
+  .nextstep a{font-weight:600;color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
 </style>
 </head>
 <body>
@@ -127,7 +136,7 @@
   <div class="wrap">
     <nav>
       <a class="wordmark" href="index.html" aria-label="Solera">
-        <svg class="mark" viewBox="0 0 60 40" aria-hidden="true"><path d="M8 40 V22 A22 22 0 0 1 52 22 V40" fill="none" stroke="currentColor" stroke-width="5"/><rect x="28" y="24" width="4" height="16" fill="#B3623C"/></svg>
+        <svg class="mark" viewBox="0 0 6 6" aria-hidden="true" focusable="false"><rect x="0" y="0" width="3" height="1" fill="#B3623C"/><rect x="0" y="2.5" width="4.5" height="1" fill="currentColor"/><rect x="0" y="5" width="6" height="1" fill="currentColor"/></svg>
         Solera
       </a>
       <ul>
@@ -150,10 +159,11 @@
     <div>
       <span class="eyebrow">Alle diensten</span>
       <h1>Alles wat een huis in Spanje van u vraagt. Met bedrag.</h1>
-      <p>Solera Anual dekt de vier jaarlijkse verplichtingen. Daaromheen zit een leven: kopen, erven, verbouwen, verkopen. Dit is de volledige lijst — wat het is, wanneer het speelt, en wat het kost.</p>
+      <p class="nextstep">Weet u niet welke van deze regels op u van toepassing zijn? Doe eerst uw Modelo 210 &mdash; de check-up die erbij hoort vertelt het u, met het bedrag erbij. <a href="solera-modelo210.html">Doe uw Modelo 210 &mdash; &euro;&nbsp;29,99 &rarr;</a></p>
+      <p>Solera Anual dekt wat elk jaar terugkomt. Daaromheen zit een leven: kopen, erven, verbouwen, verkopen. Dit is de volledige lijst — wat het is, wanneer het speelt, en wat het kost.</p>
     </div>
     <div class="key">
-      <p><span class="pill in">Inbegrepen</span> &nbsp;Zit in Solera Anual — geen extra factuur.</p>
+      <p><span class="pill in">Inbegrepen in Anual</span> &nbsp;Zit in Solera Anual — geen extra factuur.</p>
       <p><span class="pill fixed">Vast bedrag</span> &nbsp;Eén prijs, vooraf, inclusief btw. Overheidsleges en notariskosten apart, altijd genoemd.</p>
       <p><span class="pill quote">Offerte</span> &nbsp;Hangt af van de zaak. U krijgt een bedrag vóórdat wij beginnen, niet erna.</p>
     </div>
@@ -182,13 +192,13 @@
           <td class="name"><strong>Modelo 210 — eigen gebruik</strong><span>Inkomstenbelasting niet-ingezetenen over fictief inkomen · &euro;&nbsp;29,99 per aangifte los</span></td>
           <td class="desc">Berekening op basis van de kadastrale waarde, aangifte en betaling via domiciliación. Ook verschuldigd in een jaar zonder verhuur.</td>
           <td class="when">Jaarlijks, vóór 31 december</td>
-          <td class="cost"><span class="pill in">Inbegrepen</span></td>
+          <td class="cost"><span class="pill in">Inbegrepen in Anual</span></td>
         </tr>
         <tr class="anual">
           <td class="name"><strong>IBI en afvalheffing</strong><span>Gemeentelijke onroerendezaakbelasting (<em>basura</em>)</span></td>
           <td class="desc">Aanslag gecontroleerd, betaling gedomicilieerd, kadastrale waarde bewaakt — een herwaardering merkt u zo op tijd, niet in de aanslag.</td>
           <td class="when">Jaarlijks, per gemeente verschillend</td>
-          <td class="cost"><span class="pill in">Inbegrepen</span></td>
+          <td class="cost"><span class="pill in">Inbegrepen in Anual</span></td>
         </tr>
         <tr>
           <td class="name"><strong>Modelo 714 — vermogensbelasting</strong><span><em>Impuesto sobre el Patrimonio</em></span></td>
@@ -215,6 +225,18 @@
           <td class="cost"><span class="p num">€ 160<small>per dossier, uurtarief daarna genoemd</small></span></td>
         </tr>
         <tr>
+          <td class="name"><strong>S.L. oprichten</strong><span>Spaanse vennootschap, om via een bedrijf te bezitten of te verhuren</span></td>
+          <td class="desc">Oprichting van begin tot eind: naamreservering, bankverklaring, statuten, notaris en inschrijving, plus de fiscale en btw-registraties die daarop volgen.</td>
+          <td class="when">Eenmalig</td>
+          <td class="cost"><span class="p num">&euro; 1.200<small>vast, notaris en registro apart</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>S.L. boekhouding</strong><span>Boekhouding, btw, vennootschapsbelasting en jaarrekening</span></td>
+          <td class="desc">Het grootboek van de vennootschap op ons platform, met de kwartaal-btw en de jaarlijkse vennootschapsaangifte klaargezet voor een accountant om te controleren en te tekenen.</td>
+          <td class="when">Doorlopend</td>
+          <td class="cost"><span class="p num">vanaf &euro; 125<small>per maand, bedrag genoemd na de fiscale check</small></span></td>
+        </tr>
+        <tr>
           <td class="name"><strong>Fiscale check vooraf</strong><span>Eén uur, voor of na de aankoop</span></td>
           <td class="desc">Op naam van wie? Privé of via een B.V.? Wat betekent het voor box 3, voor erfbelasting, voor een latere verkoop? Eén gesprek, één memo, in het Nederlands.</td>
           <td class="when">Eenmalig</td>
@@ -237,13 +259,13 @@
           <td class="name"><strong>Licencia turística</strong><span>Verhuurvergunning en registratie</span></td>
           <td class="desc">Controle van uw registratie bij de Generalitat, aanvraag waar het nog kan, jaarlijkse compliance-check. Wij zeggen het als het niet meer kan.</td>
           <td class="when">Jaarlijks, per regio</td>
-          <td class="cost"><span class="pill in">Inbegrepen</span></td>
+          <td class="cost"><span class="pill in">Inbegrepen in Anual</span><small style="display:block;font-size:13px;line-height:19px;color:var(--muted);margin-top:6px">Jaarlijkse compliancecheck inbegrepen in Anual &middot; aanvraag op offerte</small></td>
         </tr>
         <tr class="anual">
-          <td class="name"><strong>Modelo 210 — verhuur</strong><span>Kwartaalaangifte over huurinkomsten</span></td>
+          <td class="name"><strong>Modelo 210 — verhuur</strong><span>Jaaraangifte over huurinkomsten</span></td>
           <td class="desc">Inkomsten en aftrekbare kosten in de kostenbijlage (EU-ingezetenen mogen kosten aftrekken; wij zorgen dat u dat ook doet), aangifte en betaling.</td>
           <td class="when">Jaarlijks, in de eerste 20 dagen van april</td>
-          <td class="cost"><span class="pill in">Inbegrepen</span></td>
+          <td class="cost"><span class="pill in">Inbegrepen in Anual</span></td>
         </tr>
         <tr>
           <td class="name"><strong>Verhuuradministratie</strong><span>Grootboek voor de woning</span></td>
@@ -277,7 +299,6 @@
         </tr>
       </tbody>
     </table>
-    <p class="caveat">Boekhouding voor een Spaanse S.L. of voor ondernemersactiviteit in Spanje doen wij niet — dat vraagt een <em>asesoría</em> met eigen vergunning. Wij verwijzen u door naar een kantoor waarmee wij samenwerken, en blijven uw aanspreekpunt.</p>
   </section>
 
   <!-- JURIDISCH -->
@@ -438,14 +459,14 @@
 
 <footer>
   <div class="wrap">
-    <span class="wordmark" style="font-size:20px">Solera</span>
+    <span class="lockup"><span class="wordmark" style="font-size:31px"><svg class="mark" viewBox="0 0 6 6" aria-hidden="true" focusable="false"><rect x="0" y="0" width="3" height="1" fill="#B3623C"/><rect x="0" y="2.5" width="4.5" height="1" fill="currentColor"/><rect x="0" y="5" width="6" height="1" fill="currentColor"/></svg>Solera</span><span class="descriptor">Financi&euml;le diensten Spanje</span></span>
     <ul>
-      <li><a href="#">Solera Anual</a></li>
-      <li><a href="#">Alle diensten</a></li>
-      <li><a href="#">Over ons</a></li>
-      <li><a href="#">Privacy</a></li>
+      <li><a href="index.html#jaar">Solera Anual</a></li>
+      <li><a href="solera-diensten.html">Alle diensten</a></li>
+      <li><a href="index.html#wie-tekent">Over ons</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
     </ul>
-    <span>Solera Spain S.L. · Alicante · CIF B-00000000</span>
+    <span class="reg-line">Solera Spain S.L. · Alicante · CIF {{cif}}</span>
   </div>
 </footer>
 </body>

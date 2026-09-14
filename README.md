@@ -17,14 +17,21 @@ Site content follows `solera_concept_and_tech_brief_1.pdf` (September 2026). Not
   - `solera-verhuur.html` — owner rental listing page with live preview
   - `solera-diensten.html` — full list of tax, administration and legal services
   - `solera-modelo210.html` — free Modelo 210 calculator (no account) and how filing works; the acquisition page for the hook. English twin at `en/modelo210.html`
+  - `privacy.html` / `en/privacy.html` — draft privacy statement; controller Solera Spain S.L. Settled alongside the DPIA before launch.
+  - `favicon.svg` — the sanctioned two-tier cut of the mark at 16px
   - `solera-account.html` — client-file prototype: sign-up, filing history, properties, annual check-up. English twin at `en/account.html`. **Front-end only** — state lives in the visitor's own browser under `solera.demo.v1`; there is no server, no auth and no password. It is a demonstration of the portal described in Part 3 of the brief, not that portal.
   - `img/` — SVG illustrations of villas, town houses and fincas in the brand palette; drawn for the marketplace page, currently unused
   - `en/` — English version of the three pages (`index.html`, `rental.html`, `services.html`); the NL · EN control in the header swaps between counterpart pages, not to the homepage
 
 The English version is written for English-speaking owners rather than translated line by line. Where a Spanish rule depends on the owner's residence it states both cases — rental income and capital gains are taxed at 19% with costs deductible for EU/EEA residents, and at 24% on gross with no deduction for everyone else — instead of asserting one. Home-country specifics from the Dutch copy (box 3, the NL–ES treaty, the consulate in The Hague, a choice of Dutch succession law) are generalised to "your own adviser" and "the law of your nationality".
 
+## Template variables
+
+Visible `{{…}}` placeholders are intentional and awaiting real values: `{{cif}}`, `{{asesoria}}`, `{{colegiado}}`, `{{corredor}}`, `{{dgs_number}}`, `{{privacy_email}}`, and `{{checkup_1..3}}` on the 210 confirmation block.
+
 ## Brand at a glance
 
+- **Logo:** the Criadera mark — three tiers, base widest, terracotta on the top tier only, bars flush left. Wordmark Petrona Regular at −2.5%. Per *Solera Logo Guidelines v1.0*; the earlier arch mark was one of the five rejected directions.
 - **Type:** Petrona (headlines, name) · Karla (body, UI)
 - **Colour:** lime plaster ground, clay, olive ink, terracotta as punctuation (#B3623C; #98502C as type), grove for "done"
 - **Voice:** name the cost · local, not exotic · calm, never urgent

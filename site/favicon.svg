@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-label="Solera">
+  <!-- Sanctioned two-tier cut for 16px: 4px bars, 8px gap (gap wider than bars).
+       Base tier widest, terracotta on top. Logo guidelines v1.0 section 6. -->
+  <rect width="16" height="16" fill="#F6F0E5"/>
+  <rect x="0" y="0"  width="8"  height="4" fill="#B3623C"/>
+  <rect x="0" y="12" width="16" height="4" fill="#463B32"/>
+</svg>

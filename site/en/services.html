@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Solera — All services, with the amount</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300..700;1,300..500&family=Petrona:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -34,14 +35,14 @@
   .btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--sans);padding:15px 22px;border:1px solid var(--ink);color:var(--ink);background:transparent;border-radius:2px;cursor:pointer}
   .btn.primary{background:var(--ink);color:var(--paper)}
   .btn:hover{background:var(--clay)} .btn.primary:hover{background:oklch(0.32 0.021 45)}
-  .mark{display:inline-block;height:26px;vertical-align:middle}
-  .wordmark{font:500 24px/1 var(--serif);display:inline-flex;align-items:center;gap:9px}
+  .mark{display:inline-block;height:.655em;width:auto;flex:none;vertical-align:middle}
+  .wordmark{font:400 31px/1 var(--serif);letter-spacing:-.025em;display:inline-flex;align-items:center;gap:.218em}
   .num{font-variant-numeric:tabular-nums}
   em{font-family:var(--serif);font-style:italic;font-size:1.05em}
 
   header{border-bottom:1px solid var(--rule)}
   nav{display:flex;align-items:center;justify-content:space-between;height:74px}
-  nav ul{display:flex;gap:28px;list-style:none;font-size:16px}
+  nav ul{display:flex;gap:22px;list-style:none;font-size:16px}
   nav ul a.current{border-bottom:2px solid var(--accent);padding-bottom:4px}
   nav .lang{font-size:13px;color:var(--muted);margin-right:20px}
 
@@ -119,6 +120,14 @@
     table.svc tr.anual td{background:transparent}
     table.svc tr.anual{background:var(--clay);padding-inline:12px}
   }
+
+  /* logo descriptor + regulatory line (logo guidelines sections 8) */
+  .lockup{display:inline-flex;flex-direction:column;gap:6px;align-items:flex-start}
+  .descriptor{font:700 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .reg-line{font-size:9px;line-height:14px;color:var(--muted)}
+
+  .nextstep{margin-top:18px;padding:16px 20px;background:var(--clay);border-left:3px solid var(--accent);font-size:16px;line-height:25px;max-width:62ch}
+  .nextstep a{font-weight:600;color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
 </style>
 </head>
 <body>
@@ -127,7 +136,7 @@
   <div class="wrap">
     <nav>
       <a class="wordmark" href="index.html" aria-label="Solera">
-        <svg class="mark" viewBox="0 0 60 40" aria-hidden="true"><path d="M8 40 V22 A22 22 0 0 1 52 22 V40" fill="none" stroke="currentColor" stroke-width="5"/><rect x="28" y="24" width="4" height="16" fill="#B3623C"/></svg>
+        <svg class="mark" viewBox="0 0 6 6" aria-hidden="true" focusable="false"><rect x="0" y="0" width="3" height="1" fill="#B3623C"/><rect x="0" y="2.5" width="4.5" height="1" fill="currentColor"/><rect x="0" y="5" width="6" height="1" fill="currentColor"/></svg>
         Solera
       </a>
       <ul>
@@ -150,10 +159,11 @@
     <div>
       <span class="eyebrow">All services</span>
       <h1>Everything a house in Spain asks of you. With the amount.</h1>
-      <p>Solera Anual covers the four annual obligations. Around those sits a life: buying, inheriting, renovating, selling. This is the full list &mdash; what it is, when it applies, and what it costs.</p>
+      <p class="nextstep">Not sure which of these lines apply to you? File your Modelo 210 first &mdash; the check-up that comes with it tells you, with the amount. <a href="modelo210.html">File your Modelo 210 &mdash; &euro;29.99 &rarr;</a></p>
+      <p>Solera Anual covers what recurs every year. Around those sits a life: buying, inheriting, renovating, selling. This is the full list &mdash; what it is, when it applies, and what it costs.</p>
     </div>
     <div class="key">
-      <p><span class="pill in">Included</span> &nbsp;Part of Solera Anual &mdash; no separate invoice.</p>
+      <p><span class="pill in">Included in Anual</span> &nbsp;Part of Solera Anual &mdash; no separate invoice.</p>
       <p><span class="pill fixed">Fixed fee</span> &nbsp;One price, up front, including VAT. Government and notary fees separate, always named.</p>
       <p><span class="pill quote">Quote</span> &nbsp;Depends on the case. You get a figure before we start, not after.</p>
     </div>
@@ -182,25 +192,25 @@
           <td class="name"><strong>Modelo 210 &mdash; own use</strong><span>Non-resident income tax on a notional income &middot; &euro;29.99 per filing standalone</span></td>
           <td class="desc">Calculated from the cadastral value, filed and paid by <em>domiciliaci&oacute;n</em>. Due even in a year with no letting at all.</td>
           <td class="when">Annually, before 31 December</td>
-          <td class="cost"><span class="pill in">Included</span></td>
+          <td class="cost"><span class="pill in">Included in Anual</span></td>
         </tr>
         <tr class="anual">
           <td class="name"><strong>IBI and refuse charge</strong><span>Municipal property tax (<em>basura</em>)</span></td>
           <td class="desc">Assessment checked, payment set up by direct debit, cadastral value monitored &mdash; so a revaluation reaches you in time, not inside the bill.</td>
           <td class="when">Annually, varies by municipality</td>
-          <td class="cost"><span class="pill in">Included</span></td>
+          <td class="cost"><span class="pill in">Included in Anual</span></td>
         </tr>
         <tr>
           <td class="name"><strong>Modelo 714 &mdash; wealth tax</strong><span><em>Impuesto sobre el Patrimonio</em></span></td>
           <td class="desc">We test whether your Spanish assets exceed the regional allowance (Comunitat Valenciana: &euro;500,000) and file if they do. We warn you before a valuation crosses the line.</td>
           <td class="when">Annually, April&ndash;June, only above the threshold</td>
-          <td class="cost"><span class="p num">&euro;240<small>per return</small></span></td>
+          <td class="cost"><span class="p num">&euro;240<small>check included in Anual &middot; return &euro;240 when due</small></span></td>
         </tr>
         <tr>
           <td class="name"><strong>Fiscal representative</strong><span><em>Representante fiscal</em></span></td>
           <td class="desc">Solera as your official address for the Spanish tax authority. Required in some situations, sensible in all of them: letters from the <em>Agencia Tributaria</em> reach us, not an empty letterbox in Spain.</td>
           <td class="when">Ongoing</td>
-          <td class="cost"><span class="p num">&euro;180<small>per year</small></span></td>
+          <td class="cost"><span class="p num">&euro;180<small>per year &middot; included in Anual</small></span></td>
         </tr>
         <tr>
           <td class="name"><strong>Summary for your home tax return</strong><span>For your own accountant or adviser</span></td>
@@ -213,6 +223,18 @@
           <td class="desc">A letter from the tax office carries a ten-working-day deadline. We read it, explain what it says, and file the response or the appeal.</td>
           <td class="when">As it arises</td>
           <td class="cost"><span class="p num">&euro;160<small>per case, hourly rate named thereafter</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>S.L. set-up</strong><span>Spanish limited company, for owning or letting through a company</span></td>
+          <td class="desc">Incorporation from end to end: name reservation, bank certificate, statutes, notary and registration, plus the tax and VAT registrations that follow.</td>
+          <td class="when">One-off</td>
+          <td class="cost"><span class="p num">&euro;1,200<small>fixed, notary and registry separate</small></span></td>
+        </tr>
+        <tr>
+          <td class="name"><strong>S.L. accounting</strong><span>Bookkeeping, VAT, corporate tax and annual accounts</span></td>
+          <td class="desc">The company's ledger kept on our platform, with the quarterly VAT and the annual corporate-tax return prepared for an accountant to review and sign.</td>
+          <td class="when">Ongoing</td>
+          <td class="cost"><span class="p num">from &euro;125<small>per month, figure named after the tax check</small></span></td>
         </tr>
         <tr>
           <td class="name"><strong>Tax check beforehand</strong><span>One hour, before or after the purchase</span></td>
@@ -238,13 +260,13 @@
           <td class="name"><strong>Licencia tur&iacute;stica</strong><span>Rental licence and registration</span></td>
           <td class="desc">Your registration checked with the Generalitat, applied for where that is still possible, annual compliance check. We say so when it is no longer possible.</td>
           <td class="when">Annually, by region</td>
-          <td class="cost"><span class="pill in">Included</span></td>
+          <td class="cost"><span class="pill in">Included in Anual</span><small style="display:block;font-size:13px;line-height:19px;color:var(--muted);margin-top:6px">Annual compliance check included in Anual &middot; application on quote</small></td>
         </tr>
         <tr class="anual">
-          <td class="name"><strong>Modelo 210 &mdash; letting</strong><span>Quarterly return on rental income</span></td>
+          <td class="name"><strong>Modelo 210 &mdash; letting</strong><span>Annual return on rental income</span></td>
           <td class="desc">Income and costs in the expense annex, filed and paid. If you are resident in the EU/EEA you may deduct expenses and the rate is 19%; outside the EU/EEA the rate is 24% on gross rent with no deduction. We apply whichever is yours, and say which.</td>
           <td class="when">Annually, in the first 20 days of April</td>
-          <td class="cost"><span class="pill in">Included</span></td>
+          <td class="cost"><span class="pill in">Included in Anual</span></td>
         </tr>
         <tr>
           <td class="name"><strong>Rental bookkeeping</strong><span>A ledger for the property</span></td>
@@ -278,7 +300,6 @@
         </tr>
       </tbody>
     </table>
-    <p class="caveat">We do not do bookkeeping for a Spanish S.L. or for trading activity in Spain &mdash; that needs an <em>asesor&iacute;a</em> with its own licence. We refer you to a firm we work with, and stay your point of contact.</p>
   </section>
 
   <!-- LEGAL -->
@@ -439,14 +460,14 @@
 
 <footer>
   <div class="wrap">
-    <span class="wordmark" style="font-size:20px">Solera</span>
+    <span class="lockup"><span class="wordmark" style="font-size:31px"><svg class="mark" viewBox="0 0 6 6" aria-hidden="true" focusable="false"><rect x="0" y="0" width="3" height="1" fill="#B3623C"/><rect x="0" y="2.5" width="4.5" height="1" fill="currentColor"/><rect x="0" y="5" width="6" height="1" fill="currentColor"/></svg>Solera</span><span class="descriptor">Financial Services Spain</span></span>
     <ul>
-      <li><a href="#">Solera Anual</a></li>
-      <li><a href="#">All services</a></li>
-      <li><a href="#">About us</a></li>
-      <li><a href="#">Privacy</a></li>
+      <li><a href="index.html#year">Solera Anual</a></li>
+      <li><a href="services.html">All services</a></li>
+      <li><a href="index.html#who-signs">About us</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
     </ul>
-    <span>Solera Spain S.L. &middot; Alicante &middot; CIF B-00000000</span>
+    <span class="reg-line">Solera Spain S.L. &middot; Alicante &middot; CIF {{cif}}</span>
   </div>
 </footer>
 </body>

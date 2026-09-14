@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Solera — Calculate your Modelo 210</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300..700;1,300..500&family=Petrona:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -36,14 +37,14 @@
   .btn.primary{background:var(--ink);color:var(--paper)}
   .btn.primary:hover{background:oklch(0.32 0.021 45)}
   .btn:hover{background:var(--clay)}
-  .mark{display:inline-block;height:26px;width:auto;vertical-align:middle}
-  .wordmark{font:500 24px/1 var(--serif);letter-spacing:-.01em;display:inline-flex;align-items:center;gap:9px}
+  .mark{display:inline-block;height:.655em;width:auto;flex:none;vertical-align:middle}
+  .wordmark{font:400 31px/1 var(--serif);letter-spacing:-.025em;display:inline-flex;align-items:center;gap:.218em}
   .num{font-variant-numeric:tabular-nums}
 
   /* nav */
   header{border-bottom:1px solid var(--rule)}
   nav{display:flex;align-items:center;justify-content:space-between;height:74px}
-  nav ul{display:flex;gap:28px;list-style:none;font-size:16px}
+  nav ul{display:flex;gap:22px;list-style:none;font-size:16px}
   nav ul a:hover{color:var(--accent-ink)}
   nav .lang{font-size:13px;color:var(--muted);margin-right:20px}
 
@@ -225,6 +226,24 @@
     .how-grid{grid-template-columns:1fr}
     .crow{grid-template-columns:1fr}
   }
+
+  /* logo descriptor + regulatory line (logo guidelines sections 8) */
+  .lockup{display:inline-flex;flex-direction:column;gap:6px;align-items:flex-start}
+  .descriptor{font:700 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .reg-line{font-size:9px;line-height:14px;color:var(--muted)}
+
+  .nextstep{margin-top:20px;padding:16px 20px;background:var(--clay);border-left:3px solid var(--accent);font-size:16px;line-height:25px}
+  .nextstep a{font-weight:600;color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
+  .optin{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:21px;color:var(--ink);cursor:pointer;margin-top:4px}
+  .optin input{margin-top:3px;flex:none;accent-color:var(--accent)}
+  .why-ask{font-size:13px;line-height:19px;color:var(--muted);margin-top:-2px}
+  .done-box{border:1px solid var(--rule);background:var(--clay);padding:30px 30px 26px;margin-top:clamp(36px,4.5vw,56px)}
+  .done-box h2{font-size:clamp(26px,3.2vw,36px);line-height:1.08;letter-spacing:-.02em;max-width:24ch}
+  .done-box p.lede{margin-top:12px;color:var(--muted);max-width:60ch}
+  .done-box ul{list-style:none;margin-top:24px;border-top:1px solid var(--rule)}
+  .done-box li{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid var(--rule);font-size:16px;line-height:24px;flex-wrap:wrap}
+  .done-box li a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px;font-weight:600;white-space:nowrap}
+  .done-box .after{margin-top:22px;font-size:16px;line-height:25px}
 </style>
 </head>
 <body>
@@ -233,7 +252,7 @@
   <div class="wrap">
     <nav>
       <a class="wordmark" href="index.html" aria-label="Solera">
-        <svg class="mark" viewBox="0 0 60 40" aria-hidden="true"><path d="M8 40 V22 A22 22 0 0 1 52 22 V40" fill="none" stroke="currentColor" stroke-width="5"/><rect x="28" y="24" width="4" height="16" fill="#B3623C"/></svg>
+        <svg class="mark" viewBox="0 0 6 6" aria-hidden="true" focusable="false"><rect x="0" y="0" width="3" height="1" fill="#B3623C"/><rect x="0" y="2.5" width="4.5" height="1" fill="currentColor"/><rect x="0" y="5" width="6" height="1" fill="currentColor"/></svg>
         Solera
       </a>
       <ul>
@@ -324,6 +343,23 @@
         </div>
       </div>
 
+      <div class="cfield" style="border-top:1px solid var(--rule);padding-top:24px">
+        <span class="lbl">Optional &mdash; for the check-up</span>
+        <span class="hint">So the check-up that comes with your receipt can be specific. Everything below may be left blank.</span>
+      </div>
+      <div class="crow">
+        <div class="cfield"><label for="bought">Year of purchase</label><input id="bought" type="number" min="1900" max="2030" step="1" placeholder="2019"></div>
+        <div class="cfield"><label for="owners">Number of owners</label><input id="owners" type="number" min="1" max="8" step="1" placeholder="2"></div>
+      </div>
+      <div class="crow">
+        <div class="cfield"><label for="ages">Age of the owners</label>
+          <select id="ages"><option value="">Rather not say</option><option>Under 60</option><option>60 or over</option></select></div>
+        <div class="cfield"><label for="letting">Is it let?</label>
+          <select id="letting"><option value="">Rather not say</option><option>Never</option><option>Sometimes</option><option>Mainly let</option></select></div>
+      </div>
+      <div class="cfield"><label for="insured">Sum insured (&euro;)</label><input id="insured" type="number" min="0" step="1000" placeholder="180000"></div>
+      <label class="optin"><input type="checkbox" id="deadlines"> Send me my deadlines (8 emails/year)</label>
+
     </form>
 
     <aside class="result" aria-live="polite">
@@ -339,8 +375,22 @@
         <div class="line"><dt>Rate</dt><dd id="r-rate">19%</dd></div>
       </dl>
       <p class="note" id="r-note">This is a calculation, not a filing. With two owners each files their own Modelo 210 &mdash; the figure above is your share only.</p>
+      <p class="nextstep">A house in two names is two filings &mdash; &euro;59.98. Solera Anual is &euro;249 a year and includes every co-owner&rsquo;s Modelo 210, our address for the Spanish tax office, and the annual check-up. Most owners switch within the first year. <a href="index.html#year">See Solera Anual &rarr;</a></p>
       <a class="btn primary" href="index.html#call">Have Solera file it &mdash; &euro;29.99</a>
     </aside>
+  </div>
+
+  <div class="wrap">
+    <div class="done-box" id="filed">
+      <h2>Filed. Here is what we can already see.</h2>
+      <p class="lede">This is the message that arrives with your receipt. The lines below are filled from your own file.</p>
+      <ul>
+        <li><span>{{checkup_1}}</span> <a href="services.html#inheritance">Spanish will &mdash; &euro;260 per person</a></li>
+        <li><span>{{checkup_2}}</span> <a href="index.html#year">Solera Anual &mdash; &euro;249 a year</a></li>
+        <li><span>{{checkup_3}}</span> <a href="services.html#letting">Rental licence &mdash; on quote</a></li>
+      </ul>
+      <p class="after">Add these to your file, or leave it at this. Next deadline: 20 April 2027.</p>
+    </div>
   </div>
 
   <section class="how">
@@ -396,14 +446,14 @@
 
 <footer>
   <div class="wrap">
-    <span class="wordmark" style="font-size:20px;color:var(--ink)">Solera</span>
+    <span class="lockup"><span class="wordmark" style="font-size:31px;color:var(--ink)"><svg class="mark" viewBox="0 0 6 6" aria-hidden="true" focusable="false"><rect x="0" y="0" width="3" height="1" fill="#B3623C"/><rect x="0" y="2.5" width="4.5" height="1" fill="currentColor"/><rect x="0" y="5" width="6" height="1" fill="currentColor"/></svg>Solera</span><span class="descriptor">Financial Services Spain</span></span>
     <ul>
-      <li><a href="index.html">Solera Anual</a></li>
+      <li><a href="index.html#year">Solera Anual</a></li>
       <li><a href="services.html">All services</a></li>
       <li><a href="rental.html">Letting</a></li>
-      <li><a href="#">Privacy</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
     </ul>
-    <span>Solera Spain S.L. &middot; Alicante &middot; CIF B-00000000</span>
+    <span class="reg-line">Solera Spain S.L. &middot; Alicante &middot; CIF {{cif}}</span>
   </div>
 </footer>
 
