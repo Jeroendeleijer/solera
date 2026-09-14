@@ -224,6 +224,11 @@
   .faces-foot{margin-top:26px;font-size:16px}
   .faces-foot a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px;font-weight:600}
   @media (max-width:900px){ .faces{grid-template-columns:repeat(2,minmax(0,1fr))} }
+
+  /* nav holds 7 items; keep it on one line down to the 900px breakpoint */
+  nav ul a{white-space:nowrap}
+  @media (max-width:1240px){ nav ul{gap:16px;font-size:15px} nav .lang{margin-right:12px} }
+  @media (max-width:1080px){ nav ul li.opt{display:none} }
 </style>
 </head>
 <body>
@@ -238,10 +243,10 @@
       <ul>
         <li><a href="modelo210.html">Modelo 210 &mdash; &euro;29.99</a></li>
         <li><a href="#year">Solera Anual</a></li>
+        <li><a href="insurance.html">Insurance</a></li>
         <li><a href="services.html">All services</a></li>
         <li><a href="account.html">My file</a></li>
-        <li><a href="#lines">Tax</a></li>
-        <li><a href="#lines">Insurance</a></li>
+        <li class="opt"><a href="#lines">Tax</a></li>
         <li><a href="rental.html">Letting</a></li>
       </ul>
       <div>
@@ -366,7 +371,7 @@
           <h3>Insurance</h3>
           <q>Your policy, explained in English.</q>
           <p>An ordinary buildings policy does not cover short-term letting. We place the policy with the cover your actual use requires, and handle claims here &mdash; in your language, not in Spanish.</p>
-          <div class="split-line"><b>In Anual:</b> placement, annual review and renewal, claims handling.<br><b>On demand:</b> life, liability and construction cover; revaluation after building work.</div>
+          <div class="split-line"><b>In Anual:</b> placement, annual review and renewal, claims handling.<br><a href="insurance.html" style="color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px;font-weight:600">Compare the policies &rarr;</a><br><b>On demand:</b> life, liability and construction cover; revaluation after building work.</div>
         </article>
       </div>
       </div>

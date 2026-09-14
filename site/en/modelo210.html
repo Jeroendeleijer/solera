@@ -244,6 +244,11 @@
   .done-box li{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid var(--rule);font-size:16px;line-height:24px;flex-wrap:wrap}
   .done-box li a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px;font-weight:600;white-space:nowrap}
   .done-box .after{margin-top:22px;font-size:16px;line-height:25px}
+
+  /* nav holds 7 items; keep it on one line down to the 900px breakpoint */
+  nav ul a{white-space:nowrap}
+  @media (max-width:1240px){ nav ul{gap:16px;font-size:15px} nav .lang{margin-right:12px} }
+  @media (max-width:1080px){ nav ul li.opt{display:none} }
 </style>
 </head>
 <body>
@@ -258,6 +263,7 @@
       <ul>
         <li><a class="current" href="#">Modelo 210 &mdash; &euro;29.99</a></li>
         <li><a href="index.html#year">Solera Anual</a></li>
+        <li><a href="insurance.html">Insurance</a></li>
         <li><a href="services.html">All services</a></li>
         <li><a href="rental.html">Letting</a></li>
         <li><a href="account.html">My file</a></li>

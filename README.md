@@ -17,6 +17,7 @@ Site content follows `solera_concept_and_tech_brief_1.pdf` (September 2026). Not
   - `solera-verhuur.html` — owner rental listing page with live preview
   - `solera-diensten.html` — full list of tax, administration and legal services
   - `solera-modelo210.html` — free Modelo 210 calculator (no account) and how filing works; the acquisition page for the hook. English twin at `en/modelo210.html`
+  - `solera-verzekering.html` / `en/insurance.html` — insurance matcher: the owner enters province, property type, rebuild and contents sums, letting status and a price-vs-service weighting; the panel is scored and ranked with the reasoning shown. Indicative only — placement is by the licensed corredor, and insurers appear as `{{provider_1..4}}` rather than real names beside invented premiums.
   - `team.html` / `en/team.html` — team page: 11 portrait placeholders in five groups (management, tax, legal, accounting, office). Photos are black and white — `.portrait img` forces `grayscale(1)` so a colour file cannot slip through.
   - `privacy.html` / `en/privacy.html` — draft privacy statement; controller Solera Spain S.L. Settled alongside the DPIA before launch.
   - `favicon.svg` — the sanctioned two-tier cut of the mark at 16px
@@ -28,7 +29,7 @@ The English version is written for English-speaking owners rather than translate
 
 ## Template variables
 
-Visible `{{…}}` placeholders are intentional and awaiting real values: `{{cif}}`, `{{asesoria}}`, `{{colegiado}}`, `{{corredor}}`, `{{dgs_number}}`, `{{privacy_email}}`, `{{checkup_1..3}}`, and the team names `{{name_md}}`, `{{name_despacho}}`, `{{name_tax_1..3}}`, `{{name_legal_1..2}}`, `{{name_acc_1..2}}`, `{{name_off_1..2}}` on the 210 confirmation block.
+Visible `{{…}}` placeholders are intentional and awaiting real values: `{{cif}}`, `{{asesoria}}`, `{{colegiado}}`, `{{corredor}}`, `{{dgs_number}}`, `{{privacy_email}}`, `{{checkup_1..3}}`, and the team names `{{name_md}}`, `{{name_despacho}}`, `{{name_tax_1..3}}`, `{{name_legal_1..2}}`, `{{name_acc_1..2}}`, `{{name_off_1..2}}`, and `{{provider_1..4}}` on the 210 confirmation block.
 
 ## Brand at a glance
 

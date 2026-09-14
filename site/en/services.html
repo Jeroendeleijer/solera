@@ -128,6 +128,11 @@
 
   .nextstep{margin-top:18px;padding:16px 20px;background:var(--clay);border-left:3px solid var(--accent);font-size:16px;line-height:25px;max-width:62ch}
   .nextstep a{font-weight:600;color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
+
+  /* nav holds 7 items; keep it on one line down to the 900px breakpoint */
+  nav ul a{white-space:nowrap}
+  @media (max-width:1240px){ nav ul{gap:16px;font-size:15px} nav .lang{margin-right:12px} }
+  @media (max-width:1080px){ nav ul li.opt{display:none} }
 </style>
 </head>
 <body>
@@ -142,6 +147,7 @@
       <ul>
         <li><a href="modelo210.html">Modelo 210 &mdash; &euro;29.99</a></li>
         <li><a href="index.html#year">What the year costs</a></li>
+        <li><a href="insurance.html">Insurance</a></li>
         <li><a class="current" href="#">All services</a></li>
         <li><a href="rental.html">Letting</a></li>
         <li><a href="account.html">My file</a></li>
