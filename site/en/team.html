@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Solera — Privacy</title>
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Solera — The team</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300..700;1,300..500&family=Petrona:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -244,6 +244,29 @@
   .done-box li{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid var(--rule);font-size:16px;line-height:24px;flex-wrap:wrap}
   .done-box li a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px;font-weight:600;white-space:nowrap}
   .done-box .after{margin-top:22px;font-size:16px;line-height:25px}
+
+  /* team */
+  .team .wrap{padding-block:clamp(40px,5vw,64px) clamp(56px,7vw,96px)}
+  .team-group{margin-top:clamp(40px,4.5vw,60px)}
+  .team-group > h2{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding-bottom:12px;border-bottom:1px solid var(--rule);font-family:var(--sans)}
+  .people{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,2.4vw,32px);margin-top:26px}
+  .person .portrait{aspect-ratio:4/5;border:1px solid var(--rule);background:#E7E5E2;position:relative;overflow:hidden;margin-bottom:14px}
+  .person .portrait svg{display:block;width:100%;height:100%}
+  .person .portrait span{position:absolute;left:10px;bottom:9px;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);background:rgba(247,240,230,.82);padding:3px 7px}
+  .person h3{font-family:var(--serif);font-weight:400;font-size:21px;line-height:1.15;letter-spacing:-.015em}
+  .person .role{font-size:14px;line-height:21px;color:var(--muted);margin-top:5px}
+  .person .cred{font-size:13px;line-height:19px;color:var(--muted);margin-top:10px;padding-top:9px;border-top:1px solid var(--rule)}
+  /* faces row on the homepage */
+  .faces{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(14px,1.8vw,22px);margin-top:40px;padding-top:36px;border-top:1px solid var(--rule)}
+  .faces .person .portrait{margin-bottom:10px}
+  .faces .person h3{font-size:16px}
+  .faces .person .role{font-size:13px;line-height:19px;margin-top:3px}
+  @media (max-width:900px){ .people{grid-template-columns:repeat(2,minmax(0,1fr))} .faces{grid-template-columns:repeat(2,minmax(0,1fr))} }
+
+  /* portraits are black and white — enforced, not just intended */
+  .portrait img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.04)}
+  .portrait svg .bg{fill:#E7E5E2}
+  .portrait svg .fg{fill:#C4C1BD}
 </style>
 </head>
 <body>
@@ -252,65 +275,130 @@
     <nav>
       <a class="wordmark" href="index.html" aria-label="Solera"><svg class="mark" viewBox="0 0 6 6" aria-hidden="true" focusable="false"><rect x="0" y="0" width="3" height="1" fill="#B3623C"/><rect x="0" y="2.5" width="4.5" height="1" fill="currentColor"/><rect x="0" y="5" width="6" height="1" fill="currentColor"/></svg>Solera</a>
       <ul>
-        <li><a href="solera-modelo210.html">Modelo 210 &mdash; &euro;&nbsp;29,99</a></li>
-        <li><a href="index.html#jaar">Solera Anual</a></li>
-        <li><a href="solera-diensten.html">Alle diensten</a></li>
-        <li><a href="solera-account.html">Mijn dossier</a></li>
+        <li><a href="modelo210.html">Modelo 210 &mdash; &euro;29.99</a></li>
+        <li><a href="index.html#year">Solera Anual</a></li>
+        <li><a href="services.html">All services</a></li>
+        <li><a class="current" href="#">Team</a></li>
       </ul>
       <div>
-        <span class="lang"><strong style="color:var(--ink)">NL</strong> &middot; <a href="en/privacy.html">EN</a></span>
-        <a class="btn" href="index.html#gesprek">Plan een gesprek</a>
+        <span class="lang"><a href="../team.html">NL</a> &middot; <strong style="color:var(--ink)">EN</strong></span>
+        <a class="btn" href="index.html#call">Book a call</a>
       </div>
     </nav>
   </div>
 </header>
 
-<main>
+<main class="team">
   <div class="wrap" style="padding-block:clamp(44px,6vw,76px) 0">
-    <span class="eyebrow">Privacy</span>
-    <h1 style="font-size:clamp(34px,4.6vw,54px);line-height:1.02;letter-spacing:-.03em;max-width:18ch;margin:18px 0 18px">Wat wij van u bewaren, en waarom.</h1>
-    <p class="lead" style="font-size:19px;line-height:30px;max-width:58ch">Deze tekst is een opzet. De definitieve privacyverklaring wordt vastgesteld samen met de gegevensbeschermingseffectbeoordeling (DPIA) v&oacute;&oacute;r Solera live gaat.</p>
+    <span class="eyebrow">The team</span>
+    <h1 style="font-size:clamp(34px,4.6vw,54px);line-height:1.02;letter-spacing:-.03em;max-width:19ch;margin:18px 0 18px">The people who sign what you get.</h1>
+    <p class="lead" style="font-size:19px;line-height:30px;max-width:58ch">Solera prepares and coordinates; the work is signed by people holding their own licence and their own professional liability. These are they. <a href="index.html#who-signs" style="color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px">Who signs what &rarr;</a></p>
   </div>
 
-  <div class="wrap split" style="padding-block:clamp(40px,5vw,64px) clamp(56px,7vw,96px)">
-    <div class="yes">
-      <h2>De hoofdlijn</h2>
-      <ul>
-        <li><strong>Verwerkingsverantwoordelijke:</strong> Solera Spain S.L., Alicante, Spanje. CIF {{cif}}. Contact: {{privacy_email}}.</li>
-        <li><strong>Welke gegevens:</strong> naam, adres, e-mail, NIE of NIF, land van fiscale woonplaats, gegevens van de woning (<em>referencia catastral</em>, kadastrale waarde, gemeente), eigendomsaandeel, IBAN voor de incasso en de door u ondertekende machtiging.</li>
-        <li><strong>Waarvoor:</strong> het indienen van uw Modelo 210 en de uitvoering van de overeenkomst; het voldoen aan Spaanse fiscale bewaarplichten; en, alleen als u daarvoor kiest, het sturen van uw deadlines.</li>
-        <li><strong>Grondslag:</strong> uitvoering van de overeenkomst, een wettelijke verplichting, en toestemming voor de deadlinemails.</li>
-        <li><strong>Bewaartermijn:</strong> zolang de fiscale bewaarplicht in Spanje dat voorschrijft; daarna verwijderd.</li>
-        <li><strong>Waar:</strong> binnen de EU, in Solera&rsquo;s eigen omgeving.</li>
-      </ul>
-    </div>
-    <div class="no">
-      <h2>Wat wij niet doen</h2>
-      <ul>
-        <li>Uw gegevens verkopen of verhuren.</li>
-        <li>Uw dossier als trainingsmateriaal aan een AI-dienst geven. AI stelt concepten op binnen onze eigen omgeving; een mens tekent.</li>
-        <li>Advertentiecookies plaatsen of u volgen over andere sites.</li>
-        <li>Uw gegevens buiten de EU opslaan zonder dat hier te vermelden.</li>
-      </ul>
-      <h2 style="margin-top:34px">Uw rechten</h2>
-      <ul>
-        <li>Inzage, correctie, verwijdering, beperking, overdracht en bezwaar &mdash; via {{privacy_email}}.</li>
-        <li>Toestemming voor de deadlinemails kunt u altijd intrekken, met de link in elke mail.</li>
-        <li>Klacht indienen bij de Spaanse toezichthouder (AEPD) of bij de Autoriteit Persoonsgegevens in Nederland.</li>
-      </ul>
-    </div>
+  <div class="wrap">
+      <section class="team-group">
+        <h2>Management</h2>
+        <div class="people">
+        <article class="person">
+          <div class="portrait" role="img" aria-label="Photo"><svg viewBox="0 0 80 100" aria-hidden="true" focusable="false"><rect class="bg" width="80" height="100"/><circle class="fg" cx="40" cy="37" r="14.5"/><path class="fg" d="M11 100a29 29 0 0 1 58 0z"/></svg><span>Photo</span></div>
+          <h3>{{name_md}}</h3>
+          <p class="role">Managing director</p>
+          <p class="cred">Accountable for the service and the prices.</p>
+        </article>
+        <article class="person">
+          <div class="portrait" role="img" aria-label="Photo"><svg viewBox="0 0 80 100" aria-hidden="true" focusable="false"><rect class="bg" width="80" height="100"/><circle class="fg" cx="40" cy="37" r="14.5"/><path class="fg" d="M11 100a29 29 0 0 1 58 0z"/></svg><span>Photo</span></div>
+          <h3>{{name_despacho}}</h3>
+          <p class="role">Despacho director</p>
+          <p class="cred">Runs the member practices and their migration onto the platform.</p>
+        </article>
+        </div>
+      </section>
+      <section class="team-group">
+        <h2>Tax</h2>
+        <div class="people">
+        <article class="person">
+          <div class="portrait" role="img" aria-label="Photo"><svg viewBox="0 0 80 100" aria-hidden="true" focusable="false"><rect class="bg" width="80" height="100"/><circle class="fg" cx="40" cy="37" r="14.5"/><path class="fg" d="M11 100a29 29 0 0 1 58 0z"/></svg><span>Photo</span></div>
+          <h3>{{name_tax_1}}</h3>
+          <p class="role">Asesor fiscal &middot; non-residents</p>
+          <p class="cred">Modelo 210, wealth tax, assessments and appeals.</p>
+        </article>
+        <article class="person">
+          <div class="portrait" role="img" aria-label="Photo"><svg viewBox="0 0 80 100" aria-hidden="true" focusable="false"><rect class="bg" width="80" height="100"/><circle class="fg" cx="40" cy="37" r="14.5"/><path class="fg" d="M11 100a29 29 0 0 1 58 0z"/></svg><span>Photo</span></div>
+          <h3>{{name_tax_2}}</h3>
+          <p class="role">Asesora fiscal</p>
+          <p class="cred">Rental returns and the expense annex, quarterly and annual work.</p>
+        </article>
+        <article class="person">
+          <div class="portrait" role="img" aria-label="Photo"><svg viewBox="0 0 80 100" aria-hidden="true" focusable="false"><rect class="bg" width="80" height="100"/><circle class="fg" cx="40" cy="37" r="14.5"/><path class="fg" d="M11 100a29 29 0 0 1 58 0z"/></svg><span>Photo</span></div>
+          <h3>{{name_tax_3}}</h3>
+          <p class="role">Tax specialist &middot; sales and capital gains</p>
+          <p class="cred">Capital gains, the 3% retention and its refund, <em>plusval&iacute;a</em>.</p>
+        </article>
+        </div>
+      </section>
+      <section class="team-group">
+        <h2>Legal</h2>
+        <div class="people">
+        <article class="person">
+          <div class="portrait" role="img" aria-label="Photo"><svg viewBox="0 0 80 100" aria-hidden="true" focusable="false"><rect class="bg" width="80" height="100"/><circle class="fg" cx="40" cy="37" r="14.5"/><path class="fg" d="M11 100a29 29 0 0 1 58 0z"/></svg><span>Photo</span></div>
+          <h3>{{name_legal_1}}</h3>
+          <p class="role">Abogado</p>
+          <p class="cred">Registered with the Colegio de Abogados de Alicante, no. {{colegiado}}.</p>
+        </article>
+        <article class="person">
+          <div class="portrait" role="img" aria-label="Photo"><svg viewBox="0 0 80 100" aria-hidden="true" focusable="false"><rect class="bg" width="80" height="100"/><circle class="fg" cx="40" cy="37" r="14.5"/><path class="fg" d="M11 100a29 29 0 0 1 58 0z"/></svg><span>Photo</span></div>
+          <h3>{{name_legal_2}}</h3>
+          <p class="role">Paralegal</p>
+          <p class="cred">Due diligence, registry extracts, powers of attorney and wills.</p>
+        </article>
+        </div>
+      </section>
+      <section class="team-group">
+        <h2>Accounting</h2>
+        <div class="people">
+        <article class="person">
+          <div class="portrait" role="img" aria-label="Photo"><svg viewBox="0 0 80 100" aria-hidden="true" focusable="false"><rect class="bg" width="80" height="100"/><circle class="fg" cx="40" cy="37" r="14.5"/><path class="fg" d="M11 100a29 29 0 0 1 58 0z"/></svg><span>Photo</span></div>
+          <h3>{{name_acc_1}}</h3>
+          <p class="role">Contable &middot; S.L. accounting</p>
+          <p class="cred">Ledger, VAT returns, corporate tax and annual accounts.</p>
+        </article>
+        <article class="person">
+          <div class="portrait" role="img" aria-label="Photo"><svg viewBox="0 0 80 100" aria-hidden="true" focusable="false"><rect class="bg" width="80" height="100"/><circle class="fg" cx="40" cy="37" r="14.5"/><path class="fg" d="M11 100a29 29 0 0 1 58 0z"/></svg><span>Photo</span></div>
+          <h3>{{name_acc_2}}</h3>
+          <p class="role">Assistant accountant</p>
+          <p class="cred">Bank feeds, invoice capture and quarterly overviews.</p>
+        </article>
+        </div>
+      </section>
+      <section class="team-group">
+        <h2>Office</h2>
+        <div class="people">
+        <article class="person">
+          <div class="portrait" role="img" aria-label="Photo"><svg viewBox="0 0 80 100" aria-hidden="true" focusable="false"><rect class="bg" width="80" height="100"/><circle class="fg" cx="40" cy="37" r="14.5"/><path class="fg" d="M11 100a29 29 0 0 1 58 0z"/></svg><span>Photo</span></div>
+          <h3>{{name_off_1}}</h3>
+          <p class="role">Office manager</p>
+          <p class="cred">Post from Spain, files, mandates and deadline tracking.</p>
+        </article>
+        <article class="person">
+          <div class="portrait" role="img" aria-label="Photo"><svg viewBox="0 0 80 100" aria-hidden="true" focusable="false"><rect class="bg" width="80" height="100"/><circle class="fg" cx="40" cy="37" r="14.5"/><path class="fg" d="M11 100a29 29 0 0 1 58 0z"/></svg><span>Photo</span></div>
+          <h3>{{name_off_2}}</h3>
+          <p class="role">Client services &middot; NL / EN / ES</p>
+          <p class="cred">Your first point of contact, in your own language.</p>
+        </article>
+        </div>
+      </section>
   </div>
 </main>
 
 <footer>
   <div class="wrap">
-    <span class="lockup"><span class="wordmark" style="font-size:31px;color:var(--ink)"><svg class="mark" viewBox="0 0 6 6" aria-hidden="true" focusable="false"><rect x="0" y="0" width="3" height="1" fill="#B3623C"/><rect x="0" y="2.5" width="4.5" height="1" fill="currentColor"/><rect x="0" y="5" width="6" height="1" fill="currentColor"/></svg>Solera</span><span class="descriptor">Financi&euml;le diensten Spanje</span></span>
+    <span class="lockup"><span class="wordmark" style="font-size:31px;color:var(--ink)"><svg class="mark" viewBox="0 0 6 6" aria-hidden="true" focusable="false"><rect x="0" y="0" width="3" height="1" fill="#B3623C"/><rect x="0" y="2.5" width="4.5" height="1" fill="currentColor"/><rect x="0" y="5" width="6" height="1" fill="currentColor"/></svg>Solera</span><span class="descriptor">Financial Services Spain</span></span>
     <ul>
-      <li><a href="index.html#jaar">Solera Anual</a></li>
-      <li><a href="solera-diensten.html">Prijzen</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="index.html#wie-tekent">Over ons</a></li>
-      <li><a class="current" href="#">Privacy</a></li>
+      <li><a href="index.html#year">Solera Anual</a></li>
+      <li><a href="services.html">Pricing</a></li>
+      <li><a class="current" href="#">Team</a></li>
+      <li><a href="index.html#who-signs">About us</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
     </ul>
     <span class="reg-line">Solera Spain S.L. &middot; Alicante &middot; CIF {{cif}}</span>
   </div>

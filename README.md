@@ -17,6 +17,7 @@ Site content follows `solera_concept_and_tech_brief_1.pdf` (September 2026). Not
   - `solera-verhuur.html` — owner rental listing page with live preview
   - `solera-diensten.html` — full list of tax, administration and legal services
   - `solera-modelo210.html` — free Modelo 210 calculator (no account) and how filing works; the acquisition page for the hook. English twin at `en/modelo210.html`
+  - `team.html` / `en/team.html` — team page: 11 portrait placeholders in five groups (management, tax, legal, accounting, office). Photos are black and white — `.portrait img` forces `grayscale(1)` so a colour file cannot slip through.
   - `privacy.html` / `en/privacy.html` — draft privacy statement; controller Solera Spain S.L. Settled alongside the DPIA before launch.
   - `favicon.svg` — the sanctioned two-tier cut of the mark at 16px
   - `solera-account.html` — client-file prototype: sign-up, filing history, properties, annual check-up. English twin at `en/account.html`. **Front-end only** — state lives in the visitor's own browser under `solera.demo.v1`; there is no server, no auth and no password. It is a demonstration of the portal described in Part 3 of the brief, not that portal.
@@ -27,7 +28,7 @@ The English version is written for English-speaking owners rather than translate
 
 ## Template variables
 
-Visible `{{…}}` placeholders are intentional and awaiting real values: `{{cif}}`, `{{asesoria}}`, `{{colegiado}}`, `{{corredor}}`, `{{dgs_number}}`, `{{privacy_email}}`, and `{{checkup_1..3}}` on the 210 confirmation block.
+Visible `{{…}}` placeholders are intentional and awaiting real values: `{{cif}}`, `{{asesoria}}`, `{{colegiado}}`, `{{corredor}}`, `{{dgs_number}}`, `{{privacy_email}}`, `{{checkup_1..3}}`, and the team names `{{name_md}}`, `{{name_despacho}}`, `{{name_tax_1..3}}`, `{{name_legal_1..2}}`, `{{name_acc_1..2}}`, `{{name_off_1..2}}` on the 210 confirmation block.
 
 ## Brand at a glance
 
