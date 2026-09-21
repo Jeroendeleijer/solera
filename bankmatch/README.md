@@ -18,6 +18,20 @@ set -a; source .env; set +a
 .venv/bin/python -m bankmatch.cli --statement bank.xlsx --since 2026-01-01 --out out
 ```
 
+## Browser version
+
+https://jeroendeleijer.github.io/solera/bankmatch/web/
+
+Drop a bank export and a pile of invoice PDFs in; the matching runs entirely in
+the page. **Nothing is uploaded** — you can disconnect from the network and it
+still works, which for bank data is the point. Results download as CSV.
+
+It cannot read your mailbox: IMAP needs a server, and a browser has none. For
+that, use the command line below.
+
+`web/engine.js` is a port of the Python matcher and is held to the same cases —
+open the page and run the checks in `web/selftest.js` from the console.
+
 ## What it produces
 
 `out/for-accountant.xlsx`, with a sheet per outcome:
