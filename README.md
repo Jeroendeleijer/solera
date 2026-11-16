@@ -1,8 +1,8 @@
 # Solera
 
-Tax, legal and insurance for foreign owners of Spanish property. The Modelo 210 is the hook: €29.99 per filing, per co-owner. Solera Anual is €249 per property per year.
+Tax, legal and insurance for foreign owners of Spanish property. The Modelo 210 is the hook: €29.99 per filing, per co-owner. Everything else is a separate service at a published fixed price — there is no annual plan and no bundle.
 
-Every non-resident owner must file the Modelo 210 every year, which makes it the one forced annual contact with the Spanish state — so it is priced as an acquisition product, not a revenue line, and every filing receipt carries a check-up report. Three service lines (tax, legal, insurance) each split between what recurs inside **Solera Anual** and what is done on demand at published fixed fees.
+Every non-resident owner must file the Modelo 210 every year, which makes it the one forced annual contact with the Spanish state — so it is priced as an acquisition product, not a revenue line, and every filing receipt carries a check-up report. Three service lines (tax, legal, insurance). Owners take what they need; every figure is published in advance. No subscription.
 
 Site content follows `solera_concept_and_tech_brief_1.pdf` (September 2026). Note the 2027 filing change under Orden HAC/623/2026: rental income is filed annually, 1–20 April, not quarterly.
 
